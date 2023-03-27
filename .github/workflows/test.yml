@@ -1,9 +1,4 @@
-name: test
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+
 env:
   BUILD_TYPE: Release
 jobs:
@@ -18,3 +13,9 @@ jobs:
     - name: test
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}}
+name: test
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
