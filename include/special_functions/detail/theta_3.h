@@ -1,0 +1,6 @@
+#ifndef SPECIAL_FUNCTIONS_DETAIL_THETA_3_H
+#define SPECIAL_FUNCTIONS_DETAIL_THETA_3_H
+
+namespace special_functions::detail {}
+
+#endif // SPECIAL_FUNCTIONS_DETAIL_THETA_3_H

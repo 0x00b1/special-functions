@@ -1,0 +1,6 @@
+#ifndef SPECIAL_FUNCTIONS_DETAIL_Q_FACTORIAL_H
+#define SPECIAL_FUNCTIONS_DETAIL_Q_FACTORIAL_H
+
+namespace special_functions::detail {}
+
+#endif // SPECIAL_FUNCTIONS_DETAIL_Q_FACTORIAL_H

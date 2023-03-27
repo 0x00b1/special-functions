@@ -1,0 +1,8 @@
+#ifndef SPECIAL_FUNCTIONS_NEVILLE_THETA_S_H
+#define SPECIAL_FUNCTIONS_NEVILLE_THETA_S_H
+
+namespace special_functions {
+
+}
+
+#endif // SPECIAL_FUNCTIONS_NEVILLE_THETA_S_H

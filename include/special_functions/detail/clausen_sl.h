@@ -1,0 +1,6 @@
+#ifndef SPECIAL_FUNCTIONS_DETAIL_CLAUSEN_SL_H
+#define SPECIAL_FUNCTIONS_DETAIL_CLAUSEN_SL_H
+
+namespace special_functions::detail {}
+
+#endif // SPECIAL_FUNCTIONS_DETAIL_CLAUSEN_SL_H
