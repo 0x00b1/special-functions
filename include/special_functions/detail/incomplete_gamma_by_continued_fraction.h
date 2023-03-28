@@ -4,8 +4,7 @@
 namespace special_functions::detail {
     template<typename Tp>
     std::pair<Tp, Tp>
-    incomplete_gamma_by_continued_fraction(Tp a, Tp x)
-    {
+    incomplete_gamma_by_continued_fraction(Tp a, Tp x) {
         using Val = Tp;
         using Real = special_functions::num_traits_t<Val>;
         const auto s_fpmin = Real{3} * std::numeric_limits<Tp>::lim_min();
@@ -19,8 +18,7 @@ namespace special_functions::detail {
         auto c = Real{1} / s_fpmin;
         auto d = Real{1} / b;
         auto h = d;
-        for (unsigned int n = 1; n <= s_itmax; ++n)
-        {
+        for (unsigned int n = 1; n <= s_itmax; ++n) {
             auto an = -Real(n) * (Real(n) - a);
             b += Real{2};
             d = an * d + b;
@@ -32,8 +30,7 @@ namespace special_functions::detail {
             d = Real{1} / d;
             auto del = d * c;
             h *= del;
-            if (std::abs(del - Real{1}) < s_eps)
-            {
+            if (std::abs(del - Real{1}) < s_eps) {
                 auto gamcf = std::exp(-x + a * std::log(x) - lngam)
                              * h * sign;
                 return std::make_pair(gamcf, lngam);

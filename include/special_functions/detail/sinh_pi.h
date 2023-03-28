@@ -20,7 +20,8 @@ namespace special_functions::detail {
         using U = T;
         using V = special_functions::num_traits_t<U>;
 
-        return std::sinh(std::numbers::pi_v<V> * std::real(z)) * cos_pi(std::imag(z)) + std::complex<T>{0, 1} * std::cosh(std::numbers::pi_v<V> * std::real(z)) * sin_pi(std::imag(z));
+        return std::sinh(std::numbers::pi_v<V> * std::real(z)) * cos_pi(std::imag(z)) +
+               std::complex<T>{0, 1} * std::cosh(std::numbers::pi_v<V> * std::real(z)) * sin_pi(std::imag(z));
     }
 }
 

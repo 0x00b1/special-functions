@@ -4,8 +4,7 @@
 namespace special_functions::detail {
     template<typename Tp>
     Tp
-    ellint_rd(Tp x, Tp y, Tp z)
-    {
+    ellint_rd(Tp x, Tp y, Tp z) {
         using Real = emsr::num_traits_t<Tp>;
         const auto s_NaN = emsr::quiet_NaN(Real{});
         const auto s_min = emsr::lim_min(Real{});
@@ -13,11 +12,11 @@ namespace special_functions::detail {
         const auto s_lolim = Real{5} * s_min;
 
         bool neg_arg = false;
-        if constexpr (!emsr::is_complex_v<Tp>)
-        if (std::real(x) < Real{0}
-            || std::real(y) < Real{0}
-            || std::real(z) < Real{0})
-            neg_arg = true;
+        if constexpr (!emsr::is_complex_v < Tp >)
+            if (std::real(x) < Real{0}
+                || std::real(y) < Real{0}
+                || std::real(z) < Real{0})
+                neg_arg = true;
 
         if (std::isnan(x) || std::isnan(y) || std::isnan(z))
             return s_NaN;
@@ -26,8 +25,7 @@ namespace special_functions::detail {
         else if (std::abs(x) + std::abs(y) < s_lolim
                  || std::abs(z) < s_lolim)
             throw std::domain_error("ellint_rd: arguments too small");
-        else
-        {
+        else {
             auto xt = x;
             auto yt = y;
             auto zt = z;
@@ -40,8 +38,7 @@ namespace special_functions::detail {
             auto f = Real{1};
             auto sum = Tp{0};
 
-            while (true)
-            {
+            while (true) {
                 auto lambda = std::sqrt(xt) * std::sqrt(yt)
                               + std::sqrt(yt) * std::sqrt(zt)
                               + std::sqrt(zt) * std::sqrt(xt);
@@ -51,8 +48,7 @@ namespace special_functions::detail {
                 yt = (yt + lambda) / Real{4};
                 zt = (zt + lambda) / Real{4};
                 f *= Real{4};
-                if (Q < f * std::abs(A))
-                {
+                if (Q < f * std::abs(A)) {
                     auto Xi = (A0 - x) / (f * A);
                     auto Yi = (A0 - y) / (f * A);
                     auto Zi = -(Xi + Yi) / Real{3};

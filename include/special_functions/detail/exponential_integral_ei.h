@@ -4,8 +4,7 @@
 namespace special_functions::detail {
     template<typename Tp>
     Tp
-    exponential_integral_ei(Tp x)
-    {
+    exponential_integral_ei(Tp x) {
         const auto s_eps = emsr::epsilon(x);
         if (x < Tp{0})
             return -expint_E1(-x);

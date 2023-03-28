@@ -16,16 +16,14 @@ namespace special_functions::detail {
  */
     template<typename Tp>
     Tp
-    jacobi_theta_1_sum(Tp q, Tp x)
-    {
+    jacobi_theta_1_sum(Tp q, Tp x) {
         using Real = special_functions::num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         constexpr std::size_t s_max_iter = 50;
 
         Tp sum{};
         Real sign{-1};
-        for (std::size_t n = 0; n < s_max_iter; ++n)
-        {
+        for (std::size_t n = 0; n < s_max_iter; ++n) {
             sign *= -1;
             const auto term = sign
                               * std::pow(q, Real((n + 0.5L) * (n + 0.5L)))
@@ -51,8 +49,7 @@ namespace special_functions::detail {
      */
     template<typename Tp>
     Tp
-    jacobi_theta_1_prod(Tp q, Tp x)
-    {
+    jacobi_theta_1_prod(Tp q, Tp x) {
         using Real = special_functions::num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         constexpr std::size_t s_max_iter = 50;
@@ -63,8 +60,7 @@ namespace special_functions::detail {
         auto q2n = Tp{1};
         auto q4n = Tp{1};
         auto prod = Tp{1};
-        for (std::size_t n = 1; n < s_max_iter; ++n)
-        {
+        for (std::size_t n = 1; n < s_max_iter; ++n) {
             q2n *= q2;
             q4n *= q4;
             const auto fact = (Real{1} - q2n)
@@ -108,8 +104,7 @@ namespace special_functions::detail {
      */
     template<typename Tp>
     std::complex<Tp>
-    jacobi_theta_1(std::complex<Tp> q, std::complex<Tp> x)
-    {
+    jacobi_theta_1(std::complex<Tp> q, std::complex<Tp> x) {
         using Real = special_functions::num_traits_t<Tp>;
         using Cmplx = std::complex<Real>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
@@ -127,8 +122,7 @@ namespace special_functions::detail {
             return jacobi_theta_1_prod(q, x);
         else if (std::abs(x) < s_eps)
             return std::complex<Tp>{0, 0};
-        else
-        {
+        else {
             const auto lattice = jacobi_lattice_t<Cmplx, Cmplx>(q);
             auto tau = lattice.tau().val;
 
@@ -147,8 +141,7 @@ namespace special_functions::detail {
             tau -= itau;
             fact *= polar_pi(Real{1}, itau / Real{4});
 
-            if (std::imag(tau) < 0.5)
-            {
+            if (std::imag(tau) < 0.5) {
                 const auto fact2 = s_i * std::sqrt(-s_i * tau);
                 tau = Real{-1} / tau;
                 const auto phase = std::exp(s_i * tau * x * x / s_pi);
@@ -175,8 +168,7 @@ namespace special_functions::detail {
      */
     template<typename Tp>
     Tp
-    jacobi_theta_1(Tp q, const Tp x)
-    {
+    jacobi_theta_1(Tp q, const Tp x) {
         using Cmplx = std::complex<Tp>;
 
         const auto s_eps = std::numeric_limits<Tp>::epsilon(std::abs(x));

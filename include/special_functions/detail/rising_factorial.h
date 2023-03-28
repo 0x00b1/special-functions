@@ -23,7 +23,8 @@ namespace special_functions::detail {
         if (std::abs(a - std::nearbyint(a)) < std::numeric_limits<V>::epsilon()) {
             auto nearby_integer_a = int(std::nearbyint(a));
 
-            if (nearby_integer_a < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V>) && a + n < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V>)) {
+            if (nearby_integer_a < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V>) &&
+                a + n < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V>)) {
                 return factorial<V>(nearby_integer_a + n - V{1}) / factorial<V>(nearby_integer_a - V{1});
             }
 

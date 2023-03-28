@@ -12,14 +12,12 @@ namespace special_functions::detail {
  */
     template<typename Tp>
     Tp
-    theta_3_asymp(Tp nu, Tp x)
-    {
+    theta_3_asymp(Tp nu, Tp x) {
         using Real = special_functions::num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         const auto s_pi = std::numbers::pi_v<Real>;
         auto sum = Tp{0};
-        for (auto k = 1; k < 20; ++k)
-        {
+        for (auto k = 1; k < 20; ++k) {
             const auto thing = Tp(2 * k) * s_pi;
             const auto cosarg = nu * thing;
             const auto exparg = thing * thing * x / Tp{4};

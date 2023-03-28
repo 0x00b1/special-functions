@@ -4,8 +4,7 @@
 namespace special_functions::detail {
     template<typename Tp>
     Tp
-    comp_ellint_rf(Tp x, Tp y)
-    {
+    comp_ellint_rf(Tp x, Tp y) {
         using Real = emsr::num_traits_t<Tp>;
         const auto s_NaN = emsr::quiet_NaN(Real{});
         const auto s_pi = emsr::pi_v<Real>;
@@ -13,12 +12,10 @@ namespace special_functions::detail {
 
         if (std::isnan(x) || std::isnan(y))
             return s_NaN;
-        else
-        {
+        else {
             x = std::sqrt(x);
             y = std::sqrt(y);
-            while (true)
-            {
+            while (true) {
                 auto xt = x;
                 x = (x + y) / Real{2};
                 y = std::sqrt(xt) * std::sqrt(y);

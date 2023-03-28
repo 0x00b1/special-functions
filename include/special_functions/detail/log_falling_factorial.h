@@ -27,7 +27,8 @@ namespace special_functions::detail {
                     return -std::numeric_limits<U>::infinity();
                 }
 
-                return log_factorial<U>(unsigned(is_integer_a())) - log_factorial<U>(unsigned(is_integer_a() - is_integer_n()));
+                return log_factorial<U>(unsigned(is_integer_a())) -
+                       log_factorial<U>(unsigned(is_integer_a() - is_integer_n()));
             }
 
             return std::log(std::abs(falling_factorial(a, is_integer_n())));

@@ -4,8 +4,7 @@
 namespace special_functions::detail {
     template<typename Tp>
     std::pair<Tp, Tp>
-    incomplete_gamma_by_series_summation(Tp a, Tp x)
-    {
+    incomplete_gamma_by_series_summation(Tp a, Tp x) {
         using Val = Tp;
         using Real = special_functions::num_traits_t<Val>;
         const auto s_eps = Real{3} * std::numeric_limits<Tp>::epsilon();
@@ -21,18 +20,15 @@ namespace special_functions::detail {
             return std::make_pair(Val{0}, lngam);
         else if (std::real(x) < Real{0})
             throw std::domain_error("gamma_series: negative argument x");
-        else
-        {
+        else {
             auto aa = a;
             Val term, sum;
             term = sum = Tp{1} / a;
-            for (unsigned int n = 1; n <= s_itmax; ++n)
-            {
+            for (unsigned int n = 1; n <= s_itmax; ++n) {
                 aa += Real{1};
                 term *= x / aa;
                 sum += term;
-                if (std::abs(term) < s_eps * std::abs(sum))
-                {
+                if (std::abs(term) < s_eps * std::abs(sum)) {
                     auto gamser = std::exp(-x + a * std::log(x) - lngam)
                                   * sum * sign;
                     return std::make_pair(gamser, lngam);

@@ -16,8 +16,7 @@ namespace special_functions::detail {
      */
     template<typename Tp>
     Tp
-    regularized_gamma_p(Tp a, Tp x)
-    {
+    regularized_gamma_p(Tp a, Tp x) {
         using Val = Tp;
         using Real = special_functions::num_traits_t<Val>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();

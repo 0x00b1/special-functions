@@ -23,7 +23,8 @@ namespace special_functions::detail {
         auto xk = V{1} / x;
 
         for (unsigned int iteration = 1; iteration < 100; iteration++) {
-            const auto term = bernoulli_number<T>(T(2 * iteration)) * xk / (T(2 * iteration) * (T(2 * iteration) - T{1}));
+            const auto term =
+                    bernoulli_number<T>(T(2 * iteration)) * xk / (T(2 * iteration) * (T(2 * iteration) - T{1}));
 
             lg += term;
 

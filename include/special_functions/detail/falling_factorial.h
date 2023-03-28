@@ -29,7 +29,8 @@ namespace special_functions::detail {
                 return T{0};
             }
 
-            if (integer_a < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V> ) && integer_a - n < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V> )) {
+            if (integer_a < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V> ) &&
+                integer_a - n < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V> )) {
                 return factorial<V>(integer_a) / factorial<V>(integer_a - n);
             }
 

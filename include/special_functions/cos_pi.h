@@ -9,13 +9,13 @@ namespace special_functions {
     cos_pi(T x) {
         using U = special_functions::fp_promote_t<T>;
 
-         return special_functions::detail::cos_pi<U>(x);
+        return special_functions::detail::cos_pi<U>(x);
     }
 
     template<typename T>
     inline std::complex<T>
     cos_pi(std::complex<T> z) {
-         return special_functions::detail::cos_pi(z);
+        return special_functions::detail::cos_pi(z);
     }
 }
 

@@ -34,7 +34,8 @@ namespace special_functions::detail {
         using U = T;
         using V = special_functions::num_traits_t<U>;
 
-        return sin_pi(std::real(z)) * std::cosh(std::numbers::pi_v<V> * std::imag(z)) + std::complex<T>{0, 1} * cos_pi(std::real(z)) * std::sinh(std::numbers::pi_v<V> * std::imag(z));
+        return sin_pi(std::real(z)) * std::cosh(std::numbers::pi_v<V> * std::imag(z)) +
+               std::complex<T>{0, 1} * cos_pi(std::real(z)) * std::sinh(std::numbers::pi_v<V> * std::imag(z));
     }
 }
 
