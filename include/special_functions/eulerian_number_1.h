@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_EULERIAN_NUMBER_1_H
 #define SPECIAL_FUNCTIONS_EULERIAN_NUMBER_1_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
     template<typename T>
     inline T

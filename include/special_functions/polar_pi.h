@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_POLAR_PI_H
 #define SPECIAL_FUNCTIONS_POLAR_PI_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
 
 }

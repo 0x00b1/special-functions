@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_HYPERBOLIC_SINE_INTEGRAL_SHI_H
 #define SPECIAL_FUNCTIONS_HYPERBOLIC_SINE_INTEGRAL_SHI_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
     template<typename T>
     inline special_functions::fp_promote_t<T>

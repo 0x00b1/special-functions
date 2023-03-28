@@ -1,9 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_AIRY_AI_H
 #define SPECIAL_FUNCTIONS_AIRY_AI_H
 
-#include <complex>
-
-#include "detail/fp_type_util.h"
+#include <special_functions/detail/airy_ai.h>
 
 namespace special_functions {
     template<typename T>

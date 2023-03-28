@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_SPHERICAL_HANKEL_H_2_H
 #define SPECIAL_FUNCTIONS_SPHERICAL_HANKEL_H_2_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
     template<typename T>
     inline std::complex<special_functions::fp_promote_t<T>>

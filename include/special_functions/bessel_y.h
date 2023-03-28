@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_BESSEL_Y_H
 #define SPECIAL_FUNCTIONS_BESSEL_Y_H
 
+#include <special_functions/detail/bessel_y.h>
+
 namespace special_functions {
     template<typename T, typename U>
     inline special_functions::fp_promote_t<T, U>

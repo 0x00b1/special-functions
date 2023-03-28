@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_EXP_MODIFIED_BESSEL_K_H
 #define SPECIAL_FUNCTIONS_EXP_MODIFIED_BESSEL_K_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
     template<typename T, typename U>
     inline special_functions::fp_promote_t<T, U>

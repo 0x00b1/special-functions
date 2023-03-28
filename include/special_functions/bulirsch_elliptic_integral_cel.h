@@ -1,13 +1,15 @@
 #ifndef SPECIAL_FUNCTIONS_BULIRSCH_ELLIPTIC_INTEGRAL_CEL_H
 #define SPECIAL_FUNCTIONS_BULIRSCH_ELLIPTIC_INTEGRAL_CEL_H
 
-namespace special_functions {
-    template<typename Tk, typename Tp, typename Ta, typename Tb>
-    inline special_functions::fp_promote_t<Tk, Tp, Ta, Tb>
-    bulirsch_elliptic_integral_cel(Tk k_c, Tp p, Ta a, Tb b) {
-        using type = special_functions::fp_promote_t<Tk, Tp, Ta, Tb>;
+#include <special_functions/detail/bulirsch_elliptic_integral_cel.h>
 
-        return special_functions::detail::bulirsch_elliptic_integral_cel<type>(k_c, p, a, b);
+namespace special_functions {
+    template<typename T, typename U, typename V, typename W>
+    inline special_functions::fp_promote_t<T, U, V, W>
+    bulirsch_elliptic_integral_cel(T k_c, U p, V a, W b) {
+        using X = special_functions::fp_promote_t<T, U, V, W>;
+
+        return special_functions::detail::bulirsch_elliptic_integral_cel<X>(k_c, p, a, b);
     }
 }
 

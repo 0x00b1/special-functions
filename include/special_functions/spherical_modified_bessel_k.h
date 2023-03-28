@@ -5,9 +5,9 @@ namespace special_functions {
     template<typename T>
     inline special_functions::fp_promote_t<T>
     spherical_modified_bessel_k(unsigned int n, T x) {
-        using type = special_functions::fp_promote_t<T>;
+        using U = special_functions::fp_promote_t<T>;
 
-        // return special_functions::detail::sph_bessel_ik<type>(n, x).k_value;
+        return special_functions::detail::spherical_modified_bessel_k<U>(n, x).k_value;
     }
 }
 

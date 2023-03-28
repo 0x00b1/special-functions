@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_INCOMPLETE_LEGENDRE_ELLIPTIC_INTEGRAL_D_H
 #define SPECIAL_FUNCTIONS_INCOMPLETE_LEGENDRE_ELLIPTIC_INTEGRAL_D_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
     template<typename T, typename U>
     inline special_functions::fp_promote_t<T, U>

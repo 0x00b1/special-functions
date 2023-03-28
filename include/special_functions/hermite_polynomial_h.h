@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_HERMITE_POLYNOMIAL_H_H
 #define SPECIAL_FUNCTIONS_HERMITE_POLYNOMIAL_H_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
     template<typename T>
     inline special_functions::fp_promote_t<T>

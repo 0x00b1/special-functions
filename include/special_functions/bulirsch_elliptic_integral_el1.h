@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_BULIRSCH_ELLIPTIC_INTEGRAL_EL1_H
 #define SPECIAL_FUNCTIONS_BULIRSCH_ELLIPTIC_INTEGRAL_EL1_H
 
+#include <special_functions/detail/bulirsch_elliptic_integral_el1.h>
+
 namespace special_functions {
     template<typename Tp, typename Tk>
     inline special_functions::fp_promote_t<Tp, Tk>

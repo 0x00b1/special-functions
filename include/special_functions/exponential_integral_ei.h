@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_EXPONENTIAL_INTEGRAL_EI_H
 #define SPECIAL_FUNCTIONS_EXPONENTIAL_INTEGRAL_EI_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
 
 }

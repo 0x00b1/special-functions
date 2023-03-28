@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_INCOMPLETE_ELLIPTIC_INTEGRAL_PI_H
 #define SPECIAL_FUNCTIONS_INCOMPLETE_ELLIPTIC_INTEGRAL_PI_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
     template<typename T, typename U, typename V>
     inline special_functions::fp_promote_t<T, U, V>

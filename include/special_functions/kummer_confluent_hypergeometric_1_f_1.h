@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_KUMMER_CONFLUENT_HYPERGEOMETRIC_1_F_1_H
 #define SPECIAL_FUNCTIONS_KUMMER_CONFLUENT_HYPERGEOMETRIC_1_F_1_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
 
 }

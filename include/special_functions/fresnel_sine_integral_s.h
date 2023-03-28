@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_FRESNEL_SINE_INTEGRAL_S_H
 #define SPECIAL_FUNCTIONS_FRESNEL_SINE_INTEGRAL_S_H
 
+#include <special_functions/detail/
+
 namespace special_functions {
     template<typename T>
     inline special_functions::fp_promote_t<T>
