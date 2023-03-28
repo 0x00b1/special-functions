@@ -131,8 +131,12 @@
 #include <special_functions/shifted_chebyshev_polynomial_v.h>
 #include <special_functions/shifted_chebyshev_polynomial_w.h>
 #include <special_functions/sin_pi.h>
+#include <special_functions/sinc.h>
+#include <special_functions/sinc_pi.h>
 #include <special_functions/sine_integral_si.h>
 #include <special_functions/sinh_pi.h>
+#include <special_functions/sinhc.h>
+#include <special_functions/sinhc_pi.h>
 #include <special_functions/spherical_bessel_j.h>
 #include <special_functions/spherical_bessel_y.h>
 #include <special_functions/spherical_hankel_h_1.h>
