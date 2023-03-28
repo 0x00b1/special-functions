@@ -7,9 +7,9 @@ namespace special_functions {
     template<typename T>
     inline special_functions::fp_promote_t<T>
     hyperbolic_sine_integral_shi(T x) {
-        using type = special_functions::fp_promote_t<T>;
+        using U = special_functions::fp_promote_t<T>;
 
-        // return special_functions::detail::sinhint<type>(x);
+        return special_functions::detail::hyperbolic_sine_integral_shi<U>(x);
     }
 }
 

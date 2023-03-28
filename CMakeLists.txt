@@ -8,8 +8,7 @@ add_library(
         special_functions
         INTERFACE
         include/special_functions.h
-        include/special_functions/factorial.h
-        include/special_functions/detail/complex_util.h include/special_functions/detail/incomplete_gamma_by_series_summation.h include/special_functions/detail/incomplete_gamma_by_continued_fraction.h include/special_functions/detail/digamma_by_series_summation.h include/special_functions/detail/digamma_by_asymptotic_expansion.h include/special_functions/detail/bernoulli_number_by_series_summation.h include/special_functions/sine_integral_si.h include/special_functions/cosine_integral_ci.h include/special_functions/detail/sinc.h include/special_functions/detail/sinc_pi.h include/special_functions/detail/sinhc.h include/special_functions/detail/sinhc_pi.h include/special_functions/detail/chebyshev_polynomial_by_recursion.h include/special_functions/detail/theta_2_by_series_summation.h include/special_functions/detail/theta_3_by_series_summation.h include/special_functions/detail/theta_2_by_asymptotic_series_expansion.h include/special_functions/detail/theta_3_by_asymptotic_series_expansion.h include/special_functions/detail/nome_q_by_maclaurin_series.h)
+)
 
 target_include_directories(special_functions INTERFACE include)
 
