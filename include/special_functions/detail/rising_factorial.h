@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_RISING_FACTORIAL_H
 #define SPECIAL_FUNCTIONS_DETAIL_RISING_FACTORIAL_H
 
+#include "numeric_limits.h"
+
 namespace special_functions::detail {
     template<typename Tp>
     Tp
@@ -39,7 +41,7 @@ namespace special_functions::detail {
         {
             auto logpoch = log_gamma(a + n) - log_gamma(a);
             auto sign = log_gamma_sign(a + n) * log_gamma_sign(a);
-            if (logpoch < emsr::log_max(a)) {
+            if (logpoch < special_functions::numeric_limits::log_max(a)) {
                 return sign * std::exp(logpoch);
             }
 
@@ -79,7 +81,7 @@ namespace special_functions::detail {
         {
             auto logpoch = log_gamma(a + nu) - log_gamma(a);
             auto sign = log_gamma_sign(a + nu) * log_gamma_sign(a);
-            if (logpoch < emsr::log_max(a))
+            if (logpoch < special_functions::numeric_limits::log_max(a))
                 return sign * std::exp(logpoch);
             else
                 return sign * std::numeric_limits<Tp>::infinity();

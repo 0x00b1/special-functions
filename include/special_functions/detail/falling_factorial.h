@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_FALLING_FACTORIAL_H
 #define SPECIAL_FUNCTIONS_DETAIL_FALLING_FACTORIAL_H
 
+#include "numeric_limits.h"
+
 namespace special_functions::detail {
     template<typename T>
     T
@@ -48,7 +50,7 @@ namespace special_functions::detail {
 
         auto sign = log_gamma_sign(a + T{1}) * log_gamma_sign(a - n + T{1});
 
-        if (logpoch < emsr::log_max(a)) {
+        if (logpoch < special_functions::numeric_limits::log_max(a)) {
             return sign * std::exp(logpoch);
         }
 
@@ -83,7 +85,7 @@ namespace special_functions::detail {
         auto logpoch = log_gamma(a + T{1}) - log_gamma(a - n + T{1});
         auto sign = log_gamma_sign(a + T{1}) * log_gamma_sign(a - n + T{1});
 
-        if (logpoch < emsr::log_max(a)) {
+        if (logpoch < special_functions::numeric_limits::log_max(a)) {
             return sign * std::exp(logpoch);
         }
 
