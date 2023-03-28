@@ -9,7 +9,7 @@ namespace special_functions {
     spherical_bessel_j(unsigned int n, T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return detail::sph_bessel<type>(n, x);
+        return special_functions::detail::spherical_bessel_j<type>(n, x);
     }
 }
 

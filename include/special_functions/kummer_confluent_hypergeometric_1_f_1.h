@@ -4,11 +4,12 @@
 #include <special_functions/detail/kummer_confluent_hypergeometric_1_f_1.h>
 
 namespace special_functions {
-    template<typename Tpa, typename Tpc, typename Tp>
-    inline special_functions::fp_promote_t<Tpa, Tpc, Tp>
-    kummer_confluent_hypergeometric_1_f_1(Tpa a, Tpc c, Tp x) {
-        using type = special_functions::fp_promote_t<Tpa, Tpc, Tp>;
-        return special_functions::detail::kummer_confluent_hypergeometric_1_f_1<type>(a, c, x);
+    template<typename T, typename U, typename V>
+    inline special_functions::fp_promote_t<T, U, V>
+    kummer_confluent_hypergeometric_1_f_1(T a, U c, V x) {
+        using W = special_functions::fp_promote_t<T, U, V>;
+
+        return special_functions::detail::kummer_confluent_hypergeometric_1_f_1<W>(a, c, x);
     }
 }
 

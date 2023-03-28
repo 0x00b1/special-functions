@@ -4,11 +4,12 @@
 #include <special_functions/detail/tricomi_confluent_hypergeometric_u.h>
 
 namespace special_functions {
-    template<typename Tpa, typename Tpc, typename Tp>
-    inline special_functions::fp_promote_t<Tpa, Tpc, Tp>
-    tricomi_confluent_hypergeometric_u(Tpa a, Tpc c, Tp x) {
-        using type = special_functions::fp_promote_t<Tpa, Tpc, Tp>;
-        return special_functions::detail::tricomi_confluent_hypergeometric_u<type>(a, c, x);
+    template<typename T, typename U, typename V>
+    inline special_functions::fp_promote_t<T, U, V>
+    tricomi_confluent_hypergeometric_u(T a, U c, V x) {
+        using W = special_functions::fp_promote_t<T, U, V>;
+
+        return special_functions::detail::tricomi_confluent_hypergeometric_u<W>(a, c, x);
     }
 }
 
