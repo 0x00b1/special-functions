@@ -1,8 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_COS_PI_H
 #define SPECIAL_FUNCTIONS_COS_PI_H
 
-#include <complex>
-#include <numbers>
+#include <special_functions/detail/cos_pi.h>
 
 namespace special_functions {
     template<typename T>
@@ -10,13 +9,13 @@ namespace special_functions {
     cos_pi(T x) {
         using U = special_functions::fp_promote_t<T>;
 
-        // return detail::cos_pi<U>(x);
+         return special_functions::detail::cos_pi<U>(x);
     }
 
     template<typename T>
     inline std::complex<T>
     cos_pi(std::complex<T> z) {
-        // return detail::cos_pi(z);
+         return special_functions::detail::cos_pi(z);
     }
 }
 

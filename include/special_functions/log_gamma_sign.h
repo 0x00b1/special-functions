@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_LOG_GAMMA_SIGN_H
 #define SPECIAL_FUNCTIONS_LOG_GAMMA_SIGN_H
 
-#include <complex>
+#include <special_functions/detail/log_gamma_sign.h>
 
 namespace special_functions {
     template<typename T>

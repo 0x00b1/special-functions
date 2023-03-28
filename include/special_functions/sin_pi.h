@@ -1,10 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_SIN_PI_H
 #define SPECIAL_FUNCTIONS_SIN_PI_H
 
-#include <complex>
-#include <numbers>
-
-#include "detail/fp_type_util.h"
+#include <special_functions/detail/sin_pi.h>
 
 namespace special_functions {
     template<typename T>
@@ -12,13 +9,13 @@ namespace special_functions {
     sin_pi(T x) {
         using U = special_functions::fp_promote_t<T>;
 
-        // return special_functions::detail::sin_pi<U>(x);
+        return special_functions::detail::sin_pi<U>(x);
     }
 
     template<typename T>
     inline std::complex<T>
     sin_pi(std::complex<T> z) {
-        // return special_functions::detail::sin_pi(z);
+        return special_functions::detail::sin_pi(z);
     }
 }
 
