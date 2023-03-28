@@ -1,12 +1,15 @@
 #ifndef SPECIAL_FUNCTIONS_NEVILLE_THETA_D_H
 #define SPECIAL_FUNCTIONS_NEVILLE_THETA_D_H
 
+#include <special_functions/detail/neville_theta_d.h>
+
 namespace special_functions {
-    template<typename Tpk, typename Tp>
-    inline special_functions::fp_promote_t<Tpk, Tp>
-    theta_d(Tpk k, Tp x) {
-        using type = special_functions::fp_promote_t<Tpk, Tp>;
-        return special_functions::detail::theta_d<type>(k, x);
+    template<typename T, typename U>
+    inline special_functions::fp_promote_t<T, U>
+    neville_theta_d(T k, U x) {
+        using V = special_functions::fp_promote_t<T, U>;
+
+        return special_functions::detail::neville_theta_d<V>(k, x);
     }
 }
 

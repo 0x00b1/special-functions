@@ -1,13 +1,15 @@
 #ifndef SPECIAL_FUNCTIONS_JACOBI_THETA_2_H
 #define SPECIAL_FUNCTIONS_JACOBI_THETA_2_H
 
+#include <special_functions/detail/jacobi_theta_2.h>
+
 namespace special_functions {
-    template<typename Tpq, typename Tp>
-    inline special_functions::fp_promote_t<Tpq, Tp>
-    jacobi_theta_2(Tpq q, Tp x)
-    {
-        using type = special_functions::fp_promote_t<Tpq, Tp>;
-        return special_functions::detail::jacobi_theta_2<type>(q, x);
+    template<typename T, typename U>
+    inline special_functions::fp_promote_t<T, U>
+    jacobi_theta_2(T q, U x) {
+        using V = special_functions::fp_promote_t<T, U>;
+
+        return special_functions::detail::jacobi_theta_2<V>(q, x);
     }
 }
 

@@ -1,13 +1,15 @@
 #ifndef SPECIAL_FUNCTIONS_THETA_1_H
 #define SPECIAL_FUNCTIONS_THETA_1_H
 
-namespace special_functions {
-    template<typename Tpnu, typename Tp>
-    inline special_functions::fp_promote_t<Tpnu, Tp>
-    theta_1(Tpnu nu, Tp x) {
-        using type = special_functions::fp_promote_t<Tpnu, Tp>;
+#include <special_functions/detail/theta_1.h>
 
-        return special_functions::detail::theta_1<type>(nu, x);
+namespace special_functions {
+    template<typename T, typename U>
+    inline special_functions::fp_promote_t<T, U>
+    theta_1(T n, U x) {
+        using V = special_functions::fp_promote_t<T, U>;
+
+        return special_functions::detail::theta_1<V>(n, x);
     }
 }
 
