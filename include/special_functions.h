@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_H
 #define SPECIAL_FUNCTIONS_H
 
+#include <numbers>
+
 #include <special_functions/airy_ai.h>
 #include <special_functions/airy_bi.h>
 #include <special_functions/associated_laguerre_polynomial_l.h>
