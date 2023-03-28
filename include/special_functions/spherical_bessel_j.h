@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_SPHERICAL_BESSEL_J_H
 #define SPECIAL_FUNCTIONS_SPHERICAL_BESSEL_J_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/spherical_bessel_j.h>
 
 namespace special_functions {
     template<typename T>

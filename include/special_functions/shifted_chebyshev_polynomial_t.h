@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_SHIFTED_CHEBYSHEV_POLYNOMIAL_T_H
 #define SPECIAL_FUNCTIONS_SHIFTED_CHEBYSHEV_POLYNOMIAL_T_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/shifted_chebyshev_polynomial_t.h>
 
 namespace special_functions {
     template<typename T>

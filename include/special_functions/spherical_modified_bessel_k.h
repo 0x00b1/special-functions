@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_SPHERICAL_MODIFIED_BESSEL_K_H
 #define SPECIAL_FUNCTIONS_SPHERICAL_MODIFIED_BESSEL_K_H
 
+#include <special_functions/detail/spherical_modified_bessel_k.h>
+
 namespace special_functions {
     template<typename T>
     inline special_functions::fp_promote_t<T>

@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DAWSON_D_H
 #define SPECIAL_FUNCTIONS_DAWSON_D_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/dawson_d.h>
 
 namespace special_functions {
     template<typename T>

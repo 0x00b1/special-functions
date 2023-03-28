@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_HERMITE_POLYNOMIAL_H_H
 #define SPECIAL_FUNCTIONS_HERMITE_POLYNOMIAL_H_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/hermite_polynomial_h.h>
 
 namespace special_functions {
     template<typename T>

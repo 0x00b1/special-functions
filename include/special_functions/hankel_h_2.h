@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_HANKEL_H_2_H
 #define SPECIAL_FUNCTIONS_HANKEL_H_2_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/hankel_h_2.h>
 
 namespace special_functions {
     template<typename T, typename U>

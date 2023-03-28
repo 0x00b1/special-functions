@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_EXP_AIRY_BI_H
 #define SPECIAL_FUNCTIONS_EXP_AIRY_BI_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/exp_airy_bi.h>
 
 namespace special_functions {
     template<typename T>

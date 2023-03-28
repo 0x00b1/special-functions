@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_STIRLING_NUMBER_S_1_H
 #define SPECIAL_FUNCTIONS_STIRLING_NUMBER_S_1_H
 
+#include <special_functions/detail/stirling_number_s_1.h>
+
 namespace special_functions {
     template<typename T>
     inline T

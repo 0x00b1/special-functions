@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_Q_GAMMA_H
 #define SPECIAL_FUNCTIONS_Q_GAMMA_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/q_gamma.h>
 
 namespace special_functions {
 

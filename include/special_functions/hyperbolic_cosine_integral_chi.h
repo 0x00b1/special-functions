@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_HYPERBOLIC_COSINE_INTEGRAL_CHI_H
 #define SPECIAL_FUNCTIONS_HYPERBOLIC_COSINE_INTEGRAL_CHI_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/hyperbolic_cosine_integral_chi.h>
 
 namespace special_functions {
     template<typename T>

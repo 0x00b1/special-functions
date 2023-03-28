@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_JACOBI_POLYNOMIAL_P_H
 #define SPECIAL_FUNCTIONS_JACOBI_POLYNOMIAL_P_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/jacobi_polynomial_p.h>
 
 namespace special_functions {
     template<typename T, typename U, typename V>

@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_TRICOMI_CONFLUENT_HYPERGEOMETRIC_U_H
 #define SPECIAL_FUNCTIONS_TRICOMI_CONFLUENT_HYPERGEOMETRIC_U_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/tricomi_confluent_hypergeometric_u.h>
 
 namespace special_functions {
 

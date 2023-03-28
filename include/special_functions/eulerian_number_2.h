@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_EULERIAN_NUMBER_2_H
 #define SPECIAL_FUNCTIONS_EULERIAN_NUMBER_2_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/eulerian_number_2.h>
 
 namespace special_functions {
     template<typename T>

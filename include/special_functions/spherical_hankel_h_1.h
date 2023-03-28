@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_SPHERICAL_HANKEL_H_1_H
 #define SPECIAL_FUNCTIONS_SPHERICAL_HANKEL_H_1_H
 
-#include <special_functions/detail/
+#include <special_functions/detail/spherical_hankel_h_1.h>
 
 namespace special_functions {
     template<typename T>
