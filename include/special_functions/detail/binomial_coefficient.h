@@ -21,7 +21,8 @@ namespace special_functions::detail {
 
         if (k > n)
             return Tp{0};
-        else if (k == 0 || k == n)
+
+        if (k == 0 || k == n)
             return Tp{1};
         else {
             unsigned int nmk = n - k;
@@ -42,33 +43,32 @@ namespace special_functions::detail {
 
     template<typename Tp>
     Tp
-    binomial(Tp nu, unsigned int k) {
+    binomial_coefficient(Tp nu, unsigned int k) {
         using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using Val = Tp;
         using Real = special_functions::num_traits_t<Val>;
-        // Max e exponent before overflow.
+
         auto n = int(std::nearbyint(nu));
+
         if (std::isnan(nu))
             return std::numeric_limits<Tp>::quiet_NaN();
-        else if (nu == n && n >= 0 && n < MAXIMUM_FACTORIAL_INDEX<Real>)
-            return binomial<Tp>(static_cast<unsigned int>(n), k);
-        else if (std::abs(nu) < MAXIMUM_FACTORIAL_INDEX<Real>
-                 && k < MAXIMUM_FACTORIAL_INDEX<Real>)
-            return gamma(nu + Tp{1})
-                   / gamma(Tp(k + 1)) / gamma(nu - Tp(k + 1));
-        else {
-            const auto max_binom
-                    = special_functions::numeric_limits::max_exponent10(nu)
-                      * std::log(Tp{10}) - Tp{1};
 
-            const auto log_coeff = log_binomial(nu, k);
-            const auto sign = log_binomial_sign(nu, k);
-            if (log_coeff > max_binom)
-                return std::numeric_limits<Tp>::infinity() * sign;
-            else
-                return std::exp(log_coeff) * sign;
-        }
+        if (nu == n && n >= 0 && n < MAXIMUM_FACTORIAL_INDEX<Real>)
+            return binomial<Tp>(static_cast<unsigned int>(n), k);
+
+        if (std::abs(nu) < MAXIMUM_FACTORIAL_INDEX<Real> && k < MAXIMUM_FACTORIAL_INDEX<Real>)
+            return gamma(nu + Tp{1}) / gamma(Tp(k + 1)) / gamma(nu - Tp(k + 1));
+
+        const auto max_binom = special_functions::numeric_limits::max_exponent10(nu) * std::log(Tp{10}) - Tp{1};
+
+        const auto log_coeff = log_binomial(nu, k);
+        const auto sign = log_binomial_sign(nu, k);
+
+        if (log_coeff > max_binom)
+            return std::numeric_limits<Tp>::infinity() * sign;
+
+        return std::exp(log_coeff) * sign;
     }
 }
 

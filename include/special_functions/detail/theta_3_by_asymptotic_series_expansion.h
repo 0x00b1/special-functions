@@ -2,17 +2,9 @@
 #define SPECIAL_FUNCTIONS_DETAIL_THETA_3_BY_ASYMPTOTIC_SERIES_EXPANSION_H
 
 namespace special_functions::detail {
-    /**
- * Compute and return the exponential @f$ \theta_3 @f$ function
- * by asymptotic series expansion:
- * @f[
- *    \theta_3(\nu, x) = 1 + 2\sum_{k=1}^{\infty} e^{-(k\pi)^2 x}
- *                           \cos(2k\nu\pi)
- * @f]
- */
     template<typename Tp>
     Tp
-    theta_3_asymp(Tp nu, Tp x) {
+    theta_3_by_asymptotic_series_expansion(Tp nu, Tp x) {
         using Real = special_functions::num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         const auto s_pi = std::numbers::pi_v<Real>;
