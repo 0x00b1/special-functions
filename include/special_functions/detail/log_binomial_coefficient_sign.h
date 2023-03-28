@@ -18,25 +18,25 @@ namespace special_functions::detail {
    * @param k The second argument of the binomial coefficient.
    * @return  The sign of the gamma function.
    */
-  template<typename Tp>
-    Tp
-    log_binomial_sign(Tp nu, unsigned int k)
+  template<typename T>
+    T
+    log_binomial_sign(T nu, unsigned int k)
     {
       auto n = std::nearbyint(nu);
       if (n >= 0 && nu == n)
-	return Tp{1};
+	return T{1};
       else
 	{
-	  return log_gamma_sign(Tp(1) + nu)
-	       * log_gamma_sign(Tp(1 + k))
-	       * log_gamma_sign(Tp(1 - k) + nu);
+	  return log_gamma_sign(T(1) + nu)
+	       * log_gamma_sign(T(1 + k))
+	       * log_gamma_sign(T(1 - k) + nu);
 	}
     }
 
-  template<typename Tp>
-    std::complex<Tp>
-    log_binomial_sign(std::complex<Tp> nu, unsigned int k)
-    { return std::complex<Tp>{1}; }
+  template<typename T>
+    std::complex<T>
+    log_binomial_sign(std::complex<T> nu, unsigned int k)
+    { return std::complex<T>{1}; }
 }
 
 #endif // SPECIAL_FUNCTIONS_LOG_BINOMIAL_COEFFICIENT_SIGN_H

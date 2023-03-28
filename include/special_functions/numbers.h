@@ -3002,68 +3002,199 @@ namespace special_functions::numbers {
 
     constexpr unsigned long long MAXIMUM_HARMONIC_NUMBER_INDEX = 29;
 
-    constexpr unsigned long long HARMONIC_NUMBER_NUMERATORS[MAXIMUM_HARMONIC_NUMBER_INDEX]{
-            1ULL,
-            3ULL,
-            11ULL,
-            25ULL,
-            137ULL,
-            49ULL,
-            363ULL,
-            761ULL,
-            7129ULL,
-            7381ULL,
-            83711ULL,
-            86021ULL,
-            1145993ULL,
-            1171733ULL,
-            1195757ULL,
-            2436559ULL,
-            42142223ULL,
-            14274301ULL,
-            275295799ULL,
-            55835135ULL,
-            18858053ULL,
-            19093197ULL,
-            444316699ULL,
-            1347822955ULL,
-            34052522467ULL,
-            34395742267ULL,
-            312536252003ULL,
-            315404588903ULL,
-            9227046511387ULL
+    constexpr unsigned long long HARMONIC_NUMBER_NUMERATORS[MAXIMUM_HARMONIC_NUMBER_INDEX]
+            {
+                    1ULL,
+                    3ULL,
+                    11ULL,
+                    25ULL,
+                    137ULL,
+                    49ULL,
+                    363ULL,
+                    761ULL,
+                    7129ULL,
+                    7381ULL,
+                    83711ULL,
+                    86021ULL,
+                    1145993ULL,
+                    1171733ULL,
+                    1195757ULL,
+                    2436559ULL,
+                    42142223ULL,
+                    14274301ULL,
+                    275295799ULL,
+                    55835135ULL,
+                    18858053ULL,
+                    19093197ULL,
+                    444316699ULL,
+                    1347822955ULL,
+                    34052522467ULL,
+                    34395742267ULL,
+                    312536252003ULL,
+                    315404588903ULL,
+                    9227046511387ULL
+            };
+
+    constexpr unsigned long long HARMONIC_NUMBER_DENOMINATORS[MAXIMUM_HARMONIC_NUMBER_INDEX]
+            {
+                    1ULL,
+                    2ULL,
+                    6ULL,
+                    12ULL,
+                    60ULL,
+                    20ULL,
+                    140ULL,
+                    280ULL,
+                    2520ULL,
+                    2520ULL,
+                    27720ULL,
+                    27720ULL,
+                    360360ULL,
+                    360360ULL,
+                    360360ULL,
+                    720720ULL,
+                    12252240ULL,
+                    4084080ULL,
+                    77597520ULL,
+                    15519504ULL,
+                    5173168ULL,
+                    5173168ULL,
+                    118982864ULL,
+                    356948592ULL,
+                    8923714800ULL,
+                    8923714800ULL,
+                    80313433200ULL,
+                    80313433200ULL,
+                    2329089562800ULL
+            };
+
+    template<typename Tp>
+    struct SPOUGE {
     };
 
-    constexpr unsigned long long HARMONIC_NUMBER_DENOMINATORS[MAXIMUM_HARMONIC_NUMBER_INDEX]{
-            1ULL,
-            2ULL,
-            6ULL,
-            12ULL,
-            60ULL,
-            20ULL,
-            140ULL,
-            280ULL,
-            2520ULL,
-            2520ULL,
-            27720ULL,
-            27720ULL,
-            360360ULL,
-            360360ULL,
-            360360ULL,
-            720720ULL,
-            12252240ULL,
-            4084080ULL,
-            77597520ULL,
-            15519504ULL,
-            5173168ULL,
-            5173168ULL,
-            118982864ULL,
-            356948592ULL,
-            8923714800ULL,
-            8923714800ULL,
-            80313433200ULL,
-            80313433200ULL,
-            2329089562800ULL
+    template<>
+    struct SPOUGE<float> {
+        static constexpr std::array<float, 7> chebyshev_coefficients
+                {
+                        +2.901419e+03F,
+                        -5.929168e+03F,
+                        +4.148274e+03F,
+                        -1.164761e+03F,
+                        +1.174135e+02F,
+                        -2.786588e+00F,
+                        +3.775392e-03F,
+                };
+    };
+
+    template<>
+    struct SPOUGE<double> {
+        static constexpr std::array<double, 18> chebyshev_coefficients
+                {
+                        +2.785716565770350e+08,
+                        -1.693088166941517e+09,
+                        +4.549688586500031e+09,
+                        -7.121728036151557e+09,
+                        +7.202572947273274e+09,
+                        -4.935548868770376e+09,
+                        +2.338187776097503e+09,
+                        -7.678102458920741e+08,
+                        +1.727524819329867e+08,
+                        -2.595321377008346e+07,
+                        +2.494811203993971e+06,
+                        -1.437252641338402e+05,
+                        +4.490767356961276e+03,
+                        -6.505596924745029e+01,
+                        +3.362323142416327e-01,
+                        -3.817361443986454e-04,
+                        +3.273137866873352e-08,
+                        -7.642333165976788e-15,
+                };
+    };
+
+    template<>
+    struct SPOUGE<long double> {
+        static constexpr std::array<long double, 22> chebyshev_coefficients
+                {
+                        +1.681473171108908244e+10L,
+                        -1.269150315503303974e+11L,
+                        +4.339449429013039995e+11L,
+                        -8.893680202692714895e+11L,
+                        +1.218472425867950986e+12L,
+                        -1.178403473259353616e+12L,
+                        +8.282455311246278274e+11L,
+                        -4.292112878930625978e+11L,
+                        +1.646988347276488710e+11L,
+                        -4.661514921989111004e+10L,
+                        +9.619972564515443397e+09L,
+                        -1.419382551781042824e+09L,
+                        +1.454145470816386107e+08L,
+                        -9.923020719435758179e+06L,
+                        +4.253557563919127284e+05L,
+                        -1.053371059784341875e+04L,
+                        +1.332425479537961437e+02L,
+                        -7.118343974029489132e-01L,
+                        +1.172051640057979518e-03L,
+                        -3.323940885824119041e-07L,
+                        +4.503801674404338524e-12L,
+                        -5.320477002211632680e-20L,
+                };
+    };
+
+    template<typename Tp>
+    struct LANCOZ {
+    };
+
+    template<>
+    struct LANCOZ<float> {
+        static constexpr float s_g = 6.5F;
+        static constexpr std::array<float, 7> chebyshev_coefficients
+                {
+                        +3.307139e+02F,
+                        -2.255998e+02F,
+                        +6.989520e+01F,
+                        -9.058929e+00F,
+                        +4.110107e-01F,
+                        -4.150391e-03F,
+                        -3.417969e-03F,
+                };
+    };
+
+    template<>
+    struct LANCOZ<double> {
+        static constexpr double s_g = 9.5;
+        static constexpr std::array<double, 10> chebyshev_coefficients
+                {
+                        +5.557569219204146e+03,
+                        -4.248114953727554e+03,
+                        +1.881719608233706e+03,
+                        -4.705537221412237e+02,
+                        +6.325224688788239e+01,
+                        -4.206901076213398e+00,
+                        +1.202512485324405e-01,
+                        -1.141081476816908e-03,
+                        +2.055079676210880e-06,
+                        +1.280568540096283e-09,
+                };
+    };
+
+    template<>
+    struct LANCOZ<long double> {
+        static constexpr long double s_g = 10.5L;
+
+        static constexpr std::array<long double, 11> chebyshev_coefficients
+                {
+                        +1.440399692024250728e+04L,
+                        -1.128006201837065341e+04L,
+                        +5.384108670160999829e+03L,
+                        -1.536234184127325861e+03L,
+                        +2.528551924697309561e+02L,
+                        -2.265389090278717887e+01L,
+                        +1.006663776178612579e+00L,
+                        -1.900805731354182626e-02L,
+                        +1.150508317664389324e-04L,
+                        -1.208915136885480024e-07L,
+                        -1.518856151960790157e-10L,
+                };
     };
 }
 

@@ -5,7 +5,7 @@
 #include <cmath>
 #include <algorithm> // min, max
 
-namespace emsr
+namespace special_functions
 {
 
     /**

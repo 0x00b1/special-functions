@@ -2,102 +2,92 @@
 #define SPECIAL_FUNCTIONS_DETAIL_FALLING_FACTORIAL_H
 
 namespace special_functions::detail {
-    /**
-     * @brief  Return the logarithm of the falling factorial function
-     * or the lower Pochhammer symbol for real argument @f$ a @f$
-     * and integral order @f$ n @f$.
-     * The falling factorial function is defined by
-     * @f[
-     *   a^{\underline{n}} = \prod_{k=0}^{n-1} (a - k), (a)_0 = 1
-     *	     = \Gamma(a + 1) / \Gamma(a - n + 1)
-     * @f]
-     * In particular, @f$ n^{\underline{n}} = n! @f$.
-     */
-    template<typename Tp>
-    Tp
-    falling_factorial(Tp a, int n)
-    {
-        using Val = Tp;
-        using Real = emsr::num_traits_t<Val>;
-        const auto ia = emsr::fp_is_integer(a);
+    template<typename T>
+    T
+    falling_factorial(T a, int n) {
+        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
 
-        if (std::isnan(a))
-            return emsr::quiet_NaN(Real{});
-        else if (n == 0)
-            return Tp{1};
-        else if (ia)
-        {
-            auto na = ia();
-            if (na < n)
-                return Tp{0};
-            else if (na < static_cast<int>(s_num_factorials<Real>)
-                     && na - n < static_cast<int>(s_num_factorials<Real>))
-                return factorial<Real>(na) / factorial<Real>(na - n);
-            else
-                return std::exp(log_factorial<Real>(na)
-                                - log_factorial<Real>(na - n));
+        using U = T;
+        using V = special_functions::num_traits_t<U>;
+
+        const auto is_integer_a = special_functions::fp_is_integer(a);
+
+        if (std::isnan(a)) {
+            return std::numeric_limits<V>::quiet_NaN();
         }
-        else if (std::abs(a) < s_num_factorials<Real>
-                 && std::abs(a - n) < s_num_factorials<Real>)
-        {
+
+        if (n == 0) {
+            return T{1};
+        }
+
+        if (is_integer_a) {
+            auto integer_a = is_integer_a();
+
+            if (integer_a < n) {
+                return T{0};
+            }
+
+            if (integer_a < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V> ) && integer_a - n < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<V> )) {
+                return factorial<V>(integer_a) / factorial<V>(integer_a - n);
+            }
+
+            return std::exp(log_factorial<V>(integer_a) - log_factorial<V>(integer_a - n));
+        }
+
+        if (std::abs(a) < MAXIMUM_FACTORIAL_INDEX<V> && std::abs(a - n) < MAXIMUM_FACTORIAL_INDEX<V>) {
             auto prod = a;
-            for (int k = 1; k < n; ++k)
+
+            for (int k = 1; k < n; ++k) {
                 prod *= (a - k);
+            }
+
             return prod;
         }
-        else
-        {
-            auto logpoch = log_gamma(a + Tp{1})
-                           - log_gamma(a - n + Tp{1});
-            auto sign = log_gamma_sign(a + Tp{1})
-                        * log_gamma_sign(a - n + Tp{1});
-            if (logpoch < emsr::log_max(a))
-                return sign * std::exp(logpoch);
-            else
-                return sign * emsr::infinity(a);
+
+        auto logpoch = log_gamma(a + T{1}) - log_gamma(a - n + T{1});
+
+        auto sign = log_gamma_sign(a + T{1}) * log_gamma_sign(a - n + T{1});
+
+        if (logpoch < emsr::log_max(a)) {
+            return sign * std::exp(logpoch);
         }
+
+        return sign * std::numeric_limits<T>::infinity();
     }
 
-    /**
-     * @brief Return the falling factorial function
-     * or the lower Pochhammer symbol for real argument @f$ a @f$
-     * and order @f$ \nu @f$.
-     * The falling factorial function is defined by
-     * @f[
-     *   a^{\underline{\nu}} = \Gamma(a + 1) / \Gamma(a - \nu + 1)
-     * @f]
-     */
-    template<typename Tp>
-    Tp
-    falling_factorial(Tp a, Tp nu)
-    {
-        using Val = Tp;
-        using Real = emsr::num_traits_t<Val>;
-        const auto inu = emsr::fp_is_integer(nu);
-        const auto ia = emsr::fp_is_integer(a);
+    template<typename T>
+    T
+    falling_factorial(T a, T n) {
+        using U = T;
+        using V = special_functions::num_traits_t<U>;
 
-        if (std::isnan(nu) || std::isnan(a))
-            return emsr::quiet_NaN(Real{});
-        else if (nu == Tp{0})
-            return Tp{1};
-        else if (inu)
-        {
-            if (ia && ia() < inu())
-                return Tp{0};
-            else
-                return falling_factorial(a, inu());
+        const auto integer_n = special_functions::fp_is_integer(n);
+        const auto integer_a = special_functions::fp_is_integer(a);
+
+        if (std::isnan(n) || std::isnan(a)) {
+            return std::numeric_limits<V>::quiet_NaN();
         }
-        else
-        {
-            auto logpoch = log_gamma(a + Tp{1})
-                           - log_gamma(a - nu + Tp{1});
-            auto sign = log_gamma_sign(a + Tp{1})
-                        * log_gamma_sign(a - nu + Tp{1});
-            if (logpoch < emsr::log_max(a))
-                return sign * std::exp(logpoch);
-            else
-                return sign * emsr::infinity(a);
+
+        if (n == T{0}) {
+            return T{1};
         }
+
+        if (integer_n) {
+            if (integer_a && integer_a() < integer_n()) {
+                return T{0};
+            }
+
+            return falling_factorial(a, integer_n());
+        }
+
+        auto logpoch = log_gamma(a + T{1}) - log_gamma(a - n + T{1});
+        auto sign = log_gamma_sign(a + T{1}) * log_gamma_sign(a - n + T{1});
+
+        if (logpoch < emsr::log_max(a)) {
+            return sign * std::exp(logpoch);
+        }
+
+        return sign * std::numeric_limits<T>::infinity();
     }
 }
 

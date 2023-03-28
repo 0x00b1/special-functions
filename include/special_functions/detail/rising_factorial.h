@@ -2,45 +2,33 @@
 #define SPECIAL_FUNCTIONS_DETAIL_RISING_FACTORIAL_H
 
 namespace special_functions::detail {
-    /**
-     * @brief  Return the (upper) Pochhammer function
-     * or the rising factorial function.
-     * The Pochammer symbol is defined by
-     * @f[
-     *   a^{\overline{n}} = \Gamma(a + \nu) / \Gamma(\nu)
-     *	     = \prod_{k=0}^{n-1} (a + k), (a)_0 = 1
-     * @f]
-     * Many notations exist for this function: @f[ (a)_\nu @f],
-     * (especially in the literature of special functions),
-     *  @f[ \left[ \begin{array}{c}
-     *	  a \\
-     *	  n \end{array} \right] @f], and others.
-     */
     template<typename Tp>
     Tp
     rising_factorial(Tp a, int n)
     {
+        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
+
         using Val = Tp;
-        using Real = emsr::num_traits_t<Val>;
-        const auto s_eps = emsr::epsilon<Real>();
+        using Real = special_functions::num_traits_t<Val>;
+        const auto s_eps = std::numeric_limits<Real>::epsilon();
 
         if (std::isnan(a))
-            return emsr::quiet_NaN(Real{});
+            return std::numeric_limits<Real>::quiet_NaN();
         else if (n == 0)
             return Tp{1};
         else if (std::abs(a - std::nearbyint(a)) < s_eps)
         {
             auto na = int(std::nearbyint(a));
-            if (na < static_cast<int>(s_num_factorials<Real>)
-                && a + n < static_cast<int>(s_num_factorials<Real>))
+            if (na < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<Real>)
+                && a + n < static_cast<int>(MAXIMUM_FACTORIAL_INDEX<Real>))
                 return factorial<Real>(na + n - Real{1})
                        / factorial<Real>(na - Real{1});
             else
                 return std::exp(log_factorial<Real>(na + n - Real{1})
                                 - log_factorial<Real>(na) - Real{1});
         }
-        else if (std::abs(a) < s_num_factorials<Real>
-                 && std::abs(a + n) < s_num_factorials<Real>)
+        else if (std::abs(a) < MAXIMUM_FACTORIAL_INDEX<Real>
+                 && std::abs(a + n) < MAXIMUM_FACTORIAL_INDEX<Real>)
         {
             auto prod = a;
             for (int k = 1; k < n; ++k)
@@ -51,10 +39,11 @@ namespace special_functions::detail {
         {
             auto logpoch = log_gamma(a + n) - log_gamma(a);
             auto sign = log_gamma_sign(a + n) * log_gamma_sign(a);
-            if (logpoch < emsr::log_max(a))
+            if (logpoch < emsr::log_max(a)) {
                 return sign * std::exp(logpoch);
-            else
-                return sign * emsr::infinity(a);
+            }
+
+            return sign * std::numeric_limits<Tp>::infinity();
         }
     }
 
@@ -75,10 +64,10 @@ namespace special_functions::detail {
     Tp
     rising_factorial(Tp a, Tp nu)
     {
-        const auto s_eps = emsr::epsilon(Tp{});
+        const auto s_eps = std::numeric_limits<Tp>::epsilon();
 
         if (std::isnan(nu) || std::isnan(a))
-            return emsr::quiet_NaN(a);
+            return std::numeric_limits<Tp>::quiet_NaN();
         else if (nu == Tp{0})
             return Tp{1};
         else if (std::abs(nu - std::nearbyint(nu)) < s_eps)
@@ -93,7 +82,7 @@ namespace special_functions::detail {
             if (logpoch < emsr::log_max(a))
                 return sign * std::exp(logpoch);
             else
-                return sign * emsr::infinity(a);
+                return sign * std::numeric_limits<Tp>::infinity();
         }
     }
 }

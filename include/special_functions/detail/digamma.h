@@ -77,8 +77,8 @@ namespace special_functions::detail {
         const auto s_2_ln_2 = Tp{2} * special_functions::ln2_v<Val>;
         const auto s_pi = special_functions::pi_v<Val>;
 
-        const auto n = emsr::fp_is_integer(x);
-        const auto m = emsr::fp_is_half_odd_integer(x);
+        const auto n = special_functions::fp_is_integer(x);
+        const auto m = special_functions::fp_is_half_odd_integer(x);
         if (std::real(x) <= Val{0}) {
             if (n) {
                 return std::numeric_limits<Tp>::quiet_NaN();

@@ -16,16 +16,16 @@ namespace special_functions::detail {
      */
     template<typename Tp>
     Tp
-    gamma_p(Tp a, Tp x)
+    regularized_gamma_p(Tp a, Tp x)
     {
         using Val = Tp;
-        using Real = emsr::num_traits_t<Val>;
-        const auto s_NaN = emsr::quiet_NaN(a);
+        using Real = special_functions::num_traits_t<Val>;
+        const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
 
         if (std::isnan(a) || std::isnan(x))
             return s_NaN;
 
-        auto ia = emsr::fp_is_integer(a);
+        auto ia = special_functions::fp_is_integer(a);
         if (ia && ia() <= 0)
             throw std::domain_error("gamma_p: non-positive integer argument a");
         else if (std::real(x) < std::real(a + Real{1}))

@@ -2,22 +2,27 @@
 #define SPECIAL_FUNCTIONS_DETAIL_LOG_RISING_FACTORIAL_H
 
 namespace special_functions::detail {
-    template<typename Tp>
-    Tp
-    log_rising_factorial(Tp a, Tp nu)
-    {
-        using Val = Tp;
-        using Real = emsr::num_traits_t<Val>;
+    template<typename T>
+    T
+    log_rising_factorial(T a, T n) {
+        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
 
-        if (std::isnan(nu) || std::isnan(a)) {
-            return emsr::quiet_NaN(a);
-        } else if (nu == Tp{0}) {
-            return Tp{0};
-        } else if (std::abs(a) < s_num_factorials < Real > && std::abs(a + nu) < s_num_factorials < Real >) {
-            return std::log(rising_factorial(a, nu));
-        } else {
-            return log_gamma(a + nu) - log_gamma(a);
+        using U = T;
+        using V = special_functions::num_traits_t<U>;
+
+        if (std::isnan(n) || std::isnan(a)) {
+            return std::numeric_limits<T>::quiet_NaN();
         }
+
+        if (n == T{0}) {
+            return T{0};
+        }
+
+        if (std::abs(a) < MAXIMUM_FACTORIAL_INDEX<V> && std::abs(a + n) < MAXIMUM_FACTORIAL_INDEX<V>) {
+            return std::log(rising_factorial(a, n));
+        }
+
+        return log_gamma(a + n) - log_gamma(a);
     }
 }
 

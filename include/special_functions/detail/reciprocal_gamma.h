@@ -15,7 +15,7 @@ namespace special_functions::detail {
         } else {
             const auto s_pi = std::numbers::pi_v<U>;
 
-            const auto an = emsr::fp_is_integer(a);
+            const auto an = special_functions::fp_is_integer(a);
 
             if (an) {
                 auto n = an();

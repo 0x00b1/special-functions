@@ -9,7 +9,7 @@ add_library(
         INTERFACE
         include/special_functions.h
         include/special_functions/factorial.h
-)
+        include/special_functions/detail/complex_util.h)
 
 target_include_directories(special_functions INTERFACE include)
 
