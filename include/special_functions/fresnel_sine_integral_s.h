@@ -7,7 +7,7 @@ namespace special_functions {
     fresnel_sine_integral_s(T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return std::imag(emsr::detail::fresnel<type>(x));
+        // return std::imag(special_functions::detail::fresnel<type>(x));
     }
 }
 

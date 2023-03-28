@@ -7,7 +7,7 @@ namespace special_functions {
     hyperbolic_cosine_integral_chi(T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::coshint<type>(x);
+        // return special_functions::detail::coshint<type>(x);
     }
 }
 

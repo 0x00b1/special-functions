@@ -7,7 +7,7 @@ namespace special_functions {
     hyperbolic_sine_integral_shi(T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::sinhint<type>(x);
+        // return special_functions::detail::sinhint<type>(x);
     }
 }
 

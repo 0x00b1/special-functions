@@ -7,7 +7,7 @@ namespace special_functions {
     complete_elliptic_integral_k(T k) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::comp_ellint_1<type>(k);
+        // return special_functions::detail::comp_ellint_1<type>(k);
     }
 }
 

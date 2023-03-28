@@ -7,7 +7,7 @@ namespace special_functions {
     zernike_polynomial_z(unsigned int n, int m, T rho, U phi) {
         using type = special_functions::fp_promote_t<T, U>;
 
-        // return emsr::detail::zernike<type>(n, m, rho, phi);
+        // return special_functions::detail::zernike<type>(n, m, rho, phi);
     }
 }
 

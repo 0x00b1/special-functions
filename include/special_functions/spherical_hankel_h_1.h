@@ -7,7 +7,7 @@ namespace special_functions {
     spherical_hankel_h_1(unsigned int n, T z) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::sph_hankel_1<type>(n, z);
+        // return special_functions::detail::sph_hankel_1<type>(n, z);
     }
 }
 

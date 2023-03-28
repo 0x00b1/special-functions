@@ -7,7 +7,7 @@ namespace special_functions {
     incomplete_elliptic_integral_pi(T k, U nu, V phi) {
         using W = special_functions::fp_promote_t<T, U, V>;
 
-        // return emsr::detail::ellint_3<W>(k, nu, phi);
+        // return special_functions::detail::ellint_3<W>(k, nu, phi);
     }
 }
 

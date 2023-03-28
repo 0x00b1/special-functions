@@ -41,6 +41,7 @@
 #include <special_functions/confluent_hypergeometric_0_f_1.h>
 #include <special_functions/cos_pi.h>
 #include <special_functions/cosh_pi.h>
+#include <special_functions/cosine_integral_ci.h>
 #include <special_functions/dawson_d.h>
 #include <special_functions/debye_d.h>
 #include <special_functions/digamma.h>
@@ -130,6 +131,7 @@
 #include <special_functions/shifted_chebyshev_polynomial_v.h>
 #include <special_functions/shifted_chebyshev_polynomial_w.h>
 #include <special_functions/sin_pi.h>
+#include <special_functions/sine_integral_si.h>
 #include <special_functions/sinh_pi.h>
 #include <special_functions/spherical_bessel_j.h>
 #include <special_functions/spherical_bessel_y.h>

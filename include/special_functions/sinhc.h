@@ -7,7 +7,7 @@ namespace special_functions {
     sinhc(T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::sinhc<type>(x);
+        // return special_functions::detail::sinhc<type>(x);
     }
 }
 

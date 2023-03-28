@@ -7,7 +7,7 @@ namespace special_functions {
     fresnel_cosine_integral_c(T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return std::real(emsr::detail::fresnel<type>(x));
+        // return std::real(special_functions::detail::fresnel<type>(x));
     }
 }
 

@@ -7,7 +7,7 @@ namespace special_functions {
     spherical_modified_bessel_k(unsigned int n, T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::sph_bessel_ik<type>(n, x).k_value;
+        // return special_functions::detail::sph_bessel_ik<type>(n, x).k_value;
     }
 }
 

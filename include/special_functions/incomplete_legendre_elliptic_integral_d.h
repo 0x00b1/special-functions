@@ -7,7 +7,7 @@ namespace special_functions {
     incomplete_legendre_elliptic_integral_d(T k, U phi) {
         using type = special_functions::fp_promote_t<T, U>;
 
-        // return emsr::detail::ellint_d<type>(k, phi);
+        // return special_functions::detail::ellint_d<type>(k, phi);
     }
 }
 

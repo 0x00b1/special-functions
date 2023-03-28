@@ -7,7 +7,7 @@ namespace special_functions {
     exp_airy_bi(T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::airy<type>(x, true).Bi_value;
+        // return special_functions::detail::airy<type>(x, true).Bi_value;
     }
 }
 

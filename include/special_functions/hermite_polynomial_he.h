@@ -7,7 +7,7 @@ namespace special_functions {
     hermite_polynomial_he(unsigned int n, T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::prob_hermite_recur<type>(n, x).He_n;
+        // return special_functions::detail::prob_hermite_recur<type>(n, x).He_n;
     }
 }
 

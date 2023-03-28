@@ -7,7 +7,7 @@ namespace special_functions {
     jacobi_polynomial_p(unsigned n, T alpha, U beta, V x) {
         using type = special_functions::fp_promote_t<T, U, V>;
 
-        // return emsr::detail::jacobi_recur<type>(n, alpha, beta, x).P_n;
+        // return special_functions::detail::jacobi_recur<type>(n, alpha, beta, x).P_n;
     }
 }
 

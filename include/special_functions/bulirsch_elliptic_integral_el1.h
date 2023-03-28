@@ -7,7 +7,7 @@ namespace special_functions {
     bulirsch_elliptic_integral_el1(Tp x, Tk k_c) {
         using type = special_functions::fp_promote_t<Tp, Tk>;
 
-        // return emsr::detail::ellint_el1<type>(x, k_c);
+        // return special_functions::detail::ellint_el1<type>(x, k_c);
     }
 
 }

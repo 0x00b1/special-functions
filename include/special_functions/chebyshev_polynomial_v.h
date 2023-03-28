@@ -7,7 +7,7 @@ namespace special_functions {
     chebyshev_polynomial_v(unsigned int n, T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return emsr::detail::chebyshev_v<type>(n, x).V_n;
+        // return special_functions::detail::chebyshev_v<type>(n, x).V_n;
     }
 }
 

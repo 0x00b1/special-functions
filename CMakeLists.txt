@@ -9,7 +9,7 @@ add_library(
         INTERFACE
         include/special_functions.h
         include/special_functions/factorial.h
-        include/special_functions/detail/complex_util.h include/special_functions/detail/incomplete_gamma_by_series_summation.h include/special_functions/detail/incomplete_gamma_by_continued_fraction.h include/special_functions/detail/digamma_by_series_summation.h include/special_functions/detail/digamma_by_asymptotic_expansion.h)
+        include/special_functions/detail/complex_util.h include/special_functions/detail/incomplete_gamma_by_series_summation.h include/special_functions/detail/incomplete_gamma_by_continued_fraction.h include/special_functions/detail/digamma_by_series_summation.h include/special_functions/detail/digamma_by_asymptotic_expansion.h include/special_functions/detail/bernoulli_number_by_series_summation.h include/special_functions/sine_integral_si.h include/special_functions/cosine_integral_ci.h)
 
 target_include_directories(special_functions INTERFACE include)
 

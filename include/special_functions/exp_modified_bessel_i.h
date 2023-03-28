@@ -7,7 +7,7 @@ namespace special_functions {
     exp_modified_bessel_i(T n, U x) {
         using type = special_functions::fp_promote_t<T, U>;
 
-        // return emsr::detail::cyl_bessel_i_scaled<type>(n, x);
+        // return special_functions::detail::cyl_bessel_i_scaled<type>(n, x);
     }
 }
 

@@ -5,7 +5,7 @@ namespace special_functions {
     template<typename T>
     inline T
     stirling_number_s_1(unsigned int n, unsigned int m) {
-        // return emsr::detail::stirling_1<T>(n, m);
+        // return special_functions::detail::stirling_1<T>(n, m);
     }
 }
 
