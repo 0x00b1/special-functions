@@ -100,8 +100,6 @@
 #include <special_functions/log_rising_factorial.h>
 #include <special_functions/logarithmic_integral_li.h>
 #include <special_functions/lower_incomplete_gamma.h>
-#include <special_functions/math_constants.h>
-#include <special_functions/math_util.h>
 #include <special_functions/mittag_leffler_e.h>
 #include <special_functions/modified_bessel_i.h>
 #include <special_functions/modified_bessel_k.h>

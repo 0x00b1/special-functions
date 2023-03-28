@@ -2999,6 +2999,72 @@ namespace special_functions::numbers {
             -6.586049187797781882734662882380101e+03L,
             -6.593648589131197697950483207309507e+03L,
     };
+
+    constexpr unsigned long long MAXIMUM_HARMONIC_NUMBER_INDEX = 29;
+
+    constexpr unsigned long long HARMONIC_NUMBER_NUMERATORS[MAXIMUM_HARMONIC_NUMBER_INDEX]{
+            1ULL,
+            3ULL,
+            11ULL,
+            25ULL,
+            137ULL,
+            49ULL,
+            363ULL,
+            761ULL,
+            7129ULL,
+            7381ULL,
+            83711ULL,
+            86021ULL,
+            1145993ULL,
+            1171733ULL,
+            1195757ULL,
+            2436559ULL,
+            42142223ULL,
+            14274301ULL,
+            275295799ULL,
+            55835135ULL,
+            18858053ULL,
+            19093197ULL,
+            444316699ULL,
+            1347822955ULL,
+            34052522467ULL,
+            34395742267ULL,
+            312536252003ULL,
+            315404588903ULL,
+            9227046511387ULL
+    };
+
+    constexpr unsigned long long HARMONIC_NUMBER_DENOMINATORS[MAXIMUM_HARMONIC_NUMBER_INDEX]{
+            1ULL,
+            2ULL,
+            6ULL,
+            12ULL,
+            60ULL,
+            20ULL,
+            140ULL,
+            280ULL,
+            2520ULL,
+            2520ULL,
+            27720ULL,
+            27720ULL,
+            360360ULL,
+            360360ULL,
+            360360ULL,
+            720720ULL,
+            12252240ULL,
+            4084080ULL,
+            77597520ULL,
+            15519504ULL,
+            5173168ULL,
+            5173168ULL,
+            118982864ULL,
+            356948592ULL,
+            8923714800ULL,
+            8923714800ULL,
+            80313433200ULL,
+            80313433200ULL,
+            2329089562800ULL
+    };
 }
 
 #endif // SPECIAL_FUNCTIONS_NUMBERS_H
