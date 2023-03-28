@@ -9,7 +9,7 @@ namespace special_functions {
     theta_2(T n, U x) {
         using V = special_functions::fp_promote_t<T, U>;
 
-        // return special_functions::detail::theta_2<V>(n, x);
+        return special_functions::detail::theta_2<V>(n, x);
     }
 }
 

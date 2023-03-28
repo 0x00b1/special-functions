@@ -7,7 +7,7 @@ namespace special_functions {
     complete_elliptic_integral_pi(T k, U n) {
         using V = special_functions::fp_promote_t<T, U>;
 
-        // return special_functions::detail::comp_ellint_3<V>(k, n);
+        return special_functions::detail::complete_elliptic_integral_pi<V>(k, n);
     }
 }
 

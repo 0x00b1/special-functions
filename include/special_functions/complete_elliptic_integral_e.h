@@ -7,7 +7,7 @@ namespace special_functions {
     complete_elliptic_integral_e(T k) {
         using U = special_functions::fp_promote_t<T>;
 
-        // return special_functions::detail::comp_ellint_2<U>(k);
+        return special_functions::detail::complete_elliptic_integral_e<U>(k);
     }
 }
 

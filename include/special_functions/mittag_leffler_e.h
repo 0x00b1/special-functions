@@ -4,10 +4,10 @@
 namespace special_functions {
     template<typename T, typename U, typename V>
     inline std::complex<special_functions::fp_promote_t<T, U, V>>
-    mittag_leffler_e(U alpha, V beta, const std::complex<T> &z) {
-        using type = special_functions::fp_promote_t<T, U, V>;
+    mittag_leffler_e(U a, V b, const std::complex<T> &z) {
+        using W = special_functions::fp_promote_t<T, U, V>;
 
-        // return special_functions::detail::mittag_leffler<type>(alpha, beta, z);
+        return special_functions::detail::mittag_leffler<W>(a, b, z);
     }
 }
 

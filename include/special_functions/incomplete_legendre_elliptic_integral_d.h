@@ -4,10 +4,10 @@
 namespace special_functions {
     template<typename T, typename U>
     inline special_functions::fp_promote_t<T, U>
-    incomplete_legendre_elliptic_integral_d(T k, U phi) {
-        using type = special_functions::fp_promote_t<T, U>;
+    incomplete_legendre_elliptic_integral_d(T k, U p) {
+        using V = special_functions::fp_promote_t<T, U>;
 
-        // return special_functions::detail::ellint_d<type>(k, phi);
+        return special_functions::detail::incomplete_legendre_elliptic_integral_d<V>(k, p);
     }
 }
 

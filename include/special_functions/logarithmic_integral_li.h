@@ -7,9 +7,9 @@ namespace special_functions {
     template<typename T>
     inline special_functions::fp_promote_t<T>
     logarithmic_integral_li(T x) {
-        using type = special_functions::fp_promote_t<T>;
+        using U = special_functions::fp_promote_t<T>;
 
-        // return special_functions::detail::logarithmic_integral_li<type>(x);
+        return special_functions::detail::logarithmic_integral_li<U>(x);
     }
 }
 

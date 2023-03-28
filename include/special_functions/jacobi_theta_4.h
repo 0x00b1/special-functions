@@ -9,7 +9,7 @@ namespace special_functions {
     jacobi_theta_4(T q, U x) {
         using V = special_functions::fp_promote_t<T, U>;
 
-        // return special_functions::detail::jacobi_theta_4<V>(q, x);
+        return special_functions::detail::jacobi_theta_4<V>(q, x);
     }
 }
 
