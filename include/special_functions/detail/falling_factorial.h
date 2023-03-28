@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_FALLING_FACTORIAL_H
 #define SPECIAL_FUNCTIONS_DETAIL_FALLING_FACTORIAL_H
 
-#include "numeric_limits.h"
+#include <special_functions/numeric_limits.h>
 
 namespace special_functions::detail {
     template<typename T>

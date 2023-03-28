@@ -1,10 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_NUMERIC_LIMITS_H
 #define SPECIAL_FUNCTIONS_NUMERIC_LIMITS_H
 
-#include <cmath>
-#include <limits>
-
-namespace special_functions {
+namespace special_functions::numeric_limits {
     template<typename Tp>
     constexpr bool
     is_specialized(Tp = Tp{}) noexcept { return std::numeric_limits<Tp>::is_specialized; }

@@ -27,7 +27,8 @@ TEST(log_factorial_test, accuracy) {
 }
 
 TEST(log_gamma, accuracy) {
-    EXPECT_EQ(special_functions::log_gamma(0.0), 0.0);
+    EXPECT_EQ(special_functions::log_gamma(0.0), std::numeric_limits<double>::infinity());
+    EXPECT_DOUBLE_EQ(special_functions::log_gamma(0.1), 2.2527126517342051);
 }
 
 TEST(log_gamma_sign, accuracy) {

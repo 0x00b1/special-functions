@@ -4,6 +4,7 @@
 #include "math_constants.h"
 #include "math_util.h"
 #include "../tan_pi.h"
+#include "digamma_by_asymptotic_expansion.h"
 
 namespace special_functions::detail {
     template<typename T>
@@ -11,101 +12,56 @@ namespace special_functions::detail {
     digamma(unsigned int n) {
         using U = special_functions::num_traits_t<T>;
 
-        if (n > 1) {
-            return -std::numbers::egamma_v<U> + harmonic_number<U>(n - 1);
-        } else {
-            return -std::numbers::egamma_v<U>;
-        }
+        if (n > 1) return -std::numbers::egamma_v<U> + harmonic_number<U>(n - 1);
+
+        return -std::numbers::egamma_v<U>;
     }
 
-    template<typename Tp>
-    Tp
-    digamma_series(Tp x) {
-        using Val = special_functions::num_traits_t<Tp>;
 
-        Tp sum = -std::numbers::egamma_v<Val>;
+    template<typename T>
+    T
+    digamma(T x) {
+        using U = special_functions::num_traits_t<T>;
 
-        const unsigned int s_max_iter = 100000;
+        const auto is_integer_x = special_functions::fp_is_integer(x);
 
-        for (unsigned int k = 0; k < s_max_iter; ++k) {
-            const auto term = (x - Tp{1}) / (Tp(k + 1) * (Tp(k) + x));
+        const auto is_half_odd_integer_x = special_functions::fp_is_half_odd_integer(x);
 
-            sum += term;
-
-            if (std::abs(term) < std::numeric_limits<Val>::epsilon()) {
-                break;
+        if (std::real(x) <= U{0}) {
+            if (is_integer_x) {
+                return std::numeric_limits<T>::quiet_NaN();
             }
+
+            return digamma(U{1} - x) - special_functions::pi_v<U> / special_functions::tan_pi(x);
         }
 
-        return sum;
-    }
-
-    template<typename Tp>
-    Tp
-    digamma_asymp(Tp x) {
-        using Val = special_functions::num_traits_t<Tp>;
-
-        auto sum = std::log(x) - Val{0.5L} / x;
-
-        const auto xx = x * x;
-
-        auto xp = xx;
-
-        const unsigned int max_iter = 100;
-
-        for (unsigned int k = 1; k < max_iter; k++) {
-            const Tp term = bernoulli_number<Val>(2 * k) / (Val(2 * k) * xp);
-
-            sum -= term;
-
-            if (std::abs(term / sum) < std::numeric_limits<Val>::epsilon()) {
-                break;
-            }
-
-            xp *= xx;
+        if (is_integer_x) {
+            return digamma<T>(is_integer_x());
         }
 
-        return sum;
-    }
+        if (is_half_odd_integer_x) {
+            T v = -std::numbers::egamma_v<U> - T{2} * special_functions::ln2_v<U>;
 
-    template<typename Tp>
-    Tp
-    digamma(Tp x) {
-        using Val = special_functions::num_traits_t<Tp>;
-        const auto s_x_asymp = Val{20};
-        const auto s_gamma_E = std::numbers::egamma_v<Val>;
-        const auto s_2_ln_2 = Tp{2} * special_functions::ln2_v<Val>;
-        const auto s_pi = special_functions::pi_v<Val>;
+            for (int k = 1; k <= is_half_odd_integer_x(); k++) {
+                v += T{2} / T(2 * k - 1);
+            }
 
-        const auto n = special_functions::fp_is_integer(x);
-        const auto m = special_functions::fp_is_half_odd_integer(x);
-        if (std::real(x) <= Val{0}) {
-            if (n) {
-                return std::numeric_limits<Tp>::quiet_NaN();
-            } else {
-                return digamma(Val{1} - x) - s_pi / special_functions::tan_pi(x);
-            }
-        } else if (n) {
-            return digamma<Tp>(n());
-        } else if (m) {
-            Tp sum = -s_gamma_E - s_2_ln_2;
-            for (int k = 1; k <= m(); k++) {
-                sum += Tp{2} / Tp(2 * k - 1);
-            }
-            return sum;
-        } else if (std::real(x) > s_x_asymp) {
-            return digamma_asymp(x);
-        } else {
-            // The series does not converge quickly enough.
-            // Reflect to larger argument and use asymptotic expansion.
-            auto w = Tp{0};
-            auto y = x;
-            while (std::real(y) <= s_x_asymp) {
-                w += Val{1} / y;
-                y += Val{1};
-            }
-            return digamma_asymp(y) - w;
+            return v;
         }
+
+        if (std::real(x) > U{20}) {
+            return digamma_by_asymptotic_expansion(x);
+        }
+
+        auto w = T{0};
+        auto y = x;
+
+        while (std::real(y) <= U{20}) {
+            w += U{1} / y;
+            y += U{1};
+        }
+
+        return digamma_by_asymptotic_expansion(y) - w;
     }
 }
 

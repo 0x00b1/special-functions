@@ -10,6 +10,35 @@
 namespace special_functions::detail {
     template<typename T>
     constexpr T
+    log_gamma_asymptotic_expansion_bernoulli_coefficients(T x) {
+        using U = T;
+        using V = special_functions::num_traits_t<U>;
+
+        const auto s_ln2pi = special_functions::ln2_v<V> + special_functions::lnpi_v<V>;
+
+        auto lg = (x - V{0.5L}) * std::log(x) - x + V{0.5L} * s_ln2pi;
+
+        const auto xx = V{1} / (x * x);
+
+        auto xk = V{1} / x;
+
+        for (unsigned int iteration = 1; iteration < 100; iteration++) {
+            const auto term = bernoulli_number<T>(T(2 * iteration)) * xk / (T(2 * iteration) * (T(2 * iteration) - T{1}));
+
+            lg += term;
+
+            if (std::abs(term) < V{0.01L} * std::numeric_limits<V>::epsilon() * std::abs(lg)) {
+                break;
+            }
+
+            xk *= xx;
+        }
+
+        return lg;
+    }
+
+    template<typename T>
+    constexpr T
     spouge_binet1p(T z) {
         using special_functions::numbers::SPOUGE;
 
@@ -123,7 +152,7 @@ namespace special_functions::detail {
 
         if (std::real(a) < V{0.5L}) {
             const auto sin_fact = std::abs(special_functions::sin_pi(a));
-            
+
             if (sin_fact < s_eps) {
                 return std::numeric_limits<V>::infinity();
             }
@@ -134,7 +163,7 @@ namespace special_functions::detail {
         if (std::real(a) > V{1} && std::abs(a) < MAXIMUM_FACTORIAL_INDEX<T>) {
             auto f = T{1};
             auto arg = a;
-            
+
             while (std::real(arg) > V{1}) {
                 f *= (arg -= V{1});
             }

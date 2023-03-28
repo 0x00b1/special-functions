@@ -1,6 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_REGULARIZED_GAMMA_Q_H
 #define SPECIAL_FUNCTIONS_DETAIL_REGULARIZED_GAMMA_Q_H
 
+#include "incomplete_gamma_by_continued_fraction.h"
+#include "incomplete_gamma_by_series_summation.h"
+
 namespace special_functions::detail {
     template<typename T>
     T
@@ -19,10 +22,10 @@ namespace special_functions::detail {
         }
 
         if (std::real(x) < std::real(a + V{1})) {
-            return U{1} - gamma_series(a, x).first;
+            return U{1} - incomplete_gamma_by_series_summation(a, x).first;
         }
 
-        return gamma_cont_frac(a, x).first;
+        return incomplete_gamma_by_continued_fraction(a, x).first;
     }
 }
 

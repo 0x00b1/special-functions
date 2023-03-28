@@ -1,6 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_NUMBERS_H
 #define SPECIAL_FUNCTIONS_NUMBERS_H
 
+#include <array>
 #include <limits>
 
 namespace special_functions::numbers {

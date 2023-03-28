@@ -2,43 +2,42 @@
 #define SPECIAL_FUNCTIONS_DETAIL_LOG_FALLING_FACTORIAL_H
 
 namespace special_functions::detail {
-    template<typename Tp>
-    Tp
-    log_falling_factorial(Tp a, Tp nu) {
+    template<typename T>
+    T
+    log_falling_factorial(T a, T n) {
         using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
 
-        using Val = Tp;
-        using Real = special_functions::num_traits_t<Val>;
-        const auto s_NaN = std::numeric_limits<Val>::quiet_NaN();
-        const auto s_inf = std::numeric_limits<Val>::infinity();
-        const auto inu = special_functions::fp_is_integer(nu);
-        const auto ia = special_functions::fp_is_integer(a);
+        using U = T;
+        using V = special_functions::num_traits_t<U>;
 
-        if (std::isnan(nu) || std::isnan(a)) {
-            return s_NaN;
+        const auto is_integer_n = special_functions::fp_is_integer(n);
+        const auto is_integer_a = special_functions::fp_is_integer(a);
+
+        if (std::isnan(n) || std::isnan(a)) {
+            return std::numeric_limits<U>::quiet_NaN();
         }
 
-        if (nu == Tp{0}) {
-            return Tp{0};
+        if (n == T{0}) {
+            return T{0};
         }
 
-        if (inu) {
-            if (ia) {
-                if (ia() < inu()) {
-                    return -s_inf;
+        if (is_integer_n) {
+            if (is_integer_a) {
+                if (is_integer_a() < is_integer_n()) {
+                    return -std::numeric_limits<U>::infinity();
                 }
 
-                return log_factorial<Val>(unsigned(ia())) - log_factorial<Val>(unsigned(ia() - inu()));
+                return log_factorial<U>(unsigned(is_integer_a())) - log_factorial<U>(unsigned(is_integer_a() - is_integer_n()));
             }
 
-            return std::log(std::abs(falling_factorial(a, inu())));
+            return std::log(std::abs(falling_factorial(a, is_integer_n())));
         }
 
-        if (std::abs(a) < MAXIMUM_FACTORIAL_INDEX<Real> && std::abs(a - nu) < MAXIMUM_FACTORIAL_INDEX<Real>) {
-            return std::log(std::abs(falling_factorial(a, nu)));
+        if (std::abs(a) < MAXIMUM_FACTORIAL_INDEX<V> && std::abs(a - n) < MAXIMUM_FACTORIAL_INDEX<V>) {
+            return std::log(std::abs(falling_factorial(a, n)));
         }
 
-        return log_gamma(a + Tp{1}) - log_gamma(a - nu + Tp{1});
+        return log_gamma(a + T{1}) - log_gamma(a - n + T{1});
     }
 }
 
