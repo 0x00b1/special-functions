@@ -8,7 +8,7 @@ add_library(
         special_functions
         INTERFACE
         include/special_functions.h
-)
+        include/special_functions/detail/fresnel_integrals_by_continued_fractions.h include/special_functions/detail/fresnel_integrals_by_series_summation.h)
 
 target_include_directories(special_functions INTERFACE include)
 
