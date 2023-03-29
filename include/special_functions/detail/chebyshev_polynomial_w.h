@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_CHEBYSHEV_POLYNOMIAL_W_H
 #define SPECIAL_FUNCTIONS_DETAIL_CHEBYSHEV_POLYNOMIAL_W_H
 
+#include "chebyshev_polynomial_w_t.h"
+
 namespace special_functions::detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_CHEBYSHEV_POLYNOMIAL_W_H
