@@ -6,9 +6,9 @@ namespace special_functions::detail {
     Tp
     incomplete_elliptic_integral_f(Tp k, Tp phi)
     {
-        using Real = emsr::num_traits_t<Tp>;
-        const auto s_NaN = emsr::quiet_NaN(k);
-        const auto s_pi = emsr::pi_v<Real>;
+        using Real = special_functions::num_traits_t<Tp>;
+        const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
+        const auto s_pi = std::numbers::pi_v<Real>;
 
         if (std::isnan(k) || std::isnan(phi))
             return s_NaN;

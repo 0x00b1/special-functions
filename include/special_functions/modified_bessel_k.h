@@ -9,7 +9,7 @@ namespace special_functions {
     modified_bessel_k(T n, U x) {
         using V = special_functions::fp_promote_t<T, U>;
 
-        return special_functions::detail::modified_bessel_k<V>(n, x);
+        // return special_functions::detail::modified_bessel_k<V>(n, x);
     }
 }
 

@@ -12,14 +12,10 @@ namespace special_functions::detail {
         }
 
         if (std::abs(k) > T{1}) {
-            throw std::domain_error("theta_d: argument k out of range");
+            throw std::domain_error("neville_theta_d: `k` must be in [-1, 1]");
         }
 
-        const auto k_k = special_functions::complete_elliptic_integral_k(k);
-
-        const auto pi_2 = std::numbers::pi_v<U> / U{2};
-
-        return std::sqrt(pi_2 / k_k) * theta_3(nome_q(k), pi_2 * x / k_k);
+        return std::sqrt(std::numbers::pi_v<U> / U{2} / special_functions::complete_elliptic_integral_k(k)) * theta_3(nome_q(k), std::numbers::pi_v<U> / U{2} * x / special_functions::complete_elliptic_integral_k(k));
     }
 }
 

@@ -1,6 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_H
 #define SPECIAL_FUNCTIONS_H
 
+#include <complex>
 #include <numbers>
 
 #include "special_functions/detail/fp_type_util.h"

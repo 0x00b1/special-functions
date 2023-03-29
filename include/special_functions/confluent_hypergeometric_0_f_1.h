@@ -9,7 +9,7 @@ namespace special_functions {
     confluent_hypergeometric_0_f_1(Tpc c, Tp x) {
         typedef typename special_functions::fp_promote_t<Tpc, Tp> type;
 
-        return special_functions::detail::confluent_hypergeometric_0_f_1<type>(c, x);
+        // return special_functions::detail::confluent_hypergeometric_0_f_1<type>(c, x);
     }
 }
 

@@ -9,7 +9,7 @@ namespace special_functions {
     mittag_leffler_e(U a, V b, const std::complex<T> &z) {
         using W = special_functions::fp_promote_t<T, U, V>;
 
-        return special_functions::detail::mittag_leffler<W>(a, b, z);
+        // return special_functions::detail::mittag_leffler<W>(a, b, z);
     }
 }
 

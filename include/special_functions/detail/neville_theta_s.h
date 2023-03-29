@@ -2,23 +2,20 @@
 #define SPECIAL_FUNCTIONS_DETAIL_NEVILLE_THETA_S_H
 
 namespace special_functions::detail {
-    template<typename Tp>
-    Tp
-    neville_theta_s(Tp k, Tp x) {
-        using Real = special_functions::num_traits_t<Tp>;
-        const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
-        const auto s_pi_2 = std::numbers::pi_v<Real> / Real{2};
+    template<typename T>
+    T
+    neville_theta_s(T k, T x) {
+        using U = special_functions::num_traits_t<T>;
 
-        if (std::isnan(k) || std::isnan(x))
-            return s_NaN;
-        else if (std::abs(k) > Tp{1})
-            throw std::domain_error("theta_s: argument k out of range");
-        else {
-            const auto k_c = std::sqrt(Tp{1} - k * k);
-            const auto k_k = special_functions::complete_elliptic_integral_k(k);
-            const auto q_k = ellnome(k);
-            return std::sqrt(s_pi_2 / (k * k_c * k_k)) * theta_1(q_k, s_pi_2 * x / k_k);
+        if (std::isnan(k) || std::isnan(x)) {
+            return std::numeric_limits<T>::quiet_NaN();
         }
+
+        if (std::abs(k) > T{1}) {
+            throw std::domain_error("neville_theta_s: `k` must be in [-1, 1]");
+        }
+
+        return std::sqrt(std::numbers::pi_v<U> / U{2} / (k * std::sqrt(T{1} - k * k) * special_functions::complete_elliptic_integral_k(k))) * theta_1(nome_q(k), std::numbers::pi_v<U> / U{2} * x / special_functions::complete_elliptic_integral_k(k));
     }
 }
 
