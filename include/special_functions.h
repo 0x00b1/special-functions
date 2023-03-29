@@ -116,6 +116,7 @@
 #include <special_functions/nome_q.h>
 #include <special_functions/numeric_limits.h>
 #include <special_functions/owens_t.h>
+#include <special_functions/periodic_zeta_f.h>
 #include <special_functions/polar_pi.h>
 #include <special_functions/polygamma.h>
 #include <special_functions/polylogarithm_li.h>
