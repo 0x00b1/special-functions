@@ -1,0 +1,6 @@
+#ifndef SPECIAL_FUNCTIONS_SINE_INTEGRAL_SI_H
+#define SPECIAL_FUNCTIONS_SINE_INTEGRAL_SI_H
+
+namespace special_functions::detail {}
+
+#endif // SPECIAL_FUNCTIONS_SINE_INTEGRAL_SI_H
