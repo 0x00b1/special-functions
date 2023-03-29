@@ -4,26 +4,33 @@
 namespace special_functions::detail {
     template<typename Tp>
     Tp
-    ellint_rd(Tp x, Tp y, Tp z) {
-        using Real = emsr::num_traits_t<Tp>;
-        const auto s_NaN = emsr::quiet_NaN(Real{});
-        const auto s_min = emsr::lim_min(Real{});
-        const auto s_eps = emsr::epsilon(Real{});
+    carlson_elliptic_r_d(Tp x, Tp y, Tp z) {
+        using Real = special_functions::num_traits_t<Tp>;
+        const auto s_NaN = std::numeric_limits<Real>::quiet_NaN();
+        const auto s_min = std::numeric_limits<Real>::lim_min();
+        const auto s_eps = std::numeric_limits<Real>::epsilon();
         const auto s_lolim = Real{5} * s_min;
 
         bool neg_arg = false;
-        if constexpr (!emsr::is_complex_v < Tp >)
+
+        if constexpr (!special_functions::is_complex_v<Tp>) {
             if (std::real(x) < Real{0}
                 || std::real(y) < Real{0}
-                || std::real(z) < Real{0})
+                || std::real(z) < Real{0}) {
                 neg_arg = true;
+            }
+        }
 
-        if (std::isnan(x) || std::isnan(y) || std::isnan(z))
+        if (std::isnan(x) || std::isnan(y) || std::isnan(z)) {
             return s_NaN;
-        if (neg_arg)
+        }
+
+        if (neg_arg) {
             throw std::domain_error("ellint_rd: argument less than zero");
-        else if (std::abs(x) + std::abs(y) < s_lolim
-                 || std::abs(z) < s_lolim)
+        }
+
+        if (std::abs(x) + std::abs(y) < s_lolim
+            || std::abs(z) < s_lolim)
             throw std::domain_error("ellint_rd: arguments too small");
         else {
             auto xt = x;

@@ -1,6 +1,30 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_COMPLETE_ELLIPTIC_INTEGRAL_PI_H
 #define SPECIAL_FUNCTIONS_DETAIL_COMPLETE_ELLIPTIC_INTEGRAL_PI_H
 
-namespace special_functions::detail {}
+namespace special_functions::detail {
+    template<typename T>
+    T
+    complete_elliptic_integral_pi(T k, T n) {
+        using U = special_functions::num_traits_t<T>;
+
+        if (std::isnan(k) || std::isnan(n)) {
+            return std::numeric_limits<T>::quiet_NaN();
+        }
+
+        if (n == T{1}) {
+            return std::numeric_limits<T>::infinity();
+        }
+
+        if (std::abs(k) > U{1}) {
+            throw std::domain_error("comp_ellint_3: bad argument");
+        }
+
+        const auto r_f = ellint_rf(T{0}, T{1} - k * k, T{1});
+        const auto r_j = ellint_rj(T{0}, T{1} - k * k, T{1}, T{1} - n);
+
+        return r_f + n * r_j / T{3};
+    }
+
+}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_COMPLETE_ELLIPTIC_INTEGRAL_PI_H
