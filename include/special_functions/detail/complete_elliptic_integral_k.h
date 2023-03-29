@@ -8,11 +8,11 @@ namespace special_functions::detail {
         using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(k)) {
-            return std::numeric_limits<T>::quiet_NaN(k);
+            return std::numeric_limits<T>::quiet_NaN();
         }
 
         if (std::abs(k) == U{1}) {
-            return std::numeric_limits<T>::quiet_NaN(k);
+            return std::numeric_limits<T>::quiet_NaN();
         }
 
         return complete_carlson_elliptic_r_f(T{1} - k * k, T{1});

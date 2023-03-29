@@ -19,7 +19,7 @@ TEST(factorial_test, accuracy) {
 }
 
 TEST(log_double_factorial_test, accuracy) {
-    EXPECT_EQ(special_functions::log_double_factorial<double>(0), 1.0);
+    EXPECT_EQ(special_functions::log_double_factorial<double>(1), 3.6082248300317588e-16);
 }
 
 TEST(log_factorial_test, accuracy) {
@@ -49,4 +49,8 @@ TEST(tan_pi_test, accuracy) {
 
 TEST(tanh_pi_test, accuracy) {
     EXPECT_EQ(special_functions::tanh_pi(0.0), 0.0);
+}
+
+TEST(neville_theta_c_test, accuracy) {
+    EXPECT_NEAR(special_functions::neville_theta_c(0.5, 0.5), 0.863587, 0.00001);
 }

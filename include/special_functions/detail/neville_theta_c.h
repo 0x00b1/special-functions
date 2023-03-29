@@ -1,6 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_NEVILLE_THETA_C_H
 #define SPECIAL_FUNCTIONS_DETAIL_NEVILLE_THETA_C_H
 
+#include "theta_2.h"
+#include "nome_q.h"
+
 namespace special_functions::detail {
     template<typename T>
     T
