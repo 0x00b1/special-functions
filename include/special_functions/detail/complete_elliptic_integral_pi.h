@@ -16,11 +16,11 @@ namespace special_functions::detail {
         }
 
         if (std::abs(k) > U{1}) {
-            throw std::domain_error("comp_ellint_3: bad argument");
+            throw std::domain_error("`k` must be in [-1, 1]");
         }
 
-        const auto r_f = ellint_rf(T{0}, T{1} - k * k, T{1});
-        const auto r_j = ellint_rj(T{0}, T{1} - k * k, T{1}, T{1} - n);
+        const auto r_f = carlson_elliptic_r_f(T{0}, T{1} - k * k, T{1});
+        const auto r_j = carlson_elliptic_r_j(T{0}, T{1} - k * k, T{1}, T{1} - n);
 
         return r_f + n * r_j / T{3};
     }

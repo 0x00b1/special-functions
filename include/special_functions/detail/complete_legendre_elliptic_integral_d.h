@@ -11,7 +11,7 @@ namespace special_functions::detail {
             return std::numeric_limits<T>::quiet_NaN(k);
         }
 
-        return ellint_rd(T{0}, T{1} - k * k, T{1}) / U{3};
+        return carlson_elliptic_r_d(T{0}, T{1} - k * k, T{1}) / U{3};
     }
 }
 

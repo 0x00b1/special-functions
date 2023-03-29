@@ -2,22 +2,18 @@
 #define SPECIAL_FUNCTIONS_DETAIL_BULIRSCH_ELLIPTIC_INTEGRAL_EL1_H
 
 namespace special_functions::detail {
-    template<typename Tp>
-    Tp
-    ellint_el1(Tp x, Tp k_c)
-    {
-        using Real = emsr::num_traits_t<Tp>;
-        const auto s_NaN = emsr::quiet_NaN(Real{});
+    template<typename T>
+    T
+    bulirsch_elliptic_integral_el1(T x, T k_c) {
+        using U = special_functions::num_traits_t<T>;
 
-        if (std::isnan(x) || std::isnan(k_c))
-            return s_NaN;
-        else
-        {
-            auto x2 = x * x;
-            auto k2_c = k_c * k_c;
-            auto arg2 = Tp{1} + k2_c * x2;
-            return x * ellint_rf(Tp{1}, arg2, Tp{1} + x2);
+        if (std::isnan(x) || std::isnan(k_c)) {
+            return std::numeric_limits<T>::quiet_NaN();
         }
+
+        const auto r_f = carlson_elliptic_r_f(T{1}, T{1} + k_c * k_c * (x * x), T{1} + x * x);
+
+        return x * r_f;
     }
 }
 

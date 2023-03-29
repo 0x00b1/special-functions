@@ -2,27 +2,27 @@
 #define SPECIAL_FUNCTIONS_DETAIL_COMPLETE_ELLIPTIC_INTEGRAL_E_H
 
 namespace special_functions::detail {
-    template<typename Tp>
-    Tp
-    complete_elliptic_integral_e(Tp k)
-    {
-        using Real = emsr::num_traits_t<Tp>;
-        const auto s_NaN = emsr::quiet_NaN(k);
+    template<typename T>
+    T
+    complete_elliptic_integral_e(T k) {
+        using U = special_functions::num_traits_t<T>;
 
-        if (std::isnan(k))
-            return s_NaN;
-        else if (std::abs(k) == Real{1})
-            return Tp{1};
-        else if (std::abs(k) > Real{1})
-            throw std::domain_error("comp_ellint_2: bad argument");
-        else
-        {
-            const auto kk = k * k;
-
-            return ellint_rf(Tp{0}, Tp{1} - kk, Tp{1})
-                   - kk * ellint_rd(Tp{0}, Tp{1} - kk, Tp{1})
-                     / Tp{3};
+        if (std::isnan(k)) {
+            return std::numeric_limits<T>::quiet_NaN();
         }
+
+        if (std::abs(k) == U{1}) {
+            return T{1};
+        }
+
+        if (std::abs(k) > U{1}) {
+            throw std::domain_error("`k` must be in [-1, 1]");
+        }
+
+        const auto r_f = carlson_elliptic_r_f(T{0}, T{1} - k * k, T{1});
+        const auto r_d = carlson_elliptic_r_d(T{0}, T{1} - k * k, T{1});
+
+        return r_f - k * k * r_d / T{3};
     }
 }
 
