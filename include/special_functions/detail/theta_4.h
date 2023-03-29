@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_THETA_4_H
 #define SPECIAL_FUNCTIONS_DETAIL_THETA_4_H
 
+#include "theta_3.h"
+
 namespace special_functions::detail {
     template<typename T>
     T

@@ -18,7 +18,7 @@ namespace special_functions::detail {
         auto is_integer_a = special_functions::fp_is_integer(a);
 
         if (is_integer_a && is_integer_a() <= 0) {
-            throw std::domain_error("tgamma: non-positive integer argument a");
+            throw std::domain_error("upper_incomplete_gamma: a must be a positive integer");
         }
 
         if (std::real(x) < std::real(a + V{1})) {
