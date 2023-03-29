@@ -4,12 +4,12 @@
 #include <special_functions/detail/bulirsch_elliptic_integral_el2.h>
 
 namespace special_functions {
-    template<typename Tp, typename Tk, typename Ta, typename Tb>
-    inline special_functions::fp_promote_t<Tp, Tk, Ta, Tb>
-    bulirsch_elliptic_integral_el2(Tp x, Tk k_c, Ta a, Tb b) {
-        using type = special_functions::fp_promote_t<Tp, Tk, Ta, Tb>;
+    template<typename T, typename U, typename V, typename W>
+    inline special_functions::fp_promote_t<T, U, V, W>
+    bulirsch_elliptic_integral_el2(T x, U k_c, V a, W b) {
+        using X = special_functions::fp_promote_t<T, U, V, W>;
 
-        return special_functions::detail::bulirsch_elliptic_integral_el2<type>(x, k_c, a, b);
+        return special_functions::detail::bulirsch_elliptic_integral_el2<X>(x, k_c, a, b);
     }
 }
 

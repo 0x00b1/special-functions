@@ -7,9 +7,9 @@ namespace special_functions {
     template<typename T>
     inline special_functions::fp_promote_t<T>
     complete_elliptic_integral_k(T k) {
-        using type = special_functions::fp_promote_t<T>;
+        using U = special_functions::fp_promote_t<T>;
 
-        return special_functions::detail::complete_elliptic_integral_k<type>(k);
+        return special_functions::detail::complete_elliptic_integral_k<U>(k);
     }
 }
 
