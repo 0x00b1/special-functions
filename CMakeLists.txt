@@ -8,7 +8,7 @@ add_library(
         special_functions
         INTERFACE
         include/special_functions.h
-        include/special_functions/detail/eulerian_number_2_by_recursion.h)
+        include/special_functions/detail/eulerian_number_2_by_recursion.h include/special_functions/detail/stirling_number_s_2_by_series_expansion.h include/special_functions/detail/stirling_number_s_2_by_recursion.h include/special_functions/detail/stirling_number_s_1_by_recursion.h include/special_functions/detail/lah_number_by_recursion.h)
 
 target_include_directories(special_functions INTERFACE include)
 
