@@ -7,7 +7,7 @@ namespace special_functions {
     template<typename T>
     inline T
     eulerian_number_2(unsigned int n, unsigned int m) {
-        // return special_functions::detail::eulerian_2<T>(n, m);
+        return special_functions::detail::eulerian_number_2<T>(n, m);
     }
 }
 

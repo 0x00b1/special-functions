@@ -9,7 +9,7 @@ namespace special_functions {
     exp_airy_ai(T x) {
         using type = special_functions::fp_promote_t<T>;
 
-        // return special_functions::detail::airy<type>(x, true).Ai_value;
+        return special_functions::detail::airy<type>(x, true).Ai_value;
     }
 }
 

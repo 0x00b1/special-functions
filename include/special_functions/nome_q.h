@@ -9,7 +9,7 @@ namespace special_functions {
     nome_q(T k) {
         using U = special_functions::fp_promote_t<T>;
 
-        // return special_functions::detail::nome_q<U>(k);
+        return special_functions::detail::nome_q<U>(k);
     }
 }
 
