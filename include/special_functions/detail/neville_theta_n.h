@@ -15,10 +15,10 @@ namespace special_functions::detail {
             throw std::domain_error("theta_n: argument k out of range");
         else {
             const auto kc = std::sqrt(Tp{1} - k * k);
-            const auto _Kk = special_functions::comp_ellint_1(k);
+            const auto k_k = special_functions::complete_elliptic_integral_k(k);
             const auto q = ellnome(k);
-            return std::sqrt(s_pi_2 / (kc * _Kk))
-                   * theta_4(q, s_pi_2 * x / _Kk);
+            return std::sqrt(s_pi_2 / (kc * k_k))
+                   * theta_4(q, s_pi_2 * x / k_k);
         }
     }
 

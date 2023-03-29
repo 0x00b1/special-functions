@@ -14,11 +14,10 @@ namespace special_functions::detail {
         else if (std::abs(k) > Tp{1})
             throw std::domain_error("theta_s: argument k out of range");
         else {
-            const auto kc = std::sqrt(Tp{1} - k * k);
-            const auto _Kk = special_functions::comp_ellint_1(k);
-            const auto q = ellnome(k);
-            return std::sqrt(s_pi_2 / (k * kc * _Kk))
-                   * theta_1(q, s_pi_2 * x / _Kk);
+            const auto k_c = std::sqrt(Tp{1} - k * k);
+            const auto k_k = special_functions::complete_elliptic_integral_k(k);
+            const auto q_k = ellnome(k);
+            return std::sqrt(s_pi_2 / (k * k_c * k_k)) * theta_1(q_k, s_pi_2 * x / k_k);
         }
     }
 }

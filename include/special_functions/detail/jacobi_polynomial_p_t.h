@@ -3,8 +3,7 @@
 
 namespace special_functions::detail {
     template<typename Tp>
-    struct jacobi_t
-    {
+    struct jacobi_polynomial_p_t {
         unsigned int n;
         Tp alpha1;
         Tp beta1;
@@ -14,12 +13,8 @@ namespace special_functions::detail {
         Tp P_nm2;
 
         constexpr Tp
-        deriv() const noexcept
-        {
-            auto apbp2k = alpha1 + beta1 + Tp(2 * n);
-            return (n * (alpha1 - beta1 - apbp2k * x) * P_nm1
-                    + Tp{2} * (n + alpha1) * (n + beta1) * P_nm2)
-                   / (apbp2k * (Tp{1} - x * x));
+        deriv() const noexcept {
+            return (n * (alpha1 - beta1 - (alpha1 + beta1 + Tp(2 * n)) * x) * P_nm1 + Tp{2} * (n + alpha1) * (n + beta1) * P_nm2) / ((alpha1 + beta1 + Tp(2 * n)) * (Tp{1} - x * x));
         }
     };
 }

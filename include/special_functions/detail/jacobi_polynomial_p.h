@@ -5,7 +5,7 @@
 
 namespace special_functions::detail {
     template<typename Tp>
-    jacobi_t<Tp>
+    jacobi_polynomial_p_t<Tp>
     jacobi_polynomial_p(unsigned int n, Tp alpha1, Tp beta1, Tp x) {
         if (std::isnan(alpha1) || std::isnan(beta1) || std::isnan(x)) {
             return {

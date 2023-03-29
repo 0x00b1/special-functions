@@ -3,6 +3,8 @@
 
 #include <numbers>
 
+#include "special_functions/detail/fp_type_util.h"
+
 #include <special_functions/airy_ai.h>
 #include <special_functions/airy_bi.h>
 #include <special_functions/associated_laguerre_polynomial_l.h>
