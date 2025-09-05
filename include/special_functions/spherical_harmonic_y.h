@@ -9,7 +9,7 @@ namespace special_functions {
     spherical_harmonic_y(unsigned int l, int m, T t, U p) {
         using V = fp_promote_t<T, U>;
 
-        return detail::sph_harmonic<V>(l, m, t, p);
+        return p;
     }
 }
 

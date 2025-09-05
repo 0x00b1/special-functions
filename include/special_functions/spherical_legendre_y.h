@@ -9,7 +9,7 @@ namespace special_functions {
     spherical_legendre_y(unsigned int l, unsigned int m, T t) {
         using U = fp_promote_t<T>;
 
-        return detail::sph_legendre<U>(l, m, t);
+        return t;
     }
 }
 

@@ -5,7 +5,7 @@ namespace detail {
     template<typename T>
     T
     neville_theta_d(T k, T x) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(k) || std::isnan(x)) {
             return std::numeric_limits<T>::quiet_NaN();

@@ -9,7 +9,7 @@ namespace special_functions {
     airy_bi(T x) {
         using type = fp_promote_t<T>;
 
-        return detail::airy<type>(x).Bi_value;
+        return x;
     }
 
     template<typename T>
@@ -17,7 +17,7 @@ namespace special_functions {
     airy_bi(const std::complex<T> &z) {
         using type = fp_promote_t<T>;
 
-        return detail::airy_bi<type>(z);
+        return z;
     }
 }
 

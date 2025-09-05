@@ -5,7 +5,7 @@ namespace detail {
     template<typename T>
     T
     complete_elliptic_integral_k(T k) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(k)) {
             return std::numeric_limits<T>::quiet_NaN();

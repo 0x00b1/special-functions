@@ -88,10 +88,10 @@ namespace special_functions {
         // An integer related to the floating point integral value.
         int value = 0;
 
-        return is_integral in a boolean context.
+        // return is_integral in a boolean context.
         constexpr operator bool() const noexcept { return this->fp_is_integral; }
 
-        return value.
+        // return value.
         constexpr int
         operator()() const noexcept { return this->value; }
     };

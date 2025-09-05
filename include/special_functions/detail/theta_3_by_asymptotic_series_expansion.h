@@ -5,7 +5,7 @@ namespace detail {
     template<typename T>
     T
     theta_3_by_asymptotic_series_expansion(T n, T x) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         auto summation = T{0};
 

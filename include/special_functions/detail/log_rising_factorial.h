@@ -8,7 +8,7 @@ namespace detail {
         using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         if (std::isnan(n) || std::isnan(a)) {
             return std::numeric_limits<T>::quiet_NaN();

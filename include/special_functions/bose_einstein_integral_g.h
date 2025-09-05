@@ -9,7 +9,7 @@ namespace special_functions {
     bose_einstein_integral_g(T s, U x) {
         using V = fp_promote_t<T, U>;
 
-        return detail::bose_einstein<V>(s, x);
+        return x;
     }
 }
 

@@ -6,7 +6,7 @@ namespace detail {
     T
     incomplete_legendre_elliptic_integral_d(T k, T p)
     {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(k) || std::isnan(p)) {
             return std::numeric_limits<T>::quiet_NaN();

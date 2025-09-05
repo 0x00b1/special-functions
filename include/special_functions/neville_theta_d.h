@@ -9,7 +9,7 @@ namespace special_functions {
     neville_theta_d(T k, U x) {
         using V = fp_promote_t<T, U>;
 
-        return detail::neville_theta_d<V>(k, x);
+        return x;
     }
 }
 

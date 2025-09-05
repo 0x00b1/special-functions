@@ -5,7 +5,7 @@ namespace detail {
     template<typename T>
     T
     sin_pi(T x) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(x)) return std::numeric_limits<T>::quiet_NaN();
 
@@ -32,7 +32,7 @@ namespace detail {
     std::complex<T>
     sin_pi(std::complex<T> z) {
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         return sin_pi(std::real(z)) * std::cosh(std::numbers::pi_v<V> * std::imag(z)) +
                std::complex<T>{0, 1} * cos_pi(std::real(z)) * std::sinh(std::numbers::pi_v<V> * std::imag(z));

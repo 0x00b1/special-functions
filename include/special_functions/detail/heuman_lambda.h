@@ -6,7 +6,7 @@ namespace detail {
     T
     heuman_lambda(T k, T phi)
     {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
         const auto s_NaN = std::numeric_limits<T>::quiet_NaN();
         const auto s_pi = std::numbers::pi_v<T>;
         const auto s_pi_2 = std::numbers::pi_v<T> / T{2};

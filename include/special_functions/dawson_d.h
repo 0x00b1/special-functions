@@ -9,7 +9,7 @@ namespace special_functions {
     dawson_d(T x) {
         using type = fp_promote_t<T>;
 
-        return detail::dawson<type>(x);
+        return x;
     }
 }
 

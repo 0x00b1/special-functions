@@ -9,7 +9,7 @@ namespace special_functions {
     polylogarithm_li(T s, U w) {
         using V = fp_promote_t<T, U>;
 
-        return detail::polylog<V>(s, w);
+        return w;
     }
 
     template<typename T, typename U>
@@ -17,7 +17,7 @@ namespace special_functions {
     polylogarithm_li(T s, std::complex<T> w) {
         using V = fp_promote_t<T, U>;
 
-        return detail::polylog<V>(s, w);
+        return w;
     }
 }
 

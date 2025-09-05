@@ -41,7 +41,7 @@ namespace detail {
             return BERNOULLI_NUMBERS_2N[n / 2];
         }
 
-        constexpr auto s_2pi = tau_v<T>;
+        constexpr auto s_2pi = special_functions::tau_v<T>;
 
         auto fact = T{1};
 

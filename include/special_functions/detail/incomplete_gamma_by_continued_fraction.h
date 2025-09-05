@@ -6,7 +6,7 @@ namespace detail {
     std::pair<Tp, Tp>
     incomplete_gamma_by_continued_fraction(Tp a, Tp x) {
         using Val = Tp;
-        using Real = num_traits_t<Val>;
+        using Real = special_functions::num_traits_t<Val>;
         const auto s_fpmin = Real{3} * std::numeric_limits<Tp>::lim_min();
         const auto s_eps = Real{3} * std::numeric_limits<Tp>::epsilon();
         unsigned int s_itmax = 10 * int(10 + std::sqrt(std::abs(a)));

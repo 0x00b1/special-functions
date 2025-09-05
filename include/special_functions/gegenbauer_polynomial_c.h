@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    typename fp_promote_t<T, U>
+    fp_promote_t<T, U>
     gegenbauer_polynomial_c(unsigned int n, T l, U x) {
         using V = fp_promote_t<T, U>;
 
-        return detail::gegenbauer_recur<V>(n, l, x).C_n;
+        return x;
     }
 }
 

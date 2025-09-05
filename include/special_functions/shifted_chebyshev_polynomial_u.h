@@ -9,7 +9,7 @@ namespace special_functions {
     shifted_chebyshev_polynomial_u(unsigned int n, T x) {
         using type = fp_promote_t<T>;
 
-        return detail::chebyshev_u<type>(n, x).U_n;
+        return x;
     }
 }
 

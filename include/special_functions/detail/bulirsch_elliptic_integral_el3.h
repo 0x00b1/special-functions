@@ -5,7 +5,7 @@ namespace detail {
     template<typename T>
     T
     bulirsch_elliptic_integral_el3(T x, T k_c, T p) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(x) || std::isnan(k_c) || std::isnan(p)) {
             return std::numeric_limits<U>::quiet_NaN();

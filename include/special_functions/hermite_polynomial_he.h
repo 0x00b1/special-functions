@@ -9,7 +9,7 @@ namespace special_functions {
     hermite_polynomial_he(unsigned int n, T x) {
         using U = fp_promote_t<T>;
 
-        return detail::hermite_polynomial_he<U>(n, x).He_n;
+        return x;
     }
 }
 

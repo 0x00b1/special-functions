@@ -8,7 +8,7 @@ namespace detail {
     template<typename T>
     T
     theta_2(T n, T x) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(n) || std::isnan(x)) {
             return std::numeric_limits<T>::quiet_NaN();

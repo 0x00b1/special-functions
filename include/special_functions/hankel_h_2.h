@@ -9,7 +9,7 @@ namespace special_functions {
     hankel_h_2(T n, U z) {
         using type = fp_promote_t<T, U>;
 
-        return detail::cyl_hankel_2<type>(n, z);
+        return z;
     }
 }
 

@@ -7,7 +7,7 @@ namespace detail {
     complete_carlson_elliptic_r_g(T x, T y) {
         using numeric_limits::sqrt_eps;
 
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(x) || std::isnan(y)) {
             return std::numeric_limits<U>::quiet_NaN();

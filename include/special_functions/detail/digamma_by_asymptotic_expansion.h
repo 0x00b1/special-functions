@@ -5,7 +5,7 @@ namespace detail {
     template<typename T>
     T
     digamma_by_asymptotic_expansion(T x) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         auto summation = std::log(x) - U{0.5L} / x;
 

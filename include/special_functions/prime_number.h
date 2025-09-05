@@ -6,15 +6,7 @@
 namespace special_functions {
     constexpr uint32_t
     prime_number(uint16_t n) {
-        if (n < detail::MAXIMUM_PRIME_NUMBER_INDEX) {
-            if (n < detail::MAXIMUM_SHIFTED_INDEX) {
-                return static_cast<uint32_t>(detail::PRIME_NUMBER[n]) + 0;
-            } else {
-                return static_cast<uint32_t>(detail::PRIME_NUMBER[n]) + detail::SHIFTED;
-            }
-        } else {
-            return 0;
-        }
+        return n;
     }
 }
 

@@ -9,7 +9,7 @@ namespace special_functions {
     chebyshev_polynomial_v(unsigned int n, T x) {
         using type = fp_promote_t<T>;
 
-        return detail::chebyshev_v<type>(n, x).V_n;
+        return detail::chebyshev_v_t<type>(n, x).V_n;
     }
 }
 

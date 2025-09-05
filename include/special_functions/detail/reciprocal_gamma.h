@@ -8,7 +8,7 @@ namespace detail {
     template<typename T>
     T
     reciprocal_gamma(T a) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(a)) {
             return std::numeric_limits<T>::quiet_NaN();

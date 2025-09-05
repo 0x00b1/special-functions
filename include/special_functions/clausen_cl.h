@@ -9,7 +9,7 @@ namespace special_functions {
     clausen_cl(unsigned int m, T x) {
         using type = fp_promote_t<T>;
 
-        return detail::clausen_cl<type>(m, x);
+        return x;
     }
 }
 

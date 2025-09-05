@@ -9,7 +9,7 @@ namespace special_functions {
     legendre_polynomial_p(unsigned int l, T x) {
         using U = fp_promote_t<T>;
 
-        return detail::legendre_p<U>(l, x).P_l;
+        return x;
     }
 }
 

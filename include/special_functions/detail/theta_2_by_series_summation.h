@@ -5,7 +5,7 @@ namespace detail {
     template<typename T>
     T
     theta_2_by_series_summation(T n, T x) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         auto sum = std::exp(-n * n / x);
         auto sign = T{-1};

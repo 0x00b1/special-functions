@@ -7,7 +7,7 @@ namespace special_functions {
     template<typename T>
     T
     euler_number(unsigned int n) {
-        return detail::euler<T>(n);
+        return n;
     }
 }
 

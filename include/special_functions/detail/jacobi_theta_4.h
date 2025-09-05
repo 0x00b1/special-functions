@@ -16,7 +16,7 @@ namespace detail {
     template<typename Tp>
     Tp
     jacobi_theta_4_sum(Tp q, Tp x) {
-        using Real = num_traits_t<Tp>;
+        using Real = special_functions::num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         constexpr std::size_t s_max_iter = 50;
 
@@ -48,7 +48,7 @@ namespace detail {
     template<typename Tp>
     Tp
     jacobi_theta_4_prod(Tp q, Tp x) {
-        using Real = num_traits_t<Tp>;
+        using Real = special_functions::num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         constexpr std::size_t s_max_iter = 50;
         const auto q2 = q * q;
@@ -102,7 +102,7 @@ namespace detail {
     template<typename Tp>
     std::complex<Tp>
     jacobi_theta_4(std::complex<Tp> q, std::complex<Tp> x) {
-        using Real = num_traits_t<Tp>;
+        using Real = special_functions::num_traits_t<Tp>;
         using Cmplx = std::complex<Real>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
         const auto s_eps = std::numeric_limits<Tp>::epsilon();

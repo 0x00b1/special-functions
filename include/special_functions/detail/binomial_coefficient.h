@@ -2,6 +2,8 @@
 #define SPECIAL_FUNCTIONS_DETAIL_BINOMIAL_COEFFICIENT_H
 
 #include <limits>
+#include <special_functions/factorial.h>
+#include <special_functions/log_binomial_coefficient.h>
 
 #include <special_functions/numbers.h>
 #include <special_functions/numeric_limits.h>
@@ -13,7 +15,7 @@ namespace detail {
         using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using Val = Tp;
-        using Real = num_traits_t<Val>;
+        using Real = special_functions::num_traits_t<Val>;
         // Max e exponent before overflow.
         const auto max_binom
                 = numeric_limits::max_exponent10<Real>()
@@ -29,10 +31,10 @@ namespace detail {
             if (n < MAXIMUM_FACTORIAL_INDEX<Real>
                 && k < MAXIMUM_FACTORIAL_INDEX<Real>
                 && nmk < MAXIMUM_FACTORIAL_INDEX<Real>)
-                return factorial<Tp>(n)
-                       / factorial<Tp>(k) / factorial<Tp>(nmk);
+                return special_functions::factorial<Tp>(n)
+                       / special_functions::factorial<Tp>(k) / special_functions::factorial<Tp>(nmk);
             else {
-                const auto log_coeff = log_binomial<Val>(n, k);
+                const auto log_coeff = special_functions::log_binomial_coefficient<Val>(n, k);
                 if (std::abs(log_coeff) > max_binom)
                     return std::numeric_limits<Tp>::infinity();
                 else
@@ -47,7 +49,7 @@ namespace detail {
         using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using Val = Tp;
-        using Real = num_traits_t<Val>;
+        using Real = special_functions::num_traits_t<Val>;
 
         auto n = int(std::nearbyint(nu));
 
@@ -55,7 +57,7 @@ namespace detail {
             return std::numeric_limits<Tp>::quiet_NaN();
 
         if (nu == n && n >= 0 && n < MAXIMUM_FACTORIAL_INDEX<Real>)
-            return binomial<Tp>(static_cast<unsigned int>(n), k);
+            return binomial_coefficient<Tp>(static_cast<unsigned int>(n), k);
 
         if (std::abs(nu) < MAXIMUM_FACTORIAL_INDEX<Real> && k < MAXIMUM_FACTORIAL_INDEX<Real>)
             return gamma(nu + Tp{1}) / gamma(Tp(k + 1)) / gamma(nu - Tp(k + 1));

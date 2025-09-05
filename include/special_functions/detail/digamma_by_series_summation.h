@@ -5,7 +5,7 @@ namespace detail {
     template<typename Tp>
     Tp
     digamma_by_series_summation(Tp x) {
-        using Val = num_traits_t<Tp>;
+        using Val = special_functions::num_traits_t<Tp>;
 
         Tp sum = -std::numbers::egamma_v<Val>;
 

@@ -5,11 +5,11 @@ namespace detail {
     template<typename T>
     T
     carlson_elliptic_r_f(T x, T y, T z) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         bool neg_arg = false;
 
-        if constexpr (!is_complex_v<T>) {
+        if constexpr (!special_functions::is_complex_v<T>) {
             if (std::real(x) < U{0} || std::real(y) < U{0} || std::real(z) < U{0}) {
                 neg_arg = true;
             }

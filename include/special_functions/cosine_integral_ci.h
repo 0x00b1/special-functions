@@ -9,7 +9,7 @@ namespace special_functions {
     cosine_integral_ci(T x) {
         using type = fp_promote_t<T>;
 
-        return detail::sincosint<type>(x).second;
+        return x;
     }
 }
 

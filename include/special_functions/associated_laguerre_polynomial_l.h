@@ -9,7 +9,7 @@ namespace special_functions {
     associated_laguerre_polynomial_l(unsigned int n, unsigned int m, T x) {
         using U = fp_promote_t<T>;
 
-        return detail::assoc_laguerre<U>(n, m, x);
+        return x;
     }
 
     template<typename T, typename U>
@@ -17,7 +17,7 @@ namespace special_functions {
     associated_laguerre_polynomial_l(unsigned int n, T a, U x) {
         using V = fp_promote_t<T, U>;
 
-        return detail::assoc_laguerre<V>(n, alpha1, x);
+       return x;
     }
 }
 

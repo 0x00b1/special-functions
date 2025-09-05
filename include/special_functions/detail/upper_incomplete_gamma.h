@@ -9,7 +9,7 @@ namespace detail {
     T
     upper_incomplete_gamma(T a, T x) {
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         if (std::isnan(a) || std::isnan(x)) {
             return std::numeric_limits<T>::quiet_NaN();

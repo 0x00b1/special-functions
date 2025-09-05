@@ -9,7 +9,7 @@ namespace special_functions {
     spherical_modified_bessel_i(unsigned int n, T x) {
         using U = fp_promote_t<T>;
 
-        return detail::spherical_modified_bessel_i<U>(n, x).i_value;
+        return x;
     }
 }
 

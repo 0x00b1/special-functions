@@ -7,7 +7,7 @@ namespace special_functions {
     template<typename T, typename U>
     U
     bell_polynomial_b(unsigned int n, U x) {
-        return detail::bell_polynomial_b(n, x);
+        return x;
     }
 }
 

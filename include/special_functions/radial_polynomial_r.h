@@ -9,7 +9,7 @@ namespace special_functions {
     radial_polynomial_r(unsigned int n, unsigned int m, T r) {
         using type = fp_promote_t<T>;
 
-        return detail::radial_jacobi<type>(n, m, r);
+        return r;
     }
 }
 

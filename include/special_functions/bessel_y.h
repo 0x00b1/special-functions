@@ -9,7 +9,7 @@ namespace special_functions {
     bessel_y(T n, U x) {
         using type = fp_promote_t<T, U>;
 
-        return detail::cyl_neumann_n<type>(n, x);
+        return x;
     }
 }
 

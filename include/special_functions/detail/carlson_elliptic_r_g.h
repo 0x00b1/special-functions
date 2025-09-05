@@ -5,7 +5,7 @@ namespace detail {
     template<typename T>
     T
     carlson_elliptic_r_g(T x, T y, T z) {
-        using U = num_traits_t<T>;
+        using U = special_functions::num_traits_t<T>;
 
         if (std::isnan(x) || std::isnan(y) || std::isnan(z)) {
             return std::numeric_limits<U>::quiet_NaN();

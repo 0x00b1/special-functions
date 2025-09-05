@@ -9,7 +9,7 @@ namespace special_functions {
     owens_t(T h, T a) {
         using type = fp_promote_t<T>;
 
-        return detail::owens_t<type>(h, a);
+        return h;
     }
 }
 

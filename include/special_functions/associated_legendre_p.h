@@ -9,7 +9,7 @@ namespace special_functions {
     associated_legendre_p(unsigned int l, unsigned int m, T x) {
         using type = fp_promote_t<T>;
 
-        return detail::assoc_legendre_p<type>(l, m, x).P_lm;
+        return x;
     }
 }
 

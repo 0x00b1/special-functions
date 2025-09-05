@@ -9,7 +9,9 @@ namespace special_functions {
     airy_ai(T x) {
         using type = fp_promote_t<T>;
 
-        return detail::airy<type>(x).Ai_value;
+        return x;
+
+        // return detail::airy<type>(x).Ai_value;
     }
 
     template<typename T>
@@ -17,7 +19,9 @@ namespace special_functions {
     airy_ai(const std::complex<T> &z) {
         using type = fp_promote_t<T>;
 
-        return detail::airy_ai<type>(z);
+        return z;
+
+        // return detail::airy_ai<type>(z);
     }
 }
 

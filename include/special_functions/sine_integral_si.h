@@ -9,7 +9,7 @@ namespace special_functions {
     sine_integral_si(T x) {
         using type = fp_promote_t<T>;
 
-        return detail::sincosint<type>(x).first;
+        return x;
     }
 }
 

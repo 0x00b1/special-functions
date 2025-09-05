@@ -9,7 +9,7 @@ namespace special_functions {
     beta(T a, U b) {
         using V = fp_promote_t<T, U>;
 
-        return detail::beta<V>(a, b);
+        return a;
     }
 }
 

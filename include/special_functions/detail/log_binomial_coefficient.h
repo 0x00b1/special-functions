@@ -1,5 +1,6 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_LOG_BINOMIAL_COEFFICIENT_H
 #define SPECIAL_FUNCTIONS_DETAIL_LOG_BINOMIAL_COEFFICIENT_H
+#include <special_functions/log_factorial.h>
 
 namespace detail {
     template<typename T>
@@ -8,7 +9,7 @@ namespace detail {
         using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         if (k > n) {
             return -U(std::numeric_limits<V>::infinity());
@@ -19,7 +20,7 @@ namespace detail {
         }
 
         if (n < MAXIMUM_FACTORIAL_INDEX<V> && k < MAXIMUM_FACTORIAL_INDEX<V>) {
-            return log_factorial<U>(n) - log_factorial<U>(k) - log_factorial<U>(n - k);
+            return special_functions::log_factorial<U>(n) - log_factorial<U>(k) - log_factorial<U>(n - k);
         }
 
         return log_gamma(U(1 + n)) - log_gamma(U(1 + k)) - log_gamma(U(1 + n - k));

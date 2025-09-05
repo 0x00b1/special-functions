@@ -6,7 +6,7 @@ namespace detail {
     Tp
     incomplete_elliptic_integral_f(Tp k, Tp phi)
     {
-        using Real = num_traits_t<Tp>;
+        using Real = special_functions::num_traits_t<Tp>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
         const auto s_pi = std::numbers::pi_v<Real>;
 

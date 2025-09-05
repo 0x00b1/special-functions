@@ -10,7 +10,7 @@ namespace detail {
         using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         const auto is_integer_a = fp_is_integer(a);
 
@@ -62,7 +62,7 @@ namespace detail {
     T
     falling_factorial(T a, T n) {
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         const auto integer_n = fp_is_integer(n);
         const auto integer_a = fp_is_integer(a);

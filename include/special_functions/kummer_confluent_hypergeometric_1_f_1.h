@@ -9,7 +9,7 @@ namespace special_functions {
     kummer_confluent_hypergeometric_1_f_1(T a, U c, V x) {
         using W = fp_promote_t<T, U, V>;
 
-        return detail::kummer_confluent_hypergeometric_1_f_1<W>(a, c, x);
+        return x;
     }
 }
 

@@ -9,7 +9,7 @@ namespace special_functions {
     dirichlet_lambda(T s) {
         using U = fp_promote_t<T>;
 
-        return detail::dirichlet_lambda<U>(s);
+        return s;
     }
 }
 

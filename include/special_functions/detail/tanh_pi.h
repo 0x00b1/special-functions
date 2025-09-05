@@ -6,7 +6,7 @@ namespace detail {
     T
     tanh_pi(T x) {
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         return std::tanh(std::numbers::pi_v<V> * x);
     }
@@ -15,7 +15,7 @@ namespace detail {
     std::complex<T>
     tanh_pi(std::complex<T> z) {
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         const auto a = std::tanh(std::numbers::pi_v<V> * std::real(z));
         const auto b = tan_pi(std::imag(z));

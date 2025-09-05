@@ -18,7 +18,7 @@ namespace detail {
     Tp
     regularized_gamma_p(Tp a, Tp x) {
         using Val = Tp;
-        using Real = num_traits_t<Val>;
+        using Real = special_functions::num_traits_t<Val>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
 
         if (std::isnan(a) || std::isnan(x))

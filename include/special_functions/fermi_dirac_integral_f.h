@@ -9,7 +9,7 @@ namespace special_functions {
     fermi_dirac_integral_f(T s, U x) {
         using V = fp_promote_t<T, U>;
 
-        return detail::fermi_dirac<V>(s, x);
+        return x;
     }
 }
 

@@ -9,7 +9,7 @@ namespace special_functions {
     dirichlet_eta(T s) {
         using U = fp_promote_t<T>;
 
-        return detail::dirichlet_eta<U>(s);
+        return s;
     }
 }
 

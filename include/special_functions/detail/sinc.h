@@ -3,7 +3,7 @@
 
 namespace detail {
     template<typename T>
-    fp_promote_t<T>
+    special_functions::fp_promote_t<T>
     sinc(T x) {
         if (std::isnan(x)) {
             return std::numeric_limits<T>::quiet_NaN();

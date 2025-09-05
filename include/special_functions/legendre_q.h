@@ -9,7 +9,7 @@ namespace special_functions {
     legendre_q(unsigned int l, T x) {
         using U = fp_promote_t<T>;
 
-        return detail::legendre_q<U>(l, x).Q_l;
+        return x;
     }
 }
 

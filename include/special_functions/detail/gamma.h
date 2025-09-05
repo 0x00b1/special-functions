@@ -9,7 +9,7 @@ namespace detail {
         using numbers::FACTORIALS;
 
         using U = T;
-        using V = num_traits_t<U>;
+        using V = special_functions::num_traits_t<U>;
 
         auto is_integer_a = fp_is_integer(a);
 
