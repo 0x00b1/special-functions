@@ -24,7 +24,7 @@ namespace special_functions {
      * Return a fraction as a real number.
      */
     template<intmax_t Num, intmax_t Den = 1, typename Tp = double>
-    inline constexpr Tp
+    constexpr Tp
     frac() {
         using rat_t = std::ratio<Num, Den>;
         return Tp(rat_t::num) / Tp(rat_t::den);

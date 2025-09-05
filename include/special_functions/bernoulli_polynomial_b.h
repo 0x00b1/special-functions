@@ -5,9 +5,9 @@
 
 namespace special_functions {
     template<typename T>
-    inline T
+    T
     bernoulli_polynomial_b(unsigned int n, T x) {
-        return special_functions::detail::bernoulli_polynomial_b(n, x);
+        return detail::bernoulli_polynomial_b(n, x);
     }
 }
 

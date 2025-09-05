@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<T, U>
+    fp_promote_t<T, U>
     complete_carlson_elliptic_r_f(T x, U y) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        return special_functions::detail::complete_carlson_elliptic_r_f<V>(x, y);
+        return detail::complete_carlson_elliptic_r_f<V>(x, y);
     }
 }
 

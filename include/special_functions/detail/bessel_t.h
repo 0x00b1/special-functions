@@ -23,7 +23,7 @@ namespace special_functions::detail {
         /// The derivative of the Bessel function of the second kind.
         Tp N_deriv;
 
-        /// Return the Wronskian of this cylindrical Bessel function state.
+        /return the Wronskian of this cylindrical Bessel function state.
         constexpr Tp
         Wronskian() const noexcept
         { return J_value * N_deriv - N_value * J_deriv; }

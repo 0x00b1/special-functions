@@ -26,7 +26,7 @@ namespace special_functions::detail {
         /// The derivative of the spherical Hankel function of the second kind.
         Tp h2_deriv;
 
-        /// Return the Wronskian of this cylindrical Hankel function state.
+        /return the Wronskian of this cylindrical Hankel function state.
         constexpr Tp
         Wronskian() const noexcept
         { return h1_value * h2_deriv - h2_value * h1_deriv; }

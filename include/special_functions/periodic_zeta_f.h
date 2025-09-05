@@ -3,19 +3,19 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<std::complex<T>, U>
+    fp_promote_t<std::complex<T>, U>
     periodic_zeta(T x, U s) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        // return emsr::detail::periodic_zeta<V>(x, s);
+        return detail::periodic_zeta<V>(x, s);
     }
 
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<std::complex<T>, std::complex<U>>
+    fp_promote_t<std::complex<T>, std::complex<U>>
     periodic_zeta(std::complex<U> z, T s) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        // return emsr::detail::periodic_zeta<V>(z, s);
+        return detail::periodic_zeta<V>(z, s);
     }
 }
 

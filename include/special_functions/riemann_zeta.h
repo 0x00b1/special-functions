@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     riemann_zeta(T s) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        return special_functions::detail::riemann_zeta<U>(s);
+        return detail::riemann_zeta<U>(s);
     }
 }
 

@@ -5,9 +5,9 @@
 
 namespace special_functions {
     template<typename T>
-    inline T
+    T
     lah_number(unsigned int n, unsigned int k) {
-        return special_functions::detail::lah_number<T>(n, k);
+        return detail::lah_number<T>(n, k);
     }
 }
 

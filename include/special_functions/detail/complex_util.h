@@ -16,14 +16,14 @@ namespace std {
      * Return true if one component of a complex number is NaN.
      */
     template<typename Tp>
-    inline bool
+    bool
     isnan(const std::complex<Tp> &z) { return std::isnan(std::real(z)) || std::isnan(std::imag(z)); }
 
     /**
      * Return true if one component of a complex number is inf.
      */
     template<typename Tp>
-    inline bool
+    bool
     isinf(const std::complex<Tp> &z) { return isinf(std::real(z)) || isinf(std::imag(z)); }
 
 } // namespace std
@@ -102,7 +102,7 @@ namespace special_functions {
      *         or differ only by @f$ max(a,b) * mul * epsilon @f$
      */
     template<typename Tp>
-    inline bool
+    bool
     fp_is_equal(const std::complex<Tp> &a, const std::complex<Tp> &b,
                 Tp mul = Tp{1}) {
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
@@ -124,7 +124,7 @@ namespace special_functions {
      *         or differ only by @f$ max(a,b) * mul * epsilon @f$
      */
     template<typename Tp>
-    inline bool
+    bool
     fp_is_equal(const std::complex<Tp> &a, Tp b,
                 Tp mul = Tp{1}) {
         if (fp_is_real(a, mul))
@@ -143,7 +143,7 @@ namespace special_functions {
      *         or differ only by @f$ max(a,b) * mul * epsilon @f$
      */
     template<typename Tp>
-    inline bool
+    bool
     fp_is_equal(const Tp a, std::complex<Tp> &b,
                 Tp mul = Tp{1}) {
         if (fp_is_real(b, mul))
@@ -161,7 +161,7 @@ namespace special_functions {
      *         or differ only by @f$ max(a,b) * mul * epsilon @f$
      */
     template<typename Tp>
-    inline bool
+    bool
     fp_is_zero(const std::complex<Tp> &a, Tp mul = Tp{1}) { return fp_is_zero(std::abs(a), mul); }
 
     /**
@@ -171,7 +171,7 @@ namespace special_functions {
      * @return @c true if a is an integer within mul * epsilon.
      */
     template<typename Tp>
-    inline fp_is_integer_t
+    fp_is_integer_t
     fp_is_integer(const std::complex<Tp> &a, Tp mul = Tp{1}) {
         if (fp_is_real(a, mul))
             return fp_is_integer(std::real(a), mul);
@@ -187,7 +187,7 @@ namespace special_functions {
      *            and the returned value is half the integer, int(a) / 2.
      */
     template<typename Tp>
-    inline fp_is_integer_t
+    fp_is_integer_t
     fp_is_half_integer(const std::complex<Tp> &a, Tp mul = Tp{1}) {
         if (fp_is_real(a, mul))
             return fp_is_half_integer(std::real(a), mul);
@@ -204,7 +204,7 @@ namespace special_functions {
      *            and the returned value is int(a - 1) / 2.
      */
     template<typename Tp>
-    inline fp_is_integer_t
+    fp_is_integer_t
     fp_is_half_odd_integer(const std::complex<Tp> &a, Tp mul = Tp{1}) {
         if (fp_is_real(a, mul))
             return fp_is_half_odd_integer(std::real(a), mul);
@@ -220,7 +220,7 @@ namespace special_functions {
      * @return @c true if a is an even integer within mul * epsilon.
      */
     template<typename Tp>
-    inline fp_is_integer_t
+    fp_is_integer_t
     fp_is_even_integer(const std::complex<Tp> &a, Tp mul = Tp{1}) {
         if (fp_is_real(a, mul)) {
             const auto integ = fp_is_integer(std::real(a), mul);
@@ -237,7 +237,7 @@ namespace special_functions {
      * @return @c true if a is an odd integer within mul * epsilon.
      */
     template<typename Tp>
-    inline fp_is_integer_t
+    fp_is_integer_t
     fp_is_odd_integer(const std::complex<Tp> &a, Tp mul = Tp{1}) {
         if (fp_is_real(a, mul)) {
             const auto integ = fp_is_integer(std::real(a), mul);

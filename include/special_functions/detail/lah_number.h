@@ -5,7 +5,7 @@
 
 namespace special_functions::detail {
     template<typename T>
-    inline T
+    T
     lah_number(unsigned int n, unsigned int k) {
         return lah_number_by_recursion<T>(n, k);
     }

@@ -5,7 +5,7 @@
 
 namespace special_functions::detail {
     template<typename T>
-    inline T
+    T
     eulerian_number_1(unsigned int n, unsigned int m) {
         return eulerian_number_1_by_recursion<T>(n, m);
     }

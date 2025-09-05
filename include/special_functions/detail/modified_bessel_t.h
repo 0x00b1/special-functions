@@ -27,7 +27,7 @@ namespace special_functions::detail {
         /// of the second kind.
         Tp K_deriv;
 
-        /// Return the Wronskian of this modified cylindrical Bessel function
+        /return the Wronskian of this modified cylindrical Bessel function
         /// state.
         constexpr Tp
         Wronskian() const noexcept

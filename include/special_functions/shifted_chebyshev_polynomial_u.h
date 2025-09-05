@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     shifted_chebyshev_polynomial_u(unsigned int n, T x) {
-        using type = special_functions::fp_promote_t<T>;
+        using type = fp_promote_t<T>;
 
-        // return special_functions::detail::chebyshev_u<type>(n, x).U_n;
+        return detail::chebyshev_u<type>(n, x).U_n;
     }
 }
 

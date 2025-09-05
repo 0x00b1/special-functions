@@ -5,17 +5,17 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     cos_pi(T x) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        return special_functions::detail::cos_pi<U>(x);
+        return detail::cos_pi<U>(x);
     }
 
     template<typename T>
-    inline std::complex<T>
+    std::complex<T>
     cos_pi(std::complex<T> z) {
-        return special_functions::detail::cos_pi(z);
+        return detail::cos_pi(z);
     }
 }
 

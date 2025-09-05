@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     reciprocal_gamma(T a) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        return special_functions::detail::reciprocal_gamma<U>(a);
+        return detail::reciprocal_gamma<U>(a);
     }
 }
 

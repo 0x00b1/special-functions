@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline T
+    T
     nome_q(T k) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        // return special_functions::detail::nome_q<U>(k);
+        return detail::nome_q<U>(k);
     }
 }
 

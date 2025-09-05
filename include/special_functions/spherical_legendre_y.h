@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     spherical_legendre_y(unsigned int l, unsigned int m, T t) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        // return detail::sph_legendre<U>(l, m, t);
+        return detail::sph_legendre<U>(l, m, t);
     }
 }
 

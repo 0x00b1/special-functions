@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<T, U>
+    fp_promote_t<T, U>
     theta_1(T n, U x) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        return special_functions::detail::theta_1<V>(n, x);
+        return detail::theta_1<V>(n, x);
     }
 }
 

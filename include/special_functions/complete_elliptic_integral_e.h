@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     complete_elliptic_integral_e(T k) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        return special_functions::detail::complete_elliptic_integral_e<U>(k);
+        return detail::complete_elliptic_integral_e<U>(k);
     }
 }
 

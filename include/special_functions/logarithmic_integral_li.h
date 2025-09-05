@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     logarithmic_integral_li(T x) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        return special_functions::detail::logarithmic_integral_li<U>(x);
+        return detail::logarithmic_integral_li<U>(x);
     }
 }
 

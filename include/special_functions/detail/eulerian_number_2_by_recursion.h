@@ -29,7 +29,8 @@ namespace special_functions::detail {
             std::swap(previous, current);
 
             for (auto k = 1u; k <= m; k++) {
-                current[k] = (2 * j - k - 1) * previous[k - 1] + (k + 1) * previous[k];
+                current[k] = (2 * j - k - 1) * previous[k - 1] + (k + 1) *
+                             previous[k];
             }
         }
 

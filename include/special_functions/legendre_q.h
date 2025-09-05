@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     legendre_q(unsigned int l, T x) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        // return emsr::detail::legendre_q<U>(l, x).Q_l;
+        return detail::legendre_q<U>(l, x).Q_l;
     }
 }
 

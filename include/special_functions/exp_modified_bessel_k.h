@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<T, U>
+    fp_promote_t<T, U>
     exp_modified_bessel_k(T n, U x) {
-        using type = special_functions::fp_promote_t<T, U>;
+        using type = fp_promote_t<T, U>;
 
-        // return special_functions::detail::cyl_bessel_k_scaled<type>(n, x);
+        return detail::cyl_bessel_k_scaled<type>(n, x);
     }
 }
 

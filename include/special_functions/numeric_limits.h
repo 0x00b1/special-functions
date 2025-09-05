@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_NUMERIC_LIMITS_H
 #define SPECIAL_FUNCTIONS_NUMERIC_LIMITS_H
 
-namespace special_functions::numeric_limits {
+namespace numeric_limits {
     template<typename Tp>
     constexpr bool
     is_specialized(Tp = Tp{}) noexcept { return std::numeric_limits<Tp>::is_specialized; }
@@ -134,67 +134,67 @@ namespace special_functions::numeric_limits {
     // These depend on constexpr math functions.
 
     template<typename Tp>
-    inline Tp
+    Tp
     max_integer(Tp = Tp{}) noexcept { return std::ldexp(Tp{1}, digits(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     sqrt_max(Tp = Tp{}) noexcept { return std::sqrt(lim_max(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     cbrt_max(Tp = Tp{}) noexcept { return std::cbrt(lim_max(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     root_max(Tp root) noexcept { return std::pow(lim_max(Tp{}), 1 / root); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     log_max(Tp = Tp{}) noexcept { return std::log(lim_max(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     log10_max(Tp = Tp{}) noexcept { return std::log10(lim_max(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     sqrt_min(Tp = Tp{}) noexcept { return std::sqrt(lim_min(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     cbrt_min(Tp = Tp{}) noexcept { return std::cbrt(lim_min(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     root_min(Tp root) noexcept { return std::pow(lim_min(Tp{}), 1 / root); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     log_min(Tp = Tp{}) noexcept { return std::log(lim_min(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     log10_min(Tp = Tp{}) noexcept { return std::log10(lim_min(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     sqrt_eps(Tp = Tp{}) noexcept { return std::sqrt(epsilon(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     cbrt_eps(Tp = Tp{}) noexcept { return std::cbrt(epsilon(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     root_eps(Tp root) noexcept { return std::pow(epsilon(Tp{}), 1 / root); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     log_eps(Tp = Tp{}) noexcept { return std::log(epsilon(Tp{})); }
 
     template<typename Tp>
-    inline Tp
+    Tp
     log10_eps(Tp = Tp{}) noexcept { return std::log10(epsilon(Tp{})); }
 } // namespace special_functions
 

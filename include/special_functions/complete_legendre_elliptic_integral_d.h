@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     complete_legendre_elliptic_integral_d(T k) {
-        using type = special_functions::fp_promote_t<T>;
+        using type = fp_promote_t<T>;
 
-        return special_functions::detail::complete_legendre_elliptic_integral_d<type>(k);
+        return detail::complete_legendre_elliptic_integral_d<type>(k);
     }
 }
 

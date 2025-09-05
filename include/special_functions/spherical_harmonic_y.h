@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline std::complex<special_functions::fp_promote_t<T, U>>
+    std::complex<fp_promote_t<T, U>>
     spherical_harmonic_y(unsigned int l, int m, T t, U p) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        // return emsr::detail::sph_harmonic<V>(l, m, t, p);
+        return detail::sph_harmonic<V>(l, m, t, p);
     }
 }
 

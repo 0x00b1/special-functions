@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<T, U>
+    fp_promote_t<T, U>
     falling_factorial(T a, U n) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        return special_functions::detail::falling_factorial<V>(a, n);
+        return detail::falling_factorial<V>(a, n);
     }
 }
 

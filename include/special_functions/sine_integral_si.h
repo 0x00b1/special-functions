@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     sine_integral_si(T x) {
-        using type = special_functions::fp_promote_t<T>;
+        using type = fp_promote_t<T>;
 
-        // return emsr::detail::sincosint<type>(x).first;
+        return detail::sincosint<type>(x).first;
     }
 }
 

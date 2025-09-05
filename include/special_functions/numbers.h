@@ -4,7 +4,7 @@
 #include <array>
 #include <limits>
 
-namespace special_functions::numbers {
+namespace numbers {
     template<typename Tp>
     constexpr std::size_t MAXIMUM_FACTORIAL_INDEX = 0;
 

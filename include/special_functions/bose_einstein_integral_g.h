@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<T, U>
+    fp_promote_t<T, U>
     bose_einstein_integral_g(T s, U x) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        // return emsr::detail::bose_einstein<V>(s, x);
+        return detail::bose_einstein<V>(s, x);
     }
 }
 

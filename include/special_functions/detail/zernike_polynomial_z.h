@@ -5,7 +5,7 @@
 
 namespace special_functions::detail {
     template<typename T>
-    special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     zernike_polynomial_z(unsigned int n, int m, T r, T p) {
         if (std::isnan(r) || std::isnan(p)) {
             return std::numeric_limits<T>::quiet_NaN();

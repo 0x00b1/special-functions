@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     clausen_cl(unsigned int m, T x) {
-        using type = special_functions::fp_promote_t<T>;
+        using type = fp_promote_t<T>;
 
-        // return emsr::detail::clausen_cl<type>(m, x);
+        return detail::clausen_cl<type>(m, x);
     }
 }
 

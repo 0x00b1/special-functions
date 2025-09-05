@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline T
+    T
     dirichlet_beta(T s) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        // return emsr::detail::dirichlet_beta<U>(s);
+        return detail::dirichlet_beta<U>(s);
     }
 }
 

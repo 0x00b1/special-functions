@@ -4,8 +4,7 @@
 namespace special_functions::detail {
     template<typename T>
     T
-    lah_number_by_recursion(unsigned int n, unsigned int k)
-    {
+    lah_number_by_recursion(unsigned int n, unsigned int k) {
         if (k > n) {
             return T{0};
         }
@@ -13,9 +12,9 @@ namespace special_functions::detail {
         if (n == 0) {
             if (k == 0) {
                 return T{1};
-            } else {
-                return T{0};
             }
+
+            return T{0};
         }
 
         T v = 1;

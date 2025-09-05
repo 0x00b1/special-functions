@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U, typename V>
-    inline special_functions::fp_promote_t<T, U, V>
+    fp_promote_t<T, U, V>
     incomplete_elliptic_integral_pi(T k, U n, V p) {
-        using W = special_functions::fp_promote_t<T, U, V>;
+        using W = fp_promote_t<T, U, V>;
 
-        return special_functions::detail::incomplete_elliptic_integral_pi<W>(k, n, p);
+        return detail::incomplete_elliptic_integral_pi<W>(k, n, p);
     }
 }
 

@@ -20,7 +20,7 @@ namespace special_functions::detail {
         /// The derivative of the Airy function Bi.
         Tp Bi_deriv;
 
-        /// Return the Wronskian of this Airy function state.
+        /// return the Wronskian of this Airy function state.
         constexpr Tp
         Wronskian() const noexcept
         { return Ai_value * Bi_deriv - Bi_value * Ai_deriv; }

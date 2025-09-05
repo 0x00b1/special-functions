@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     exp_airy_ai(T x) {
-        using type = special_functions::fp_promote_t<T>;
+        using type = fp_promote_t<T>;
 
-        // return special_functions::detail::airy<type>(x, true).Ai_value;
+        return detail::airy<type>(x, true).Ai_value;
     }
 }
 

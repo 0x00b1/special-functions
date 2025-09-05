@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<T, U>
+    fp_promote_t<T, U>
     regularized_gamma_q(T a, U x) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        return special_functions::detail::regularized_gamma_q<V>(a, x);
+        return detail::regularized_gamma_q<V>(a, x);
     }
 }
 

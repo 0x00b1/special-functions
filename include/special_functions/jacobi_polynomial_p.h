@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U, typename V>
-    inline special_functions::fp_promote_t<T, U, V>
+    fp_promote_t<T, U, V>
     jacobi_polynomial_p(unsigned n, T a, U b, V x) {
-        using W = special_functions::fp_promote_t<T, U, V>;
+        using W = fp_promote_t<T, U, V>;
 
-        return special_functions::detail::jacobi_polynomial_p<W>(n, a, b, x).P_n;
+        return detail::jacobi_polynomial_p<W>(n, a, b, x).P_n;
     }
 }
 

@@ -26,7 +26,7 @@ namespace special_functions::detail {
         /// The derivative of the irregular Coulomb function.
         Tp G_deriv;
 
-        /// Return the Wronskian of this Coulomb function state.
+        /return the Wronskian of this Coulomb function state.
         constexpr Tp
         Wronskian() const noexcept
         { return F_value * G_deriv - G_value * F_deriv; }

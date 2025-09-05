@@ -18,7 +18,7 @@ namespace special_functions::detail {
         operator[](unsigned int k) const noexcept
         { return k < S.size() ? S[k] : Tp{0}; }
 
-        /// Return the Bell polynomial.
+        /return the Bell polynomial.
         template<typename Up>
         auto
         operator()(Up x) const noexcept

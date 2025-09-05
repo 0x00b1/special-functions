@@ -5,9 +5,9 @@
 
 namespace special_functions {
     template<typename T>
-    inline T
+    T
     euler_number(unsigned int n) {
-        // return special_functions::detail::euler<T>(n);
+        return detail::euler<T>(n);
     }
 }
 

@@ -10,136 +10,136 @@ namespace special_functions {
     /// Euler constant @f$ e = 2.71828... @f$
     /// <a href="https://oeis.org/A001113"> (OEIS A001113) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             e_v = Tp{2.7182'81828'45904'52353'60287'47135'26624'97759e+0L};
 
     /// The base-2 logarithm of the Euler constant @f$ log_2(e) @f$
     /// <a href="https://oeis.org/A181171"> (OEIS A181171) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             log2e_v = Tp{1.4426'95040'88896'34073'59924'68100'18921'37427e+0L};
 
     /// The base-10 logarithm of the Euler constant @f$ log_{10}(e) @f$
     /// <a href="https://oeis.org/A002392"> (OEIS A002392) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             log10e_v = Tp{4.3429'44819'03251'82765'11289'18916'60508'22940e-1L};
 
     /// The Archimedean constant @f$ \pi = 3.1415... @f$
     /// <a href="https://oeis.org/A000796"> (OEIS A000796) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             pi_v = Tp{3.1415'92653'58979'32384'62643'38327'95028'84195e+0L};
 
     /// The reciprocal of Archimedes' constant @f$ 1/\pi @f$
     /// <a href="https://oeis.org/A049541"> (OEIS A049541)</a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             inv_pi_v = Tp{3.1830'98861'83790'67153'77675'26745'02872'40691e-1L};
 
     /// The reciprocal square root of Archimedes' constant @f$ 1/\sqrt{\pi} @f$
     /// <a href="https://oeis.org/A087197"> (OEIS A087197) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             inv_sqrtpi_v = Tp{5.6418'95835'47756'28694'80794'51560'77258'58438e-1L};
 
     /// The Napierian logarithm of 2 @f$ ln(2) @f$
     /// <a href="https://oeis.org/A002162"> (OEIS A002162) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             ln2_v = Tp{6.9314'71805'59945'30941'72321'21458'17656'80748e-1L};
 
     /// The Napierian logarithm of 10 @f$ ln(10) @f$
     /// <a href="https://oeis.org/A002392"> (OEIS A002392) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             ln10_v = Tp{2.3025'85092'99404'56840'17991'45468'43642'07602e+0L};
 
     /// The square root of 2 @f$ \sqrt{2} @f$
     /// <a href="https://oeis.org/A002193"> (OEIS A002193) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             sqrt2_v = Tp{1.4142'13562'37309'50488'01688'72420'96980'78569e+0L};
 
     /// The square root of 3 @f$ \sqrt{3} @f$
     /// <a href="https://oeis.org/A002194"> (OEIS A002194) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             sqrt3_v = Tp{1.7320'50807'56887'72935'27446'34150'58723'66945e+0L};
 
     /// The reciprocal square root of 3 @f$ 1 / \sqrt{3} @f$
     /// <a href="https://oeis.org/A020760"> (OEIS A020760) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             inv_sqrt3_v = Tp{5.7735'02691'89625'76450'91487'80501'95745'56475e-1L};
 
     /// The Euler-Mascheroni constant @f$ \gamma_E @f$
     /// <a href="https://oeis.org/A001620"> (OEIS A001620) </a>
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             egamma_v = Tp{5.7721'56649'01532'86060'65120'90082'40243'10432e-1L};
 
     /// The golden ratio @f$ \phi = (\sqrt{5} + 1)/2 @f$
     /// <a href="https://oeis.org/A001622"> (OEIS A001622)
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             phi_v = Tp{1.6180'33988'74989'48482'04586'83436'56381'17720e+0L};
 
     // double "specializations"
 
     /// The \c double version of the Euler constant @f$ e = 2.71828... @f$
-    inline constexpr double
+    constexpr double
             e = e_v<double>;
 
     /// The \c double version of the base-2 logarithm of the Euler constant
-    inline constexpr double
+    constexpr double
             log2e = log2e_v<double>;
 
     /// The \c double version of the base-10 logarithm of the Euler constant
-    inline constexpr double
+    constexpr double
             log10e = log10e_v<double>;
 
     /// The \c double version of the Archimedean constant @f$ \pi = 3.1415... @f$
-    inline constexpr double
+    constexpr double
             pi = pi_v<double>;
 
     /// The \c double version of the reciprocal of Archimedes' constant
     /// @f$ 1/\pi @f$
-    inline constexpr double
+    constexpr double
             inv_pi = inv_pi_v<double>;
 
     /// The \c double version of the reciprocal square root of Archimedes'
     /// constant @f$ 1/\sqrt{\pi} @f$
-    inline constexpr double
+    constexpr double
             inv_sqrtpi = inv_sqrtpi_v<double>;
 
     /// The \c double version of the Napierian logarithm of 2 @f$ ln(2) @f$
-    inline constexpr double
+    constexpr double
             ln2 = ln2_v<double>;
 
     /// The \c double version of the Napierian logarithm of 10 @f$ ln(10) @f$
-    inline constexpr double
+    constexpr double
             ln10 = ln10_v<double>;
 
     /// The \c double version of the square root of 2 @f$ \sqrt{2} @f$
-    inline constexpr double
+    constexpr double
             sqrt2 = sqrt2_v<double>;
 
     /// The \c double version of the square root of 3 @f$ \sqrt{3} @f$
-    inline constexpr double
+    constexpr double
             sqrt3 = sqrt3_v<double>;
 
     /// The \c double version of the reciprocal square root of 3
     /// @f$ 1 / \sqrt{3} @f$
-    inline constexpr double
+    constexpr double
             inv_sqrt3 = inv_sqrt3_v<double>;
 
     /// The \c double version of the Euler-Mascheroni constant @f$ \gamma_E @f$
-    inline constexpr double
+    constexpr double
             egamma = egamma_v<double>;
 
     /// The \c double version of the golden ratio @f$ \phi = (\sqrt{5} + 1)/2 @f$
-    inline constexpr double
+    constexpr double
             phi = phi_v<double>;
 
 } // namespace special_functions
@@ -150,180 +150,180 @@ namespace special_functions {
 
     // Constant @f$ 4\pi @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             pi_4_v = Tp{12.566'37061'43591'72953'85057'35331'18011'53678L};
 
     // Constant @f$ 4\pi/3 @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             pi_4_div_3_v = Tp{4.1887'90204'78639'09846'16857'84437'26705'12253L};
 
     // Constant @f$ 2\pi @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             tau_v = Tp{6.2831'85307'17958'64769'25286'76655'90057'68391L};
 
     // Constant @f$ \sqrt(\pi) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             sqrtpi_v = Tp{1.7724'53850'90551'60272'98167'48334'11451'82798L};
 
     // Constant @f$ \cbrt(\pi) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             cbrtpi_v = Tp{1.4645'91887'56152'32630'20142'52726'37903'91736L};
 
     // Constant @f$ 1 / 2\pi = 1 / \tau @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             inv_tau_v = Tp{0.1591'54943'09189'53357'68883'76337'25143'62035L};
 
     // Constant @f$ 2 / \pi @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             two_div_pi_v = Tp{0.6366'19772'36758'13430'75535'05349'00574'48138L};
 
     // Constant @f$ 2 / \sqrt(\pi) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             two_div_sqrtpi_v = Tp{1.1283'79167'09551'25738'96158'90312'15451'71688L};
 
     // Constant: @f$ \pi^2/6 @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             pi_sqr_div_6_v = Tp{1.6449'34066'84822'64364'72415'16664'60251'89221L};
 
     // Constant: @f$ \sqrt{2\pi} = \sqrt(\tau) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             sqrttau_v = Tp{2.5066'28274'63100'05024'15765'28481'10452'53010L};
 
     // Constant: @f$ \log(\sqrt{2\pi}) = \log(\sqrt(\tau)) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             lnsqrttau_v = Tp{0.9189'38533'20467'27417'80329'73640'56176'39862L};
 
     // Constant: radians to degree conversion.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             deg_v = Tp{180} / pi_v<Tp>;
 
     // Constant: degree to radians conversion.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             rad_v = pi_v<Tp> / Tp{180};
 
     // Constant @f$ 1 / e @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             inv_e_v = Tp{0.3678'79441'17144'23215'95523'77016'14608'67446L};
 
     // Constant @f$ \ln(3) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             ln3_v = Tp{1.0986'12288'66810'96913'95245'23692'25257'04648L};
 
     // Constant @f$ \log(\pi) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             lnpi_v = Tp{1.1447'29885'84940'01741'43427'35135'30587'11646L};
 
     // Catalan's constant.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             catalan_v = Tp{0.9159'65594'17721'90150'54603'51493'23841'10773L};
 
     // Constant @f$ \sqrt(3) / 2 @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             sqrt3_div_2_v = Tp{0.8660'25403'78443'86467'63723'17075'29361'83473L};
 
     // Constant @f$ \sqrt(5) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             sqrt5_v = Tp{2.2360'67977'49978'96964'09173'66873'12762'35440L};
 
     // Constant @f$ \sqrt(7) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             sqrt7_v = Tp{2.6457'51311'06459'05905'01615'75363'92604'25706L};
 
     // Constant @f$ \cbrt(3) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             cbrt3_v = Tp{1.4422'49570'30740'83823'21638'31078'01095'88390L};
 
     // Constant @f$ 1 / \sqrt(2) @f$.
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
             inv_sqrt2_v = Tp{0.7071'06781'18654'75244'00844'36210'48490'39285L};
 
     // double "specializations"
 
-    inline constexpr double
+    constexpr double
             pi_4 = pi_4_v<double>;
 
-    inline constexpr double
+    constexpr double
             pi_4_div_3 = pi_4_div_3_v<double>;
 
-    inline constexpr double
+    constexpr double
             tau = tau_v<double>;
 
-    inline constexpr double
+    constexpr double
             sqrtpi = sqrtpi_v<double>;
 
-    inline constexpr double
+    constexpr double
             cbrtpi = cbrtpi_v<double>;
 
-    inline constexpr double
+    constexpr double
             inv_tau = inv_tau_v<double>;
 
-    inline constexpr double
+    constexpr double
             two_div_pi = two_div_pi_v<double>;
 
-    inline constexpr double
+    constexpr double
             two_div_sqrtpi = two_div_sqrtpi_v<double>;
 
-    inline constexpr double
+    constexpr double
             pi_sqr_div_6 = pi_sqr_div_6_v<double>;
 
-    inline constexpr double
+    constexpr double
             sqrttau = sqrttau_v<double>;
 
-    inline constexpr double
+    constexpr double
             lnsqrttau = lnsqrttau_v<double>;
 
-    inline constexpr double
+    constexpr double
             deg = deg_v<double>;
 
-    inline constexpr double
+    constexpr double
             rad = rad_v<double>;
 
-    inline constexpr double
+    constexpr double
             inv_e = inv_e_v<double>;
 
-    inline constexpr double
+    constexpr double
             ln3 = ln3_v<double>;
 
-    inline constexpr double
+    constexpr double
             lnpi = lnpi_v<double>;
 
-    inline constexpr double
+    constexpr double
             catalan = catalan_v<double>;
 
-    inline constexpr double
+    constexpr double
             sqrt3_div_2 = sqrt3_div_2_v<double>;
 
-    inline constexpr double
+    constexpr double
             sqrt5 = sqrt5_v<double>;
 
-    inline constexpr double
+    constexpr double
             sqrt7 = sqrt7_v<double>;
 
-    inline constexpr double
+    constexpr double
             cbrt3 = cbrt3_v<double>;
 
-    inline constexpr double
+    constexpr double
             inv_sqrt2 = inv_sqrt2_v<double>;
 
 } // namespace special_functions

@@ -5,17 +5,17 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     tanh_pi(T x) {
-        using U = special_functions::fp_promote_t<T>;
+        using U = fp_promote_t<T>;
 
-        return special_functions::detail::tanh_pi<U>(x);
+        return detail::tanh_pi<U>(x);
     }
 
     template<typename T>
     std::complex<T>
     tanh_pi(std::complex<T> z) {
-        return special_functions::detail::tanh_pi(z);
+        return detail::tanh_pi(z);
     }
 }
 

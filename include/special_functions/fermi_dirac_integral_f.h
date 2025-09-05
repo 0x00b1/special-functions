@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<T, U>
+    fp_promote_t<T, U>
     fermi_dirac_integral_f(T s, U x) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        // return emsr::detail::fermi_dirac<V>(s, x);
+        return detail::fermi_dirac<V>(s, x);
     }
 }
 

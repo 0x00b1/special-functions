@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U>
-    inline special_functions::fp_promote_t<T, U>
+    fp_promote_t<T, U>
     bulirsch_elliptic_integral_el1(T x, U k_c) {
-        using V = special_functions::fp_promote_t<T, U>;
+        using V = fp_promote_t<T, U>;
 
-        return special_functions::detail::bulirsch_elliptic_integral_el1<V>(x, k_c);
+        return detail::bulirsch_elliptic_integral_el1<V>(x, k_c);
     }
 
 }

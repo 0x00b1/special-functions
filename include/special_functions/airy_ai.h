@@ -5,19 +5,19 @@
 
 namespace special_functions {
     template<typename T>
-    inline special_functions::fp_promote_t<T>
+    fp_promote_t<T>
     airy_ai(T x) {
-        using type = special_functions::fp_promote_t<T>;
+        using type = fp_promote_t<T>;
 
-        // return special_functions::detail::airy<type>(x).Ai_value;
+        return detail::airy<type>(x).Ai_value;
     }
 
     template<typename T>
-    inline std::complex<special_functions::fp_promote_t<T>>
+    std::complex<fp_promote_t<T>>
     airy_ai(const std::complex<T> &z) {
-        using type = special_functions::fp_promote_t<T>;
+        using type = fp_promote_t<T>;
 
-        // return special_functions::detail::airy_ai<type>(z);
+        return detail::airy_ai<type>(z);
     }
 }
 

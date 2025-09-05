@@ -5,11 +5,11 @@
 
 namespace special_functions {
     template<typename T, typename U, typename V, typename W>
-    inline typename special_functions::fp_promote_t<T, U, V, W>
+    typename fp_promote_t<T, U, V, W>
     gauss_hypergeometric_2_f_1(T a, U b, V c, W x) {
-        using X = special_functions::fp_promote_t<T, U, V, W>;
+        using X = fp_promote_t<T, U, V, W>;
 
-        // return special_functions::detail::gauss_hypergeometric_2_f_1<X>(a, b, c, x);
+        return detail::gauss_hypergeometric_2_f_1<X>(a, b, c, x);
     }
 }
 

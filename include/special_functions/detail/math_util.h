@@ -11,7 +11,7 @@ namespace special_functions {
      * Return -1 if the integer argument is odd and +1 if it is even.
      */
     template<typename Tp, typename _IntTp>
-    inline constexpr Tp
+    constexpr Tp
     parity(_IntTp k) noexcept { return (k & 1) ? Tp{-1} : Tp{+1}; }
 
     /**
@@ -21,7 +21,7 @@ namespace special_functions {
      * @param b The right hand side
      */
     template<typename Tp>
-    inline constexpr Tp
+    constexpr Tp
     fp_max_abs(Tp a, Tp b) noexcept {
         if (std::isnan(a) || std::isnan(b))
             return std::numeric_limits<Tp>::quiet_NaN();
@@ -42,7 +42,7 @@ namespace special_functions {
      *         or differ only by @f$ max(a,b) * mul * epsilon @f$
      */
     template<typename Tp>
-    inline constexpr bool
+    constexpr bool
     fp_is_equal(Tp a, Tp b, Tp mul = Tp{1}) noexcept {
         if (std::isnan(a) || std::isnan(b) || std::isnan(mul))
             return false;
@@ -65,7 +65,7 @@ namespace special_functions {
      *         or differ only by @f$ max(a,b) * mul * epsilon @f$
      */
     template<typename Tp>
-    inline constexpr bool
+    constexpr bool
     fp_is_zero(Tp a, Tp mul = Tp{1}) noexcept {
         if (std::isnan(a) || std::isnan(mul))
             return false;
@@ -88,10 +88,10 @@ namespace special_functions {
         // An integer related to the floating point integral value.
         int value = 0;
 
-        // Return is_integral in a boolean context.
+        return is_integral in a boolean context.
         constexpr operator bool() const noexcept { return this->fp_is_integral; }
 
-        // Return value.
+        return value.
         constexpr int
         operator()() const noexcept { return this->value; }
     };
@@ -104,7 +104,7 @@ namespace special_functions {
      * @return @c true if a is an integer within mul * epsilon.
      */
     template<typename Tp>
-    inline constexpr fp_is_integer_t
+    constexpr fp_is_integer_t
     fp_is_integer(Tp a, Tp mul = Tp{1}) noexcept {
         if (std::isnan(a) || std::isnan(mul))
             return fp_is_integer_t{false, 0};
@@ -124,7 +124,7 @@ namespace special_functions {
      *            and the returned value is half the integer, int(a) / 2.
      */
     template<typename Tp>
-    inline constexpr fp_is_integer_t
+    constexpr fp_is_integer_t
     fp_is_half_integer(Tp a, Tp mul = Tp{1}) noexcept {
         if (std::isnan(a) || std::isnan(mul))
             return fp_is_integer_t{false, 0};
@@ -145,7 +145,7 @@ namespace special_functions {
      *            and the returned value is int(a - 1) / 2.
      */
     template<typename Tp>
-    inline constexpr fp_is_integer_t
+    constexpr fp_is_integer_t
     fp_is_half_odd_integer(Tp a, Tp mul = Tp{1}) noexcept {
         if (std::isnan(a) || std::isnan(mul))
             return fp_is_integer_t{false, 0};
@@ -165,7 +165,7 @@ namespace special_functions {
      * @return @c true if a is an even integer within mul * epsilon.
      */
     template<typename Tp>
-    inline constexpr fp_is_integer_t
+    constexpr fp_is_integer_t
     fp_is_even_integer(Tp a, Tp mul = Tp{1}) noexcept {
         if (std::isnan(a) || std::isnan(mul))
             return fp_is_integer_t{false, 0};
@@ -183,7 +183,7 @@ namespace special_functions {
      * @return @c true if a is an odd integer within mul * epsilon.
      */
     template<typename Tp>
-    inline constexpr fp_is_integer_t
+    constexpr fp_is_integer_t
     fp_is_odd_integer(Tp a, Tp mul = Tp{1}) noexcept {
         if (std::isnan(a) || std::isnan(mul))
             return fp_is_integer_t{false, 0};
