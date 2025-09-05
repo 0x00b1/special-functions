@@ -1,11 +1,6 @@
 #ifndef SPECIAL_FUNCTIONS_H
 #define SPECIAL_FUNCTIONS_H
 
-#include <complex>
-#include <numbers>
-
-#include "special_functions/detail/fp_type_util.h"
-
 #include <special_functions/airy_ai.h>
 #include <special_functions/airy_bi.h>
 #include <special_functions/associated_laguerre_polynomial_l.h>
@@ -114,7 +109,6 @@
 #include <special_functions/neville_theta_n.h>
 #include <special_functions/neville_theta_s.h>
 #include <special_functions/nome_q.h>
-#include <special_functions/numeric_limits.h>
 #include <special_functions/owens_t.h>
 #include <special_functions/periodic_zeta_f.h>
 #include <special_functions/polar_pi.h>
