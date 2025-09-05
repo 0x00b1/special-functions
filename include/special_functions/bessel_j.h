@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_BESSEL_J_H
 #define SPECIAL_FUNCTIONS_BESSEL_J_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/bessel_j.h>
+
 
 namespace special_functions {
     template<typename T, typename U>

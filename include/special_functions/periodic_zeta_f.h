@@ -11,7 +11,7 @@ namespace special_functions {
     }
 
     template<typename T, typename U>
-    fp_promote_t<std::complex<T>, std::complex<U>>
+    fp_promote_t<std::complex<T>, std::complex<U> >
     periodic_zeta(std::complex<U> z, T s) {
         using V = fp_promote_t<T, U>;
 

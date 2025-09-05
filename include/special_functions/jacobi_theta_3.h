@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_JACOBI_THETA_3_H
 #define SPECIAL_FUNCTIONS_JACOBI_THETA_3_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/jacobi_theta_3.h>
+
 
 namespace special_functions {
     template<typename T, typename U>

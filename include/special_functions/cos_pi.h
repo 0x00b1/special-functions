@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_COS_PI_H
 #define SPECIAL_FUNCTIONS_COS_PI_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/cos_pi.h>
+
 
 namespace special_functions {
     template<typename T>

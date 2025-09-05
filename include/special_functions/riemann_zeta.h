@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_RIEMANN_ZETA_H
 #define SPECIAL_FUNCTIONS_RIEMANN_ZETA_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/riemann_zeta.h>
+
 
 namespace special_functions {
     template<typename T>

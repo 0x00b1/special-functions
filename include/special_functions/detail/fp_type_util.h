@@ -45,7 +45,7 @@ namespace special_functions {
      * This is a more modern version of promote_N in ext/type_traits.
      * This is used for numeric argument promotion of complex and cmath.
      */
-    template<typename Tp, bool = std::is_integral_v<Tp>>
+    template<typename Tp, bool = std::is_integral_v<Tp> >
     struct fp_promote_help {
         using type = double;
     };
@@ -77,12 +77,12 @@ namespace special_functions {
 
     template<typename Type, typename... Types>
     struct fp_promote {
-        using type = decltype(fp_promote_help_t<std::decay_t<Type>>{} + typename fp_promote<Types...>::type{});
+        using type = decltype(fp_promote_help_t<std::decay_t<Type> >{} + typename fp_promote<Types...>::type{});
     };
 
     template<typename Type>
     struct fp_promote<Type> {
-        using type = decltype(fp_promote_help_t<std::decay_t<Type>>{});
+        using type = decltype(fp_promote_help_t<std::decay_t<Type> >{});
     };
 
     template<typename... Types>

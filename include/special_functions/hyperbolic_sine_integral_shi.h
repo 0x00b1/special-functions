@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_HYPERBOLIC_SINE_INTEGRAL_SHI_H
 #define SPECIAL_FUNCTIONS_HYPERBOLIC_SINE_INTEGRAL_SHI_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/hyperbolic_sine_integral_shi.h>
+
 
 namespace special_functions {
     template<typename T>

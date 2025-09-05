@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_FRESNEL_COSINE_INTEGRAL_C_H
 #define SPECIAL_FUNCTIONS_FRESNEL_COSINE_INTEGRAL_C_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/fresnel_cosine_integral_c.h>
+
 
 namespace special_functions {
     template<typename T>

@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_COMPLETE_ELLIPTIC_INTEGRAL_PI_H
 #define SPECIAL_FUNCTIONS_COMPLETE_ELLIPTIC_INTEGRAL_PI_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/complete_elliptic_integral_pi.h>
+
 
 namespace special_functions {
     template<typename T, typename U>

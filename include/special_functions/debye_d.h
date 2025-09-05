@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_DEBYE_D_H
 #define SPECIAL_FUNCTIONS_DEBYE_D_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/debye_d.h>
+
 
 namespace special_functions {
     template<typename T>

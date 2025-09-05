@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_BERNOULLI_POLYNOMIAL_B_H
 #define SPECIAL_FUNCTIONS_BERNOULLI_POLYNOMIAL_B_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/bernoulli_polynomial_b.h>
+
 
 namespace special_functions {
     template<typename T>

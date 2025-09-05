@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_HERMITE_POLYNOMIAL_H_H
 #define SPECIAL_FUNCTIONS_HERMITE_POLYNOMIAL_H_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/hermite_polynomial_h.h>
+
 
 namespace special_functions {
     template<typename T>

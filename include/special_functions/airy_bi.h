@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_AIRY_BI_H
 #define SPECIAL_FUNCTIONS_AIRY_BI_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/airy_bi.h>
+
 
 namespace special_functions {
     template<typename T>
@@ -15,7 +15,7 @@ namespace special_functions {
     }
 
     template<typename T>
-    std::complex<fp_promote_t<T>>
+    std::complex<fp_promote_t<T> >
     airy_bi(const std::complex<T> &z) {
         using type = fp_promote_t<T>;
 

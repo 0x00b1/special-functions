@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_LAH_NUMBER_H
 #define SPECIAL_FUNCTIONS_LAH_NUMBER_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/lah_number.h>
+
 
 namespace special_functions {
     template<typename T>

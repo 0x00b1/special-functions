@@ -1,9 +1,9 @@
 #ifndef SPECIAL_FUNCTIONS_CHEBYSHEV_POLYNOMIAL_W_H
 #define SPECIAL_FUNCTIONS_CHEBYSHEV_POLYNOMIAL_W_H
 
-#include <special_functions/detail/fp_type_util.h>
+
 #include <complex>
-#include <special_functions/detail/chebyshev_polynomial_w.h>
+
 
 namespace special_functions {
     template<typename T>
