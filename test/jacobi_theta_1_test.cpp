@@ -21,12 +21,11 @@ TEST(jacobi_theta_1_test, special_cases) {
     // EXPECT_TRUE(std::isnan(special_functions::jacobi_theta_1(std::numeric_limits<double>::quiet_NaN())));
 }
 
-RC_GTEST_PROP(jacobi_theta_1_test, mathematical_properties, 
-              (double x)) {
+RC_GTEST_PROP(jacobi_theta_1_test, mathematical_properties, (double x)) {
     // RapidCheck generates random values for x
     RC_PRE(std::isfinite(x) && std::abs(x) < 100.0); // Precondition for valid domain
     
-    double result = special_functions::jacobi_theta_1(x);
+    double result = special_functions::jacobi_theta_1(x, 1.0, 2.0);
     
     // Test basic mathematical properties:
     

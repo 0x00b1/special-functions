@@ -21,8 +21,7 @@ TEST(radial_polynomial_r_test, special_cases) {
     // EXPECT_TRUE(std::isnan(special_functions::radial_polynomial_r(std::numeric_limits<double>::quiet_NaN())));
 }
 
-RC_GTEST_PROP(radial_polynomial_r_test, mathematical_properties, 
-              (double x)) {
+RC_GTEST_PROP(radial_polynomial_r_test, mathematical_properties, (double x)) {
     // RapidCheck generates random values for x
     RC_PRE(std::isfinite(x) && std::abs(x) < 100.0); // Precondition for valid domain
     

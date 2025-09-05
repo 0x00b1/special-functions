@@ -21,8 +21,7 @@ TEST(tan_pi_test, special_cases) {
     // EXPECT_TRUE(std::isnan(special_functions::tan_pi(std::numeric_limits<double>::quiet_NaN())));
 }
 
-RC_GTEST_PROP(tan_pi_test, mathematical_properties, 
-              (double x)) {
+RC_GTEST_PROP(tan_pi_test, mathematical_properties, (double x)) {
     // RapidCheck generates random values for x
     RC_PRE(std::isfinite(x) && std::abs(x) < 100.0); // Precondition for valid domain
     

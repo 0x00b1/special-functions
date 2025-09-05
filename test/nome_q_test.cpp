@@ -21,8 +21,7 @@ TEST(nome_q_test, special_cases) {
     // EXPECT_TRUE(std::isnan(special_functions::nome_q(std::numeric_limits<double>::quiet_NaN())));
 }
 
-RC_GTEST_PROP(nome_q_test, mathematical_properties, 
-              (double x)) {
+RC_GTEST_PROP(nome_q_test, mathematical_properties, (double x)) {
     // RapidCheck generates random values for x
     RC_PRE(std::isfinite(x) && std::abs(x) < 100.0); // Precondition for valid domain
     

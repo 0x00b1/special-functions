@@ -21,8 +21,7 @@ TEST(eulerian_number_1_test, special_cases) {
     // EXPECT_TRUE(std::isnan(special_functions::eulerian_number_1(std::numeric_limits<double>::quiet_NaN())));
 }
 
-RC_GTEST_PROP(eulerian_number_1_test, mathematical_properties, 
-              (double x)) {
+RC_GTEST_PROP(eulerian_number_1_test, mathematical_properties, (double x)) {
     // RapidCheck generates random values for x
     RC_PRE(std::isfinite(x) && std::abs(x) < 100.0); // Precondition for valid domain
     

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 4.0.1)
 
 project(special_functions)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 
 add_library(
         special_functions
@@ -23,8 +23,8 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 FetchContent_Declare(
         rapidcheck
-        GIT_REPOSITORY https://github.com/furuholm/rapidcheck.git
-        GIT_TAG        cxx23-deprecated-fix
+        GIT_REPOSITORY https://github.com/emil-e/rapidcheck.git
+        GIT_TAG        master
 )
 
 # Enable Google Test integration for RapidCheck

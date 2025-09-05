@@ -36,7 +36,7 @@ set(number_of_tries 0)
 while(error_code AND number_of_tries LESS 3)
   execute_process(
     COMMAND "/usr/bin/git"
-            clone --no-checkout --config "advice.detachedHead=false" "https://github.com/furuholm/rapidcheck.git" "rapidcheck-src"
+            clone --no-checkout --config "advice.detachedHead=false" "https://github.com/emil-e/rapidcheck.git" "rapidcheck-src"
     WORKING_DIRECTORY "/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps"
     RESULT_VARIABLE error_code
     ${maybe_show_command}
@@ -47,18 +47,18 @@ if(number_of_tries GREATER 1)
   message(NOTICE "Had to git clone more than once: ${number_of_tries} times.")
 endif()
 if(error_code)
-  message(FATAL_ERROR "Failed to clone repository: 'https://github.com/furuholm/rapidcheck.git'")
+  message(FATAL_ERROR "Failed to clone repository: 'https://github.com/emil-e/rapidcheck.git'")
 endif()
 
 execute_process(
   COMMAND "/usr/bin/git"
-          checkout "cxx23-deprecated-fix" --
+          checkout "master" --
   WORKING_DIRECTORY "/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/rapidcheck-src"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to checkout tag: 'cxx23-deprecated-fix'")
+  message(FATAL_ERROR "Failed to checkout tag: 'master'")
 endif()
 
 set(init_submodules TRUE)

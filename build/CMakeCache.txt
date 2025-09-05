@@ -317,7 +317,36 @@ GTEST_HAS_ABSL:BOOL=OFF
 // may want to turn this OFF.)
 INSTALL_GTEST:BOOL=ON
 
+//Build Boost support
+RC_ENABLE_BOOST:BOOL=OFF
+
+//Build Boost Test support
+RC_ENABLE_BOOST_TEST:BOOL=OFF
+
+//Build Catch.hpp support
+RC_ENABLE_CATCH:BOOL=OFF
+
+//Build DocTest support
+RC_ENABLE_DOCTEST:BOOL=OFF
+
+//Build RapidCheck examples
+RC_ENABLE_EXAMPLES:BOOL=OFF
+
+//Build Google Mock integration
+RC_ENABLE_GMOCK:BOOL=OFF
+
+//Build Google Test integration
 RC_ENABLE_GTEST:BOOL=ON
+
+//Build RapidCheck with RTTI
+RC_ENABLE_RTTI:BOOL=ON
+
+//Build RapidCheck tests
+RC_ENABLE_TESTS:BOOL=OFF
+
+//Add all possible integrations without
+//\n  requiring the initialization of all the submodules in ext.
+RC_INSTALL_ALL_EXTRAS:BOOL=OFF
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/googletest-build/googlemock
@@ -373,6 +402,24 @@ gtest_hide_internal_symbols:BOOL=OFF
 
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
+
+//Value Computed by CMake
+rapidcheck_BINARY_DIR:STATIC=/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/rapidcheck-build
+
+//Value Computed by CMake
+rapidcheck_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+rapidcheck_SOURCE_DIR:STATIC=/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/rapidcheck-src
+
+//Value Computed by CMake
+rapidcheck_gtest_BINARY_DIR:STATIC=/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/rapidcheck-build/extras/gtest
+
+//Value Computed by CMake
+rapidcheck_gtest_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+rapidcheck_gtest_SOURCE_DIR:STATIC=/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/rapidcheck-src/extras/gtest
 
 //Value Computed by CMake
 special_functions_BINARY_DIR:STATIC=/Users/goodmaa3/com/github/0x00b1/special-functions/build
@@ -518,7 +565,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

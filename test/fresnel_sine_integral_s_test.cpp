@@ -21,8 +21,7 @@ TEST(fresnel_sine_integral_s_test, special_cases) {
     // EXPECT_TRUE(std::isnan(special_functions::fresnel_sine_integral_s(std::numeric_limits<double>::quiet_NaN())));
 }
 
-RC_GTEST_PROP(fresnel_sine_integral_s_test, mathematical_properties, 
-              (double x)) {
+RC_GTEST_PROP(fresnel_sine_integral_s_test, mathematical_properties, (double x)) {
     // RapidCheck generates random values for x
     RC_PRE(std::isfinite(x) && std::abs(x) < 100.0); // Precondition for valid domain
     

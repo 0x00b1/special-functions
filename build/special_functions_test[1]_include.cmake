@@ -1,0 +1,5 @@
+if(EXISTS "/Users/goodmaa3/com/github/0x00b1/special-functions/build/special_functions_test[1]_tests.cmake")
+  include("/Users/goodmaa3/com/github/0x00b1/special-functions/build/special_functions_test[1]_tests.cmake")
+else()
+  add_test(special_functions_test_NOT_BUILT special_functions_test_NOT_BUILT)
+endif()
