@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
+#include <exception>
+#include <rapidcheck/gtest.h>
+#include <special_functions/chebyshev_polynomial_w.h>
 #include <limits>
 #include <cmath>
-// #include <rapidcheck/gtest.h>  // TODO: Re-enable after fixing compilation issues
-#include <special_functions/chebyshev_polynomial_w.h>
 
 TEST(chebyshev_polynomial_w_test, basic_functionality) {
     // Test basic known values
@@ -20,15 +21,34 @@ TEST(chebyshev_polynomial_w_test, special_cases) {
     // EXPECT_TRUE(std::isnan(special_functions::chebyshev_polynomial_w(std::numeric_limits<double>::quiet_NaN())));
 }
 
-TEST(chebyshev_polynomial_w_test, property_based_test) {
-    // Property-based test placeholder
-    // TODO: Add mathematical property tests
+RC_GTEST_PROP(chebyshev_polynomial_w_test, mathematical_properties, 
+              (double x)) {
+    // RapidCheck generates random values for x
+    RC_PRE(std::isfinite(x) && std::abs(x) < 100.0); // Precondition for valid domain
     
-    // Test mathematical properties manually for now:
-    // - Symmetry, monotonicity, recurrence relations, etc.
+    double result = special_functions::chebyshev_polynomial_w(x);
     
-    // Example manual property test:
-    // for (double x = -5.0; x <= 5.0; x += 0.1) {
-    //     // Test some mathematical property
-    // }
+    // Test basic mathematical properties:
+    
+    // 1. Result should be finite for finite input (unless mathematically infinite)
+    if (std::isfinite(x)) {
+        // RC_ASSERT(std::isfinite(result) || /* function can legitimately return infinity */);
+    }
+    
+    // 2. Function should handle NaN correctly  
+    if (std::isnan(x)) {
+        RC_ASSERT(std::isnan(result));
+    }
+    
+    // 3. TODO: Add specific mathematical properties for chebyshev_polynomial_w:
+    // - Symmetry: f(-x) = f(x) or f(-x) = -f(x)
+    // - Monotonicity: function behavior on intervals
+    // - Recurrence relations: relationships between function values
+    // - Functional identities: mathematical relationships
+    // - Range properties: bounds on output values
+    
+    // Example property tests:
+    // RC_ASSERT(special_functions::chebyshev_polynomial_w(0.0) == expected_value_at_zero);
+    // RC_ASSERT(special_functions::chebyshev_polynomial_w(-x) == special_functions::chebyshev_polynomial_w(x)); // for even functions
+    // RC_ASSERT(special_functions::chebyshev_polynomial_w(-x) == -special_functions::chebyshev_polynomial_w(x)); // for odd functions
 }

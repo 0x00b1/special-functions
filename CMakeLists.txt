@@ -21,17 +21,16 @@ FetchContent_Declare(
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-# TODO: Re-enable RapidCheck after resolving compilation issues
-# FetchContent_Declare(
-#         rapidcheck
-#         GIT_REPOSITORY https://github.com/emil-e/rapidcheck.git
-#         GIT_TAG        master
-# )
-# 
-# # Enable Google Test integration for RapidCheck
-# set(RC_ENABLE_GTEST ON CACHE BOOL "" FORCE)
+FetchContent_Declare(
+        rapidcheck
+        GIT_REPOSITORY https://github.com/furuholm/rapidcheck.git
+        GIT_TAG        cxx23-deprecated-fix
+)
 
-FetchContent_MakeAvailable(googletest)
+# Enable Google Test integration for RapidCheck
+set(RC_ENABLE_GTEST ON CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(googletest rapidcheck)
 
 enable_testing()
 
@@ -47,7 +46,7 @@ target_link_libraries(
         special_functions_test
         GTest::gtest_main
         special_functions
-        # rapidcheck_gtest  # TODO: Re-enable after fixing compilation issues
+        rapidcheck_gtest
 )
 
 include(GoogleTest)
