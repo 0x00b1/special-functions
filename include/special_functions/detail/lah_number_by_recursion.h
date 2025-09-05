@@ -4,7 +4,7 @@
 namespace detail {
     template<typename T>
     T
-    lah_number_by_recursion(unsigned int n, unsigned int k) {
+    lah_number_by_recursion(const unsigned int n, const unsigned int k) {
         if (k > n) {
             return T{0};
         }
