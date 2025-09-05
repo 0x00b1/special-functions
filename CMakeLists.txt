@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 4.0.1)
 
 project(special_functions)
 
@@ -8,11 +8,6 @@ add_library(
         special_functions
         INTERFACE
         include/special_functions.h
-        include/special_functions/detail/eulerian_number_2_by_recursion.h
-        include/special_functions/detail/stirling_number_s_2_by_series_expansion.h
-        include/special_functions/detail/stirling_number_s_2_by_recursion.h
-        include/special_functions/detail/stirling_number_s_1_by_recursion.h
-        include/special_functions/detail/lah_number_by_recursion.h
 )
 
 target_include_directories(special_functions INTERFACE include)
@@ -24,22 +19,34 @@ FetchContent_Declare(
         URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
 )
 
-# For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-FetchContent_MakeAvailable(googletest)
+FetchContent_Declare(
+        rapidcheck
+        GIT_REPOSITORY https://github.com/emil-e/rapidcheck.git
+        GIT_TAG        master
+)
+
+# Enable Google Test integration for RapidCheck
+set(RC_ENABLE_GTEST ON CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(googletest rapidcheck)
 
 enable_testing()
 
+# Collect all unit test files
+file(GLOB_RECURSE UNIT_TEST_SOURCES "test/*_test.cpp")
+
 add_executable(
         special_functions_test
-        test/special_functions_test.cpp
+        ${UNIT_TEST_SOURCES}
 )
 
 target_link_libraries(
         special_functions_test
         GTest::gtest_main
         special_functions
+        rapidcheck_gtest
 )
 
 include(GoogleTest)

@@ -567,3 +567,122 @@ TEST(function_name_test, asymptotic_behavior) {
 - **Range Coverage**: Tests behavior across continuous ranges rather than discrete points
 - **Regression Detection**: Identifies when changes break fundamental mathematical relationships
 - **Implementation Independence**: Tests mathematical truth rather than specific computational approaches
+
+### Using RapidCheck for Automated Property Testing
+
+For more sophisticated property-based testing, consider integrating **RapidCheck** - a QuickCheck-inspired library that integrates seamlessly with Google Test.
+
+#### Setup RapidCheck Integration
+
+Add to your `CMakeLists.txt`:
+
+```cmake
+# Add RapidCheck
+include(FetchContent)
+
+FetchContent_Declare(
+    rapidcheck
+    GIT_REPOSITORY https://github.com/emil-e/rapidcheck.git
+    GIT_TAG        master
+)
+
+# Enable Google Test integration
+set(RC_ENABLE_GTEST ON CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(rapidcheck)
+
+# Link against both GoogleTest and RapidCheck
+target_link_libraries(
+    special_functions_test
+    GTest::gtest_main
+    special_functions
+    rapidcheck_gtest
+)
+```
+
+#### RapidCheck Property Examples
+
+```cpp
+#include <gtest/gtest.h>
+#include <rapidcheck/gtest.h>  // Must come after gtest.h
+#include <special_functions.h>
+
+// Automatic test case generation for symmetry
+RC_GTEST_PROP(gamma_test, reflection_formula_property, 
+              (double x)) {
+    // RapidCheck generates random values for x
+    RC_PRE(x > 0.0 && x < 1.0); // Precondition
+    
+    double gamma_x = special_functions::gamma(x);
+    double gamma_1_minus_x = special_functions::gamma(1.0 - x);
+    double reflection_formula = M_PI / std::sin(M_PI * x);
+    
+    RC_ASSERT(std::abs(gamma_x * gamma_1_minus_x - reflection_formula) < 1e-12);
+}
+
+// Test monotonicity automatically
+RC_GTEST_PROP(gamma_test, monotonicity_on_positive_reals,
+              (double x1, double x2)) {
+    RC_PRE(x1 > 0.0 && x2 > 0.0 && x1 < x2 && x2 < 10.0);
+    
+    double gamma_x1 = special_functions::gamma(x1);
+    double gamma_x2 = special_functions::gamma(x2);
+    
+    // Gamma is increasing for x > 1.462...
+    if (x1 > 1.5) {
+        RC_ASSERT(gamma_x2 > gamma_x1);
+    }
+}
+
+// Test recurrence relation with generated integers
+RC_GTEST_PROP(factorial_test, recurrence_property,
+              (int n)) {
+    RC_PRE(n >= 1 && n <= 20); // Avoid overflow
+    
+    double fact_n = special_functions::factorial<double>(n);
+    double fact_n_minus_1 = special_functions::factorial<double>(n - 1);
+    
+    RC_ASSERT(std::abs(fact_n - n * fact_n_minus_1) < 1e-12);
+}
+
+// Complex number properties
+RC_GTEST_PROP(bessel_test, complex_conjugate_symmetry,
+              (double real_part, double imag_part)) {
+    RC_PRE(std::abs(real_part) < 10.0 && std::abs(imag_part) < 10.0);
+    
+    std::complex<double> z(real_part, imag_part);
+    std::complex<double> z_conj = std::conj(z);
+    
+    auto bessel_z = special_functions::bessel_j(0, z);
+    auto bessel_z_conj = special_functions::bessel_j(0, z_conj);
+    
+    // J_0(z*) = J_0(z)* for real order
+    RC_ASSERT(std::abs(bessel_z_conj - std::conj(bessel_z)) < 1e-12);
+}
+```
+
+#### Benefits of RapidCheck Integration
+
+1. **Automatic Test Case Generation**: RapidCheck generates hundreds of random test cases automatically
+2. **Shrinking**: When a property fails, RapidCheck finds the minimal failing case for easier debugging
+3. **Preconditions**: Use `RC_PRE()` to specify valid input domains
+4. **Seamless Integration**: Works within existing Google Test framework
+5. **Customizable Generators**: Create custom generators for specific data types
+
+#### Custom Generators Example
+
+```cpp
+#include <rapidcheck.h>
+
+// Custom generator for positive definite matrices, special intervals, etc.
+RC_GTEST_PROP(special_function_test, custom_domain_property, ()) {
+    // Generate values in specific mathematical domains
+    auto x = *rc::gen::inRange(0.1, 100.0);  // Positive reals
+    auto n = *rc::gen::inRange(1, 50);       // Positive integers
+    
+    // Test your property with generated values
+    RC_ASSERT(special_functions::your_function(x, n) > 0.0);
+}
+```
+
+This approach combines the comprehensive manual property testing shown above with automated test case generation, providing both explicit mathematical verification and broad input space coverage.
