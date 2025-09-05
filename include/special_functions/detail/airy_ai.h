@@ -3,7 +3,7 @@
 
 #include "airy_t.h"
 
-namespace special_functions::detail {
+namespace detail {
 
 }
 

@@ -1,11 +1,11 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_THETA_3_BY_SERIES_SUMMATION_H
 #define SPECIAL_FUNCTIONS_DETAIL_THETA_3_BY_SERIES_SUMMATION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     theta_3_by_series_summation(T n, T x) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         auto sum = std::exp(-n * n / x);
 

@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_EXPONENTIAL_INTEGRAL_E_BY_ASYMPTOTIC_EXPANSION_H
 #define SPECIAL_FUNCTIONS_DETAIL_EXPONENTIAL_INTEGRAL_E_BY_ASYMPTOTIC_EXPANSION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     Tp
     exponential_integral_e_by_asymptotic_expansion(unsigned int n, Tp x) {

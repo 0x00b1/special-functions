@@ -3,7 +3,7 @@
 
 #include "stirling_number_s_1_by_recursion.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     stirling_number_s_1(unsigned int n, unsigned int m) {

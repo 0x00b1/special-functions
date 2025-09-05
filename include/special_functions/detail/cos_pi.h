@@ -1,11 +1,11 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_COS_PI_H
 #define SPECIAL_FUNCTIONS_DETAIL_COS_PI_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     cos_pi(T x) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         if (std::isnan(x)) return std::numeric_limits<T>::quiet_NaN();
 
@@ -22,7 +22,7 @@ namespace special_functions::detail {
     std::complex<T>
     cos_pi(std::complex<T> z) {
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
         return cos_pi(std::real(z)) * std::cosh(std::numbers::pi_v<V> * std::imag(z)) -
                std::complex<T>{0, 1} * sin_pi(std::real(z)) * std::sinh(std::numbers::pi_v<V> * std::imag(z));

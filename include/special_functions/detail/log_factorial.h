@@ -3,17 +3,17 @@
 
 #include <special_functions/numbers.h>
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     constexpr T
     log_factorial(unsigned int n) {
-        if (n < special_functions::numbers::MAXIMUM_FACTORIAL_INDEX<T>) {
-            return special_functions::numbers::LOG_FACTORIALS[n];
+        if (n < numbers::MAXIMUM_FACTORIAL_INDEX<T>) {
+            return numbers::LOG_FACTORIALS[n];
         }
 
-        if (n < special_functions::numbers::MAXIMUM_DOUBLE_FACTORIAL_INDEX<T>) {
-            const auto a = special_functions::numbers::LOG_DOUBLE_FACTORIALS[n];
-            const auto b = special_functions::numbers::LOG_DOUBLE_FACTORIALS[n - 1];
+        if (n < numbers::MAXIMUM_DOUBLE_FACTORIAL_INDEX<T>) {
+            const auto a = numbers::LOG_DOUBLE_FACTORIALS[n];
+            const auto b = numbers::LOG_DOUBLE_FACTORIALS[n - 1];
 
             return a + b;
         }

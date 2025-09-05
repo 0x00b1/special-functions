@@ -1,14 +1,14 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_LOG_BINOMIAL_COEFFICIENT_H
 #define SPECIAL_FUNCTIONS_DETAIL_LOG_BINOMIAL_COEFFICIENT_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     log_binomial_coefficient(unsigned int n, unsigned int k) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
         if (k > n) {
             return -U(std::numeric_limits<V>::infinity());

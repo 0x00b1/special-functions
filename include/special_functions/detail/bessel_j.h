@@ -5,6 +5,6 @@
 #include "bessel_by_series_expansion.h"
 #include "bessel_t.h"
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_BESSEL_J_H

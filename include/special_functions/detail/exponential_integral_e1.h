@@ -6,7 +6,7 @@
 #include "exponential_integral_e_by_continued_fractions.h"
 #include "exponential_integral_ei.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     exponential_integral_e1(T x) {

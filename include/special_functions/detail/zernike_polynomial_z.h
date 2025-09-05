@@ -3,7 +3,7 @@
 
 #include "radial_polynomial_r.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     fp_promote_t<T>
     zernike_polynomial_z(unsigned int n, int m, T r, T p) {

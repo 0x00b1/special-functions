@@ -1,11 +1,11 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_CARLSON_ELLIPTIC_R_G_H
 #define SPECIAL_FUNCTIONS_DETAIL_CARLSON_ELLIPTIC_R_G_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     carlson_elliptic_r_g(T x, T y, T z) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         if (std::isnan(x) || std::isnan(y) || std::isnan(z)) {
             return std::numeric_limits<U>::quiet_NaN();

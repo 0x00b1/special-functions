@@ -3,6 +3,6 @@
 
 #include "chebyshev_polynomial_u_t.h"
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_CHEBYSHEV_POLYNOMIAL_U_H

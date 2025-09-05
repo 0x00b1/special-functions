@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_SPHERICAL_MODIFIED_BESSEL_T_H
 #define SPECIAL_FUNCTIONS_DETAIL_SPHERICAL_MODIFIED_BESSEL_T_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tn, typename Tx, typename Tp>
     struct sph_mod_bessel_t
     {

@@ -1,12 +1,12 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_ELLIPTIC_INTEGRAL_F_H
 #define SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_ELLIPTIC_INTEGRAL_F_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     Tp
     incomplete_elliptic_integral_f(Tp k, Tp phi)
     {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
         const auto s_pi = std::numbers::pi_v<Real>;
 

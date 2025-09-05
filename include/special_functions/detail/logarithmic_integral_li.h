@@ -3,7 +3,7 @@
 
 #include "exponential_integral_ei.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     logarithmic_integral_li(const T x) {

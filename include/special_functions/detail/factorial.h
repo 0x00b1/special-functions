@@ -5,12 +5,12 @@
 
 #include <special_functions/numbers.h>
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     constexpr T
     factorial(unsigned int n) {
-        if (n < special_functions::numbers::MAXIMUM_FACTORIAL_INDEX<T>) {
-            return special_functions::numbers::FACTORIALS[n];
+        if (n < numbers::MAXIMUM_FACTORIAL_INDEX<T>) {
+            return numbers::FACTORIALS[n];
         }
 
         return std::numeric_limits<T>::infinity();

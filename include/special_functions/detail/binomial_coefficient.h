@@ -6,17 +6,17 @@
 #include <special_functions/numbers.h>
 #include <special_functions/numeric_limits.h>
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     Tp
     binomial_coefficient(unsigned int n, unsigned int k) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using Val = Tp;
-        using Real = special_functions::num_traits_t<Val>;
+        using Real = num_traits_t<Val>;
         // Max e exponent before overflow.
         const auto max_binom
-                = special_functions::numeric_limits::max_exponent10<Real>()
+                = numeric_limits::max_exponent10<Real>()
                   * std::log(Real(10)) - Real(1);
 
         if (k > n)
@@ -44,10 +44,10 @@ namespace special_functions::detail {
     template<typename Tp>
     Tp
     binomial_coefficient(Tp nu, unsigned int k) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using Val = Tp;
-        using Real = special_functions::num_traits_t<Val>;
+        using Real = num_traits_t<Val>;
 
         auto n = int(std::nearbyint(nu));
 
@@ -60,7 +60,7 @@ namespace special_functions::detail {
         if (std::abs(nu) < MAXIMUM_FACTORIAL_INDEX<Real> && k < MAXIMUM_FACTORIAL_INDEX<Real>)
             return gamma(nu + Tp{1}) / gamma(Tp(k + 1)) / gamma(nu - Tp(k + 1));
 
-        const auto max_binom = special_functions::numeric_limits::max_exponent10(nu) * std::log(Tp{10}) - Tp{1};
+        const auto max_binom = numeric_limits::max_exponent10(nu) * std::log(Tp{10}) - Tp{1};
 
         const auto log_coeff = log_binomial(nu, k);
         const auto sign = log_binomial_sign(nu, k);

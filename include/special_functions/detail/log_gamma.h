@@ -7,14 +7,14 @@
 #include "complex_util.h"
 #include "math_constants.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     constexpr T
     log_gamma_asymptotic_expansion_bernoulli_coefficients(T x) {
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
-        const auto s_ln2pi = special_functions::ln2_v<V> + special_functions::lnpi_v<V>;
+        const auto s_ln2pi = ln2_v<V> + lnpi_v<V>;
 
         auto lg = (x - V{0.5L}) * std::log(x) - x + V{0.5L} * s_ln2pi;
 
@@ -41,14 +41,14 @@ namespace special_functions::detail {
     template<typename T>
     constexpr T
     spouge_binet1p(T z) {
-        using special_functions::numbers::SPOUGE;
+        using numbers::SPOUGE;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
         const auto chebyshev_coefficients = SPOUGE<V>::chebyshev_coefficients;
 
-        U summation = special_functions::sqrttau_v<V>;
+        U summation = sqrttau_v<V>;
 
         for (unsigned long long k = 0; k < chebyshev_coefficients.size(); k++) {
             summation = summation + (chebyshev_coefficients[k] / (z + V(k + 1)));
@@ -60,26 +60,26 @@ namespace special_functions::detail {
     template<typename T>
     constexpr T
     spouge_log_gamma1p(T z) {
-        using special_functions::numbers::SPOUGE;
+        using numbers::SPOUGE;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
         auto a = V{SPOUGE<V>::chebyshev_coefficients.size() + 1};
 
         if (std::real(z) < V{-1}) {
-            auto sin_fact = special_functions::sin_pi(z);
+            auto sin_fact = sin_pi(z);
 
-            if (!special_functions::is_complex_v<U>) {
+            if (!is_complex_v<U>) {
                 sin_fact = std::abs(sin_fact);
             }
 
-            return special_functions::lnpi_v<V> - std::log(sin_fact) - spouge_log_gamma1p(-V{1} - z);
+            return lnpi_v<V> - std::log(sin_fact) - spouge_log_gamma1p(-V{1} - z);
         }
 
         auto summation = spouge_binet1p(z);
 
-        if (!special_functions::is_complex_v<U>) {
+        if (!is_complex_v<U>) {
             summation = std::abs(summation);
         }
 
@@ -89,10 +89,10 @@ namespace special_functions::detail {
     template<typename T>
     constexpr T
     lanczos_binet1p(T z) {
-        using special_functions::numbers::LANCOZ;
+        using numbers::LANCOZ;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
         const auto chebyshev_coefficients = LANCOZ<V>::chebyshev_coefficients;
 
@@ -106,25 +106,25 @@ namespace special_functions::detail {
             v += f * chebyshev_coefficients[k];
         }
 
-        return special_functions::sqrttau_v<V> * v;
+        return sqrttau_v<V> * v;
     }
 
     template<typename T>
     constexpr T
     lanczos_log_gamma1p(T z) {
-        using special_functions::numbers::LANCOZ;
+        using numbers::LANCOZ;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
-        const auto s_ln_pi = special_functions::lnpi_v<V>;
+        const auto s_ln_pi = lnpi_v<V>;
 
         auto g = LANCOZ<V>::s_g;
 
         if (std::real(z) < V{-1}) {
-            auto sin_fact = special_functions::sin_pi(z);
+            auto sin_fact = sin_pi(z);
 
-            if (!special_functions::is_complex_v<U>) {
+            if (!is_complex_v<U>) {
                 sin_fact = std::abs(sin_fact);
             }
 
@@ -133,7 +133,7 @@ namespace special_functions::detail {
 
         auto summation = lanczos_binet1p(z);
 
-        if (!special_functions::is_complex_v<U>) {
+        if (!is_complex_v<U>) {
             summation = std::abs(summation);
         }
 
@@ -143,16 +143,16 @@ namespace special_functions::detail {
     template<typename T>
     T
     log_gamma(T a) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
         const auto s_eps = std::numeric_limits<V>::epsilon();
-        const auto s_logpi = special_functions::lnpi_v<T>;
+        const auto s_logpi = lnpi_v<T>;
 
         if (std::real(a) < V{0.5L}) {
-            const auto sin_fact = std::abs(special_functions::sin_pi(a));
+            const auto sin_fact = std::abs(sin_pi(a));
 
             if (sin_fact < s_eps) {
                 return std::numeric_limits<V>::infinity();
@@ -178,14 +178,14 @@ namespace special_functions::detail {
     template<typename T>
     std::complex<T>
     log_gamma(std::complex<T> a) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
-        using special_functions::numbers::LOG_FACTORIALS;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::LOG_FACTORIALS;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
         using W = std::complex<V>;
 
-        auto is_integer = special_functions::fp_is_integer(a);
+        auto is_integer = fp_is_integer(a);
 
         if (is_integer) {
             auto integer = is_integer();
@@ -205,11 +205,11 @@ namespace special_functions::detail {
             return spouge_log_gamma1p(a - V{1});
         }
 
-        if (std::abs(special_functions::sin_pi(a)) < std::numeric_limits<V>::epsilon()) {
+        if (std::abs(sin_pi(a)) < std::numeric_limits<V>::epsilon()) {
             return W(std::numeric_limits<V>::quiet_NaN(), V{0});
         }
 
-        return special_functions::lnpi_v<V> - std::log(special_functions::sin_pi(a)) - log_gamma(U{1} - a);
+        return lnpi_v<V> - std::log(sin_pi(a)) - log_gamma(U{1} - a);
     }
 }
 

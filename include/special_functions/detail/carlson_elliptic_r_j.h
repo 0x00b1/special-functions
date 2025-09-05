@@ -1,18 +1,18 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_CARLSON_ELLIPTIC_R_J_H
 #define SPECIAL_FUNCTIONS_DETAIL_CARLSON_ELLIPTIC_R_J_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     carlson_elliptic_r_j(T x, T y, T z, T p) {
-        using U = special_functions::num_traits_t<T>;
-        const auto s_min = special_functions::numeric_limits::lim_min(U{});
+        using U = num_traits_t<T>;
+        const auto s_min = numeric_limits::lim_min(U{});
         const auto s_eps = std::numeric_limits<U>::epsilon();
         const auto s_lolim = U(5) * s_min;
 
         bool negative = false;
 
-        if constexpr (!special_functions::is_complex_v<T>) {
+        if constexpr (!is_complex_v<T>) {
             const auto real_x = std::real(x);
             const auto real_y = std::real(y);
             const auto real_z = std::real(z);

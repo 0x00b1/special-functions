@@ -3,7 +3,7 @@
 
 #include "lah_number_by_recursion.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     lah_number(unsigned int n, unsigned int k) {

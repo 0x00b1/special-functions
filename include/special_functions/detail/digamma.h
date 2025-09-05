@@ -6,11 +6,11 @@
 #include "../tan_pi.h"
 #include "digamma_by_asymptotic_expansion.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     digamma(unsigned int n) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         if (n > 1) return -std::numbers::egamma_v<U> + harmonic_number<U>(n - 1);
 
@@ -21,18 +21,18 @@ namespace special_functions::detail {
     template<typename T>
     T
     digamma(T x) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
-        const auto is_integer_x = special_functions::fp_is_integer(x);
+        const auto is_integer_x = fp_is_integer(x);
 
-        const auto is_half_odd_integer_x = special_functions::fp_is_half_odd_integer(x);
+        const auto is_half_odd_integer_x = fp_is_half_odd_integer(x);
 
         if (std::real(x) <= U{0}) {
             if (is_integer_x) {
                 return std::numeric_limits<T>::quiet_NaN();
             }
 
-            return digamma(U{1} - x) - special_functions::pi_v<U> / special_functions::tan_pi(x);
+            return digamma(U{1} - x) - pi_v<U> / tan_pi(x);
         }
 
         if (is_integer_x) {
@@ -40,7 +40,7 @@ namespace special_functions::detail {
         }
 
         if (is_half_odd_integer_x) {
-            T v = -std::numbers::egamma_v<U> - T{2} * special_functions::ln2_v<U>;
+            T v = -std::numbers::egamma_v<U> - T{2} * ln2_v<U>;
 
             for (int k = 1; k <= is_half_odd_integer_x(); k++) {
                 v += T{2} / T(2 * k - 1);

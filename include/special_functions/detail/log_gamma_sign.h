@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_LOG_GAMMA_SIGN_H
 #define SPECIAL_FUNCTIONS_DETAIL_LOG_GAMMA_SIGN_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     log_gamma_sign(T a) {

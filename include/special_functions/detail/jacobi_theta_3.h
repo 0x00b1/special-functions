@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_JACOBI_THETA_3_H
 #define SPECIAL_FUNCTIONS_DETAIL_JACOBI_THETA_3_H
 
-namespace special_functions::detail {
+namespace detail {
     /**
  * Return the Jacobi @f$ \theta_3 @f$ function by summation of the series.
  *
@@ -16,7 +16,7 @@ namespace special_functions::detail {
     template<typename Tp>
     Tp
     jacobi_theta_3_sum(Tp q, Tp x) {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         constexpr std::size_t s_max_iter = 50;
 
@@ -46,7 +46,7 @@ namespace special_functions::detail {
     template<typename Tp>
     Tp
     jacobi_theta_3_prod(Tp q, Tp x) {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         constexpr std::size_t s_max_iter = 50;
         const auto q2 = q * q;
@@ -100,7 +100,7 @@ namespace special_functions::detail {
     template<typename Tp>
     std::complex<Tp>
     jacobi_theta_3(std::complex<Tp> q, std::complex<Tp> x) {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         using Cmplx = std::complex<Real>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
         const auto s_eps = std::numeric_limits<Tp>::epsilon();

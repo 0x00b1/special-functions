@@ -1,18 +1,18 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_GAMMA_BY_SERIES_SUMMATION_H
 #define SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_GAMMA_BY_SERIES_SUMMATION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     std::pair<Tp, Tp>
     incomplete_gamma_by_series_summation(Tp a, Tp x) {
         using Val = Tp;
-        using Real = special_functions::num_traits_t<Val>;
+        using Real = num_traits_t<Val>;
         const auto s_eps = Real{3} * std::numeric_limits<Tp>::epsilon();
         unsigned int s_itmax = 10 * int(10 + std::sqrt(std::abs(a)));
 
         auto lngam = log_gamma(a);
         auto sign = log_gamma_sign(a);
-        auto ia = special_functions::fp_is_integer(a);
+        auto ia = fp_is_integer(a);
 
         if (ia && ia() <= 0)
             throw std::domain_error("gamma_series: non-positive integer argument a");

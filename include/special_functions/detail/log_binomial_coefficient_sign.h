@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_LOG_BINOMIAL_COEFFICIENT_SIGN_H
 #define SPECIAL_FUNCTIONS_DETAIL_LOG_BINOMIAL_COEFFICIENT_SIGN_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     log_binomial_coefficient_sign(T n, unsigned int k) {

@@ -3,7 +3,7 @@
 
 #include <special_functions/detail/math_constants.h>
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     constexpr T
     bernoulli_number_by_series_summation(unsigned int n) {
@@ -41,7 +41,7 @@ namespace special_functions::detail {
             return BERNOULLI_NUMBERS_2N[n / 2];
         }
 
-        constexpr auto s_2pi = special_functions::tau_v<T>;
+        constexpr auto s_2pi = tau_v<T>;
 
         auto fact = T{1};
 

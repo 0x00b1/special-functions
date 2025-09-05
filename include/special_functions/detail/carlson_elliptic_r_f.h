@@ -1,15 +1,15 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_CARLSON_ELLIPTIC_R_F_H
 #define SPECIAL_FUNCTIONS_DETAIL_CARLSON_ELLIPTIC_R_F_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     carlson_elliptic_r_f(T x, T y, T z) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         bool neg_arg = false;
 
-        if constexpr (!special_functions::is_complex_v<T>) {
+        if constexpr (!is_complex_v<T>) {
             if (std::real(x) < U{0} || std::real(y) < U{0} || std::real(z) < U{0}) {
                 neg_arg = true;
             }
@@ -23,9 +23,9 @@ namespace special_functions::detail {
             throw std::domain_error("ellint_rf: argument less than zero");
         }
 
-        if (std::abs(x) + std::abs(y) < U(5) * special_functions::numeric_limits::lim_min(U{}) ||
-            std::abs(x) + std::abs(z) < U(5) * special_functions::numeric_limits::lim_min(U{}) ||
-            std::abs(y) + std::abs(z) < U(5) * special_functions::numeric_limits::lim_min(U{})) {
+        if (std::abs(x) + std::abs(y) < U(5) * numeric_limits::lim_min(U{}) ||
+            std::abs(x) + std::abs(z) < U(5) * numeric_limits::lim_min(U{}) ||
+            std::abs(y) + std::abs(z) < U(5) * numeric_limits::lim_min(U{})) {
             throw std::domain_error("ellint_rf: argument too small");
         }
 

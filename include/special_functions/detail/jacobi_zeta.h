@@ -1,12 +1,12 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_JACOBI_ZETA_H
 #define SPECIAL_FUNCTIONS_DETAIL_JACOBI_ZETA_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     Tp
     jacobi_zeta(Tp k, Tp phi)
     {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
         const auto s_pi_2 = std::numbers::pi_v<Tp> / Tp{2};
         const auto s_eps = std::numeric_limits<Tp>::epsilon();

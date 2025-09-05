@@ -3,6 +3,6 @@
 
 #include "bessel_t.h"
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_BESSEL_Y_H

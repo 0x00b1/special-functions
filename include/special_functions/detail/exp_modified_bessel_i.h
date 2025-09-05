@@ -1,6 +1,6 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_EXP_MODIFIED_BESSEL_I_H
 #define SPECIAL_FUNCTIONS_DETAIL_EXP_MODIFIED_BESSEL_I_H
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_EXP_MODIFIED_BESSEL_I_H

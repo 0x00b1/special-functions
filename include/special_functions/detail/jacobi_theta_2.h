@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_JACOBI_THETA_2_H
 #define SPECIAL_FUNCTIONS_DETAIL_JACOBI_THETA_2_H
 
-namespace special_functions::detail {
+namespace detail {
     /**
  * Return the Jacobi @f$ \theta_2 @f$ function by summation of the series.
  *
@@ -17,7 +17,7 @@ namespace special_functions::detail {
     template<typename Tp>
     Tp
     jacobi_theta_2_sum(Tp q, Tp x) {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         constexpr std::size_t s_max_iter = 50;
 
@@ -47,7 +47,7 @@ namespace special_functions::detail {
     template<typename Tp>
     Tp
     jacobi_theta_2_prod(Tp q, Tp x) {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
         constexpr std::size_t s_max_iter = 50;
         const auto q2 = q * q;
@@ -112,7 +112,7 @@ namespace special_functions::detail {
     template<typename Tp>
     std::complex<Tp>
     jacobi_theta_2(std::complex<Tp> q, std::complex<Tp> x) {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         using Cmplx = std::complex<Real>;
         const auto s_NaN = std::numeric_limits<Tp>::quiet_NaN();
         const auto s_eps = std::numeric_limits<Tp>::epsilon();
@@ -141,7 +141,7 @@ namespace special_functions::detail {
             const auto x_red = lattice.reduce(x);
             auto fact = std::complex<Tp>{1, 0};
             if (x_red.m != 0)
-                fact *= special_functions::parity<Tp>(x_red.m);
+                fact *= parity<Tp>(x_red.m);
             if (x_red.n != 0)
                 fact *= std::exp(s_i * Real(-2 * x_red.n) * x_red.z)
                         * std::pow(q, -x_red.n * x_red.n);

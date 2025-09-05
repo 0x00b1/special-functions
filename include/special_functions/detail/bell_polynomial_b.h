@@ -1,6 +1,6 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_BELL_POLYNOMIAL_B_H
 #define SPECIAL_FUNCTIONS_DETAIL_BELL_POLYNOMIAL_B_H
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_BELL_POLYNOMIAL_B_H

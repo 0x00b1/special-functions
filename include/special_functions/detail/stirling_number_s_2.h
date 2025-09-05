@@ -4,7 +4,7 @@
 #include "stirling_number_s_2_by_recursion.h"
 #include "stirling_number_s_2_by_series_expansion.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     stirling_number_s_2(unsigned int n, unsigned int m) {

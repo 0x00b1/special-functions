@@ -3,7 +3,7 @@
 
 #include "jacobi_polynomial_p_t.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     jacobi_polynomial_p_t<Tp>
     jacobi_polynomial_p(unsigned int n, Tp alpha1, Tp beta1, Tp x) {

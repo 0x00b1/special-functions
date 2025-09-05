@@ -1,11 +1,11 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_CARLSON_ELLIPTIC_R_D_H
 #define SPECIAL_FUNCTIONS_DETAIL_CARLSON_ELLIPTIC_R_D_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     Tp
     carlson_elliptic_r_d(Tp x, Tp y, Tp z) {
-        using Real = special_functions::num_traits_t<Tp>;
+        using Real = num_traits_t<Tp>;
         const auto s_NaN = std::numeric_limits<Real>::quiet_NaN();
         const auto s_min = std::numeric_limits<Real>::lim_min();
         const auto s_eps = std::numeric_limits<Real>::epsilon();
@@ -13,7 +13,7 @@ namespace special_functions::detail {
 
         bool neg_arg = false;
 
-        if constexpr (!special_functions::is_complex_v<Tp>) {
+        if constexpr (!is_complex_v<Tp>) {
             if (std::real(x) < Real{0}
                 || std::real(y) < Real{0}
                 || std::real(z) < Real{0}) {

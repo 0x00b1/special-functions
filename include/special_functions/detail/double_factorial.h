@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_DOUBLE_FACTORIAL_H
 #define SPECIAL_FUNCTIONS_DETAIL_DOUBLE_FACTORIAL_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     constexpr T
     double_factorial(int n) {

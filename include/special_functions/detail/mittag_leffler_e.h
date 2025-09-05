@@ -1,6 +1,6 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_MITTAG_LEFFLER_E_H
 #define SPECIAL_FUNCTIONS_DETAIL_MITTAG_LEFFLER_E_H
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_MITTAG_LEFFLER_E_H

@@ -2,7 +2,7 @@
 #define SPECIAL_FUNCTIONS_DETAIL_EULERIAN_NUMBER_1_BY_RECURSION_H
 
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     eulerian_number_1_by_recursion(unsigned int n, unsigned int m) {

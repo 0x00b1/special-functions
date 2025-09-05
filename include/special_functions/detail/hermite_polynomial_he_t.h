@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_HERMITE_POLYNOMIAL_HE_T_H
 #define SPECIAL_FUNCTIONS_DETAIL_HERMITE_POLYNOMIAL_HE_T_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     struct hermite_polynomial_he_t {
         unsigned int n;

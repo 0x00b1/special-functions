@@ -1,6 +1,6 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_SPHERICAL_BESSEL_J_H
 #define SPECIAL_FUNCTIONS_DETAIL_SPHERICAL_BESSEL_J_H
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_SPHERICAL_BESSEL_J_H

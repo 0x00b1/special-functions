@@ -1,11 +1,11 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_BULIRSCH_ELLIPTIC_INTEGRAL_EL3_H
 #define SPECIAL_FUNCTIONS_DETAIL_BULIRSCH_ELLIPTIC_INTEGRAL_EL3_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     bulirsch_elliptic_integral_el3(T x, T k_c, T p) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         if (std::isnan(x) || std::isnan(k_c) || std::isnan(p)) {
             return std::numeric_limits<U>::quiet_NaN();

@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_THETA_1_H
 #define SPECIAL_FUNCTIONS_DETAIL_THETA_1_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     theta_1(T n, T x) {
@@ -9,7 +9,7 @@ namespace special_functions::detail {
             return std::numeric_limits<T>::quiet_NaN(std::abs(x));
         }
 
-        if (special_functions::fp_is_zero(x)) {
+        if (fp_is_zero(x)) {
             return T{0};
         }
 

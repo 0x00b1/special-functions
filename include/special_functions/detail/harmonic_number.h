@@ -1,14 +1,14 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_HARMONIC_NUMBER_H
 #define SPECIAL_FUNCTIONS_DETAIL_HARMONIC_NUMBER_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     harmonic_number(unsigned int n) {
-        using special_functions::numbers::MAXIMUM_HARMONIC_NUMBER_INDEX;
+        using numbers::MAXIMUM_HARMONIC_NUMBER_INDEX;
 
-        using special_functions::numbers::HARMONIC_NUMBER_NUMERATORS;
-        using special_functions::numbers::HARMONIC_NUMBER_DENOMINATORS;
+        using numbers::HARMONIC_NUMBER_NUMERATORS;
+        using numbers::HARMONIC_NUMBER_DENOMINATORS;
 
         if (n <= MAXIMUM_HARMONIC_NUMBER_INDEX) {
             return T(HARMONIC_NUMBER_NUMERATORS[n - 1]) / T(HARMONIC_NUMBER_DENOMINATORS[n - 1]);

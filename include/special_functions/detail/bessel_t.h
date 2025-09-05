@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_BESSEL_T_H
 #define SPECIAL_FUNCTIONS_DETAIL_BESSEL_T_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tnu, typename Tx, typename Tp>
     struct cyl_bessel_t
     {

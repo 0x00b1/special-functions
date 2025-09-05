@@ -7,7 +7,7 @@
 #include "exponential_integral_e_by_recursion.h"
 #include "exponential_integral_e_by_series_summation.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     exponential_integral_e(unsigned int n, T x) {

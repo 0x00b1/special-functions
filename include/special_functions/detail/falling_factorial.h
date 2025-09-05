@@ -3,16 +3,16 @@
 
 #include <special_functions/numeric_limits.h>
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     falling_factorial(T a, int n) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
-        const auto is_integer_a = special_functions::fp_is_integer(a);
+        const auto is_integer_a = fp_is_integer(a);
 
         if (std::isnan(a)) {
             return std::numeric_limits<V>::quiet_NaN();
@@ -51,7 +51,7 @@ namespace special_functions::detail {
 
         auto sign = log_gamma_sign(a + T{1}) * log_gamma_sign(a - n + T{1});
 
-        if (logpoch < special_functions::numeric_limits::log_max(a)) {
+        if (logpoch < numeric_limits::log_max(a)) {
             return sign * std::exp(logpoch);
         }
 
@@ -62,10 +62,10 @@ namespace special_functions::detail {
     T
     falling_factorial(T a, T n) {
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
-        const auto integer_n = special_functions::fp_is_integer(n);
-        const auto integer_a = special_functions::fp_is_integer(a);
+        const auto integer_n = fp_is_integer(n);
+        const auto integer_a = fp_is_integer(a);
 
         if (std::isnan(n) || std::isnan(a)) {
             return std::numeric_limits<V>::quiet_NaN();
@@ -86,7 +86,7 @@ namespace special_functions::detail {
         auto logpoch = log_gamma(a + T{1}) - log_gamma(a - n + T{1});
         auto sign = log_gamma_sign(a + T{1}) * log_gamma_sign(a - n + T{1});
 
-        if (logpoch < special_functions::numeric_limits::log_max(a)) {
+        if (logpoch < numeric_limits::log_max(a)) {
             return sign * std::exp(logpoch);
         }
 

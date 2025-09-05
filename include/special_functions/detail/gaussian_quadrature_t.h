@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_GAUSSIAN_QUADRATURE_T_H
 #define SPECIAL_FUNCTIONS_DETAIL_GAUSSIAN_QUADRATURE_T_H
 
-namespace special_functions::detail {
+namespace detail {
     enum gaussian_quadrature_t {
         Gauss,             ///< Gauss quadrature
         Gauss_Lobatto,     ///< Gauss-Lobatto quadrature

@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_RADIAL_POLYNOMIAL_R_H
 #define SPECIAL_FUNCTIONS_DETAIL_RADIAL_POLYNOMIAL_R_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     radial_polynomial_r(unsigned int n, unsigned int m, T r) {

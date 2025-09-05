@@ -1,11 +1,11 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_DIGAMMA_BY_ASYMPTOTIC_EXPANSION_H
 #define SPECIAL_FUNCTIONS_DETAIL_DIGAMMA_BY_ASYMPTOTIC_EXPANSION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     digamma_by_asymptotic_expansion(T x) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         auto summation = std::log(x) - U{0.5L} / x;
 

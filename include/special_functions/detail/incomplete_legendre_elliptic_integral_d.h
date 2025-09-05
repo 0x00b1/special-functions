@@ -1,12 +1,12 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_LEGENDRE_ELLIPTIC_INTEGRAL_D_H
 #define SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_LEGENDRE_ELLIPTIC_INTEGRAL_D_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     incomplete_legendre_elliptic_integral_d(T k, T p)
     {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         if (std::isnan(k) || std::isnan(p)) {
             return std::numeric_limits<T>::quiet_NaN();

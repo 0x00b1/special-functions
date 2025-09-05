@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_DILOGARITHM_LI_2_H
 #define SPECIAL_FUNCTIONS_DETAIL_DILOGARITHM_LI_2_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     dilogarithm_li_2(T x) {

@@ -6,16 +6,16 @@
 #include "fp_type_util.h"
 #include "complex_util.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     carlson_elliptic_r_c(T x, T y) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         bool negative_x = false;
         bool negative_y = false;
 
-        if constexpr (!special_functions::is_complex_v<T>) {
+        if constexpr (!is_complex_v<T>) {
             if (std::real(x) < U{0}) {
                 negative_x = true;
             }

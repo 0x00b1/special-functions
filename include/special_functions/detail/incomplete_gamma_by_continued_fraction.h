@@ -1,12 +1,12 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_GAMMA_BY_CONTINUED_FRACTION_H
 #define SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_GAMMA_BY_CONTINUED_FRACTION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     std::pair<Tp, Tp>
     incomplete_gamma_by_continued_fraction(Tp a, Tp x) {
         using Val = Tp;
-        using Real = special_functions::num_traits_t<Val>;
+        using Real = num_traits_t<Val>;
         const auto s_fpmin = Real{3} * std::numeric_limits<Tp>::lim_min();
         const auto s_eps = Real{3} * std::numeric_limits<Tp>::epsilon();
         unsigned int s_itmax = 10 * int(10 + std::sqrt(std::abs(a)));

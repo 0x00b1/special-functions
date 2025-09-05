@@ -1,10 +1,10 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_BERNOULLI_POLYNOMIAL_B_H
 #define SPECIAL_FUNCTIONS_DETAIL_BERNOULLI_POLYNOMIAL_B_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
-    bernoulli_polynomial_b(unsigned int n, T x) {
+    bernoulli_polynomial_b(const unsigned int n, T x) {
         if (std::isnan(x)) {
             return std::numeric_limits<T>::quiet_NaN();
         }

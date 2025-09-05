@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_STIRLING_NUMBER_S_1_BY_RECURSION_H
 #define SPECIAL_FUNCTIONS_DETAIL_STIRLING_NUMBER_S_1_BY_RECURSION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     stirling_number_s_1_by_recursion(unsigned int n, unsigned int m) {

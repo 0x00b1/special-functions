@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_BULIRSCH_ELLIPTIC_INTEGRAL_CEL_H
 #define SPECIAL_FUNCTIONS_DETAIL_BULIRSCH_ELLIPTIC_INTEGRAL_CEL_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     bulirsch_elliptic_integral_cel(T k_c, T p, T a, T b) {

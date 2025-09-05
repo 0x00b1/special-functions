@@ -4,11 +4,11 @@
 #include "theta_2.h"
 #include "nome_q.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     neville_theta_c(T k, T x) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         if (std::isnan(k) || std::isnan(x)) {
             return std::numeric_limits<T>::quiet_NaN();
@@ -18,7 +18,7 @@ namespace special_functions::detail {
             throw std::domain_error("neville_theta_c: `k` must be in [-1, 1]");
         }
 
-        return std::sqrt(std::numbers::pi_v<U> / U{2} / (k * special_functions::complete_elliptic_integral_k(k))) * theta_2(nome_q(k), std::numbers::pi_v<U> / U{2} * x / special_functions::complete_elliptic_integral_k(k));
+        return std::sqrt(std::numbers::pi_v<U> / U{2} / (k * complete_elliptic_integral_k(k))) * theta_2(nome_q(k), std::numbers::pi_v<U> / U{2} * x / complete_elliptic_integral_k(k));
     }
 }
 

@@ -4,18 +4,18 @@
 #include "incomplete_gamma_by_continued_fraction.h"
 #include "incomplete_gamma_by_series_summation.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     lower_incomplete_gamma(T a, T x) {
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
         if (std::isnan(a) || std::isnan(x)) {
             return std::numeric_limits<T>::quiet_NaN();
         }
 
-        auto is_integer_a = special_functions::fp_is_integer(a);
+        auto is_integer_a = fp_is_integer(a);
 
         if (is_integer_a && is_integer_a() <= 0) {
             throw std::domain_error("tgamma_lower: non-positive integer argument a");

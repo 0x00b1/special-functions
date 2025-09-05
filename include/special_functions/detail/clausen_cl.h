@@ -1,6 +1,6 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_CLAUSEN_CL_H
 #define SPECIAL_FUNCTIONS_DETAIL_CLAUSEN_CL_H
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_CLAUSEN_CL_H

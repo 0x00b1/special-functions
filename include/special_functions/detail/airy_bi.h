@@ -3,6 +3,6 @@
 
 #include "airy_t.h"
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_AIRY_BI_H

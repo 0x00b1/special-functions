@@ -4,7 +4,7 @@
 #include "exponential_integral_e1.h"
 #include "exponential_integral_ei.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     hyperbolic_sine_integral_shi(const T x) {

@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_POLYGAMMA_H
 #define SPECIAL_FUNCTIONS_DETAIL_POLYGAMMA_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     polygamma(unsigned int m, T x) {
@@ -9,7 +9,7 @@ namespace special_functions::detail {
             return digamma(x);
         }
 
-        if (const auto n = special_functions::fp_is_integer(x); n && n() <= 0) {
+        if (const auto n = fp_is_integer(x); n && n() <= 0) {
             return std::numeric_limits<T>::quiet_NaN();
         }
 

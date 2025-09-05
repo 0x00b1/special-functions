@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_EXPONENTIAL_INTEGRAL_EI_H
 #define SPECIAL_FUNCTIONS_DETAIL_EXPONENTIAL_INTEGRAL_EI_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     exponential_integral_ei(T x) {

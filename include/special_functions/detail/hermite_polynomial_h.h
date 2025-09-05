@@ -3,7 +3,7 @@
 
 #include "hermite_polynomial_h_t.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     hermite_polynomial_h(unsigned int n, T x) {

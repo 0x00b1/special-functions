@@ -3,14 +3,14 @@
 
 #include <special_functions/numeric_limits.h>
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     rising_factorial(T a, int n) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
         if (std::isnan(a)) {
             return std::numeric_limits<V>::quiet_NaN();
@@ -41,7 +41,7 @@ namespace special_functions::detail {
             return b;
         }
 
-        if (log_gamma(a + n) - log_gamma(a) < special_functions::numeric_limits::log_max(a)) {
+        if (log_gamma(a + n) - log_gamma(a) < numeric_limits::log_max(a)) {
             return log_gamma_sign(a + n) * log_gamma_sign(a) * std::exp(log_gamma(a + n) - log_gamma(a));
         }
 
@@ -63,7 +63,7 @@ namespace special_functions::detail {
             return rising_factorial(a, int(std::nearbyint(n)));
         }
 
-        if (log_gamma(a + n) - log_gamma(a) < special_functions::numeric_limits::log_max(a)) {
+        if (log_gamma(a + n) - log_gamma(a) < numeric_limits::log_max(a)) {
             return log_gamma_sign(a + n) * log_gamma_sign(a) * std::exp(log_gamma(a + n) - log_gamma(a));
         }
 

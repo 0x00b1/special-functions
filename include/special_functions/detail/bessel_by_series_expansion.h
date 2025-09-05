@@ -3,12 +3,12 @@
 
 #include <complex>
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T, typename U>
     constexpr U
     bessel_by_series_expansion(T n, U x, int sign, unsigned int maximum_iteration) {
-        using V = special_functions::fp_promote_t<T, U>;
-        using W = special_functions::num_traits_t<V>;
+        using V = fp_promote_t<T, U>;
+        using W = num_traits_t<V>;
 
         if (std::abs(x) < std::numeric_limits<W>::epsilon()) {
             if (n == T{0}) {

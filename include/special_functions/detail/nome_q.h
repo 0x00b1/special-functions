@@ -3,7 +3,7 @@
 
 #include "nome_q_by_maclaurin_series.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     nome_q(T k) {
@@ -19,7 +19,7 @@ namespace special_functions::detail {
             return nome_q_by_maclaurin_series(k);
         }
 
-        return std::exp(-std::numbers::pi_v<T> * special_functions::complete_elliptic_integral_k(std::sqrt(T{1} - k * k)) / special_functions::complete_elliptic_integral_k(k));
+        return std::exp(-std::numbers::pi_v<T> * complete_elliptic_integral_k(std::sqrt(T{1} - k * k)) / complete_elliptic_integral_k(k));
     }
 }
 

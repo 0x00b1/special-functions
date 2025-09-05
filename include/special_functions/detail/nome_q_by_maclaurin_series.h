@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_NOME_Q_BY_MACLAURIN_SERIES_H
 #define SPECIAL_FUNCTIONS_DETAIL_NOME_Q_BY_MACLAURIN_SERIES_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     Tp
     nome_q_by_maclaurin_series(Tp k) {

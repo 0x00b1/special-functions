@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_EULERIAN_NUMBER_2_BY_RECURSION_H
 #define SPECIAL_FUNCTIONS_DETAIL_EULERIAN_NUMBER_2_BY_RECURSION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     eulerian_number_2_by_recursion(unsigned int n, unsigned int m) {

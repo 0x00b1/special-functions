@@ -3,7 +3,7 @@
 
 #include "theta_3.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     theta_4(T n, T x) {

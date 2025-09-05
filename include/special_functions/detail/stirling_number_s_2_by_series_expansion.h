@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_STIRLING_NUMBER_S_2_BY_SERIES_EXPANSION_H
 #define SPECIAL_FUNCTIONS_DETAIL_STIRLING_NUMBER_S_2_BY_SERIES_EXPANSION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     stirling_number_s_2_by_series_expansion(unsigned int n, unsigned int m) {

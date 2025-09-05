@@ -1,11 +1,11 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_ELLIPTIC_INTEGRAL_PI_H
 #define SPECIAL_FUNCTIONS_DETAIL_INCOMPLETE_ELLIPTIC_INTEGRAL_PI_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     incomplete_elliptic_integral_pi(T k, T n, T p) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         if (std::isnan(k) || std::isnan(n) || std::isnan(p)) {
             return std::numeric_limits<T>::quiet_NaN();

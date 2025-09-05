@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_CHEBYSHEV_POLYNOMIAL_BY_RECURSION_H
 #define SPECIAL_FUNCTIONS_DETAIL_CHEBYSHEV_POLYNOMIAL_BY_RECURSION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     std::tuple <Tp, Tp, Tp>
     chebyshev_polynomial_by_recursion(unsigned int n, Tp x, Tp C0, Tp C1) {

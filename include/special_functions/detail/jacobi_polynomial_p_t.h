@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_JACOBI_POLYNOMIAL_P_T_H
 #define SPECIAL_FUNCTIONS_DETAIL_JACOBI_POLYNOMIAL_P_T_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename Tp>
     struct jacobi_polynomial_p_t {
         unsigned int n;

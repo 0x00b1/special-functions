@@ -1,7 +1,7 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_LAH_NUMBER_BY_RECURSION_H
 #define SPECIAL_FUNCTIONS_DETAIL_LAH_NUMBER_BY_RECURSION_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     lah_number_by_recursion(unsigned int n, unsigned int k) {

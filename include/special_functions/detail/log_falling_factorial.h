@@ -1,17 +1,17 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_LOG_FALLING_FACTORIAL_H
 #define SPECIAL_FUNCTIONS_DETAIL_LOG_FALLING_FACTORIAL_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     log_falling_factorial(T a, T n) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
-        const auto is_integer_n = special_functions::fp_is_integer(n);
-        const auto is_integer_a = special_functions::fp_is_integer(a);
+        const auto is_integer_n = fp_is_integer(n);
+        const auto is_integer_a = fp_is_integer(a);
 
         if (std::isnan(n) || std::isnan(a)) {
             return std::numeric_limits<U>::quiet_NaN();

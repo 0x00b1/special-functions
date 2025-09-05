@@ -3,7 +3,7 @@
 
 #include "bernoulli_number_by_series_summation.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     constexpr T
     bernoulli_number(unsigned int n) {

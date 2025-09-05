@@ -1,17 +1,17 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_GAMMA_H
 #define SPECIAL_FUNCTIONS_DETAIL_GAMMA_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     gamma(T a) {
-        using special_functions::numbers::MAXIMUM_FACTORIAL_INDEX;
-        using special_functions::numbers::FACTORIALS;
+        using numbers::MAXIMUM_FACTORIAL_INDEX;
+        using numbers::FACTORIALS;
 
         using U = T;
-        using V = special_functions::num_traits_t<U>;
+        using V = num_traits_t<U>;
 
-        auto is_integer_a = special_functions::fp_is_integer(a);
+        auto is_integer_a = fp_is_integer(a);
 
         if (is_integer_a) {
             const auto integer_a = is_integer_a();

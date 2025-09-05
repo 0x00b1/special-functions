@@ -1,6 +1,6 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_SPHERICAL_HANKEL_H_2_H
 #define SPECIAL_FUNCTIONS_DETAIL_SPHERICAL_HANKEL_H_2_H
 
-namespace special_functions::detail {}
+namespace detail {}
 
 #endif // SPECIAL_FUNCTIONS_DETAIL_SPHERICAL_HANKEL_H_2_H

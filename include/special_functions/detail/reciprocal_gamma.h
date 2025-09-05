@@ -4,30 +4,30 @@
 #include "../sin_pi.h"
 #include "math_util.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     reciprocal_gamma(T a) {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
 
         if (std::isnan(a)) {
             return std::numeric_limits<T>::quiet_NaN();
         } else {
             const auto s_pi = std::numbers::pi_v<U>;
 
-            const auto an = special_functions::fp_is_integer(a);
+            const auto an = fp_is_integer(a);
 
             if (an) {
                 auto n = an();
 
                 if (n <= 0) {
                     return T{0};
-                } else if (n < int(special_functions::numbers::MAXIMUM_FACTORIAL_INDEX<U>)) {
-                    return T{1} / U(special_functions::numbers::FACTORIALS[n - 1]);
+                } else if (n < int(numbers::MAXIMUM_FACTORIAL_INDEX<U>)) {
+                    return T{1} / U(numbers::FACTORIALS[n - 1]);
                 } else {
-                    auto k = int(special_functions::numbers::MAXIMUM_FACTORIAL_INDEX<U>);
+                    auto k = int(numbers::MAXIMUM_FACTORIAL_INDEX<U>);
 
-                    auto rgam = T{1} / U(special_functions::numbers::FACTORIALS[k - 1]);
+                    auto rgam = T{1} / U(numbers::FACTORIALS[k - 1]);
 
                     while (k < n && std::abs(rgam) > U{0}) {
                         rgam /= U(k++);
@@ -48,7 +48,7 @@ namespace special_functions::detail {
             } else if (std::real(a) > U{0}) {
                 return gamma_reciprocal_series(a);
             } else {
-                return special_functions::sin_pi(a) * gamma(T{1} - a) / s_pi;
+                return sin_pi(a) * gamma(T{1} - a) / s_pi;
             }
         }
     }

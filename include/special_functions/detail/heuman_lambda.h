@@ -1,12 +1,12 @@
 #ifndef SPECIAL_FUNCTIONS_DETAIL_HEUMAN_LAMBDA_H
 #define SPECIAL_FUNCTIONS_DETAIL_HEUMAN_LAMBDA_H
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     heuman_lambda(T k, T phi)
     {
-        using U = special_functions::num_traits_t<T>;
+        using U = num_traits_t<T>;
         const auto s_NaN = std::numeric_limits<T>::quiet_NaN();
         const auto s_pi = std::numbers::pi_v<T>;
         const auto s_pi_2 = std::numbers::pi_v<T> / T{2};

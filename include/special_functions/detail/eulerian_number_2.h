@@ -3,7 +3,7 @@
 
 #include "eulerian_number_2_by_recursion.h"
 
-namespace special_functions::detail {
+namespace detail {
     template<typename T>
     T
     eulerian_number_2(unsigned int n, unsigned int m) {
