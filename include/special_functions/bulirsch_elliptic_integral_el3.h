@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_BULIRSCH_ELLIPTIC_INTEGRAL_EL3_H
 #define SPECIAL_FUNCTIONS_BULIRSCH_ELLIPTIC_INTEGRAL_EL3_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/bulirsch_elliptic_integral_el3.h>
 
 namespace special_functions {

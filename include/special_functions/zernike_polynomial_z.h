@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_ZERNIKE_POLYNOMIAL_Z_H
 #define SPECIAL_FUNCTIONS_ZERNIKE_POLYNOMIAL_Z_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/zernike_polynomial_z.h>
 
 namespace special_functions {

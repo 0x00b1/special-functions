@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_THETA_3_H
 #define SPECIAL_FUNCTIONS_THETA_3_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/theta_3.h>
 
 namespace special_functions {

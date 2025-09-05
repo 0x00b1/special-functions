@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_SHIFTED_CHEBYSHEV_POLYNOMIAL_W_H
 #define SPECIAL_FUNCTIONS_SHIFTED_CHEBYSHEV_POLYNOMIAL_W_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/shifted_chebyshev_polynomial_w.h>
 
 namespace special_functions {

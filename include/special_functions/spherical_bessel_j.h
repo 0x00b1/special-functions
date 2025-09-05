@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_SPHERICAL_BESSEL_J_H
 #define SPECIAL_FUNCTIONS_SPHERICAL_BESSEL_J_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/spherical_bessel_j.h>
 
 namespace special_functions {

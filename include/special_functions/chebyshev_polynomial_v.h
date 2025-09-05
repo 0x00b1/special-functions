@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_CHEBYSHEV_POLYNOMIAL_V_H
 #define SPECIAL_FUNCTIONS_CHEBYSHEV_POLYNOMIAL_V_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/chebyshev_polynomial_v.h>
 
 namespace special_functions {

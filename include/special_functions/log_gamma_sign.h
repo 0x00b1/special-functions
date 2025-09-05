@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_LOG_GAMMA_SIGN_H
 #define SPECIAL_FUNCTIONS_LOG_GAMMA_SIGN_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/log_gamma_sign.h>
 
 namespace special_functions {

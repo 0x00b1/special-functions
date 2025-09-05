@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_NEVILLE_THETA_D_H
 #define SPECIAL_FUNCTIONS_NEVILLE_THETA_D_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/neville_theta_d.h>
 
 namespace special_functions {

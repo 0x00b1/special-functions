@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_HERMITE_POLYNOMIAL_HE_H
 #define SPECIAL_FUNCTIONS_HERMITE_POLYNOMIAL_HE_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/hermite_polynomial_he.h>
 
 namespace special_functions {

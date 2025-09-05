@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_HURWITZ_ZETA_H
 #define SPECIAL_FUNCTIONS_HURWITZ_ZETA_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/hurwitz_zeta.h>
 
 namespace special_functions {

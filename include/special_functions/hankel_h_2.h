@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_HANKEL_H_2_H
 #define SPECIAL_FUNCTIONS_HANKEL_H_2_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/hankel_h_2.h>
 
 namespace special_functions {

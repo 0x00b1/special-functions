@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_ASSOCIATED_LEGENDRE_Q_H
 #define SPECIAL_FUNCTIONS_ASSOCIATED_LEGENDRE_Q_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/associated_legendre_q.h>
 
 namespace special_functions {

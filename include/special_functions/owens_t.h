@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_OWENS_T_H
 #define SPECIAL_FUNCTIONS_OWENS_T_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/owens_t.h>
 
 namespace special_functions {

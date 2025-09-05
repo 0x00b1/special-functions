@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_JACOBI_POLYNOMIAL_P_H
 #define SPECIAL_FUNCTIONS_JACOBI_POLYNOMIAL_P_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/jacobi_polynomial_p.h>
 
 namespace special_functions {

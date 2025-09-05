@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_COSINE_INTEGRAL_CI_H
 #define SPECIAL_FUNCTIONS_COSINE_INTEGRAL_CI_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/cosine_integral_ci.h>
 
 namespace special_functions {

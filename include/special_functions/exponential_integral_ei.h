@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_EXPONENTIAL_INTEGRAL_EI_H
 #define SPECIAL_FUNCTIONS_EXPONENTIAL_INTEGRAL_EI_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/exponential_integral_ei.h>
 #include "special_functions/detail/fp_type_util.h"
 

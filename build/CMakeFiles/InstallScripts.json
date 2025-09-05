@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/goodmaa3/com/github/0x00b1/special-functions/build/cmake_install.cmake",
+		"/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/googletest-build/cmake_install.cmake",
+		"/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/googletest-build/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_BINOMIAL_COEFFICIENT_H
 #define SPECIAL_FUNCTIONS_BINOMIAL_COEFFICIENT_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/binomial_coefficient.h>
 
 namespace special_functions {

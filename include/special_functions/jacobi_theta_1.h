@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_JACOBI_THETA_1_H
 #define SPECIAL_FUNCTIONS_JACOBI_THETA_1_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/jacobi_theta_1.h>
 
 namespace special_functions {

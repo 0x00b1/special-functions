@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_DILOGARITHM_LI_2_H
 #define SPECIAL_FUNCTIONS_DILOGARITHM_LI_2_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/dilogarithm_li_2.h>
 
 namespace special_functions {

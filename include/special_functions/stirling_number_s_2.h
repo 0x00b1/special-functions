@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_STIRLING_NUMBER_S_2_H
 #define SPECIAL_FUNCTIONS_STIRLING_NUMBER_S_2_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/stirling_number_s_2.h>
 
 namespace special_functions {

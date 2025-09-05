@@ -1,6 +1,8 @@
 #ifndef SPECIAL_FUNCTIONS_SPHERICAL_HARMONIC_Y_H
 #define SPECIAL_FUNCTIONS_SPHERICAL_HARMONIC_Y_H
 
+#include <special_functions/detail/fp_type_util.h>
+#include <complex>
 #include <special_functions/detail/spherical_harmonic_y.h>
 
 namespace special_functions {
