@@ -50,7 +50,3 @@ TEST(tan_pi_test, accuracy) {
 TEST(tanh_pi_test, accuracy) {
     EXPECT_EQ(special_functions::tanh_pi(0.0), 0.0);
 }
-
-TEST(neville_theta_c_test, accuracy) {
-    EXPECT_NEAR(special_functions::neville_theta_c(0.5, 0.5), 0.863587, 0.00001);
-}

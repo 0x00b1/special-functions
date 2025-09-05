@@ -9,7 +9,7 @@ namespace special_functions {
     log_factorial(unsigned int n) {
         using U = fp_promote_t<T>;
 
-        return detail::log_factorial<U>(n);
+        return n;
     }
 }
 
