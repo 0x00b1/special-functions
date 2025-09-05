@@ -811,5 +811,6 @@ CMakeFiles/special_functions_test.dir/test/carlson_elliptic_r_d_test.cpp.o: \
   /Users/goodmaa3/com/github/0x00b1/special-functions/build/_deps/googletest-src/googletest/include/gtest/gtest_prod.h \
   /Users/goodmaa3/com/github/0x00b1/special-functions/include/special_functions/carlson_elliptic_r_d.h \
   /Users/goodmaa3/com/github/0x00b1/special-functions/include/special_functions/detail/fp_type_util.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/complex \
-  /Users/goodmaa3/com/github/0x00b1/special-functions/include/special_functions/detail/carlson_elliptic_r_d.h
+  /Users/goodmaa3/com/github/0x00b1/special-functions/include/special_functions/detail/carlson_elliptic_r_d.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/numbers \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/complex

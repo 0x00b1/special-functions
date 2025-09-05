@@ -1,17 +1,16 @@
 #ifndef SPECIAL_FUNCTIONS_NEVILLE_THETA_C_H
 #define SPECIAL_FUNCTIONS_NEVILLE_THETA_C_H
 
-
+#include <special_functions/detail/fp_type_util.h>
+#include <special_functions/detail/neville_theta_c.h>
 #include <complex>
 
-
 namespace special_functions {
-    template<typename T, typename U>
-    fp_promote_t<T, U>
-    neville_theta_c(T k, U x) {
-        using V = fp_promote_t<T, U>;
-
-        return x;
+    template<typename T, typename U, typename V>
+    fp_promote_t<T, U, V>
+    neville_theta_c(T x, U y, V z) {
+        using result_type = fp_promote_t<T, U, V>;
+        return detail::neville_theta_c<result_type>(x, y, z);
     }
 }
 

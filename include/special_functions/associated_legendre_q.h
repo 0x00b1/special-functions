@@ -1,17 +1,16 @@
 #ifndef SPECIAL_FUNCTIONS_ASSOCIATED_LEGENDRE_Q_H
 #define SPECIAL_FUNCTIONS_ASSOCIATED_LEGENDRE_Q_H
 
-
+#include <special_functions/detail/fp_type_util.h>
+#include <special_functions/detail/associated_legendre_q.h>
 #include <complex>
-
 
 namespace special_functions {
     template<typename T>
     fp_promote_t<T>
-    associated_legendre_q(unsigned int l, unsigned int m, T x) {
-        using type = fp_promote_t<T>;
-
-        return x;
+    associated_legendre_q(T x) {
+        using result_type = fp_promote_t<T>;
+        return detail::associated_legendre_q<result_type>(x);
     }
 }
 

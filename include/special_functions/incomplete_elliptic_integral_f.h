@@ -1,17 +1,16 @@
 #ifndef SPECIAL_FUNCTIONS_INCOMPLETE_ELLIPTIC_INTEGRAL_F_H
 #define SPECIAL_FUNCTIONS_INCOMPLETE_ELLIPTIC_INTEGRAL_F_H
 
-
+#include <special_functions/detail/fp_type_util.h>
+#include <special_functions/detail/incomplete_elliptic_integral_f.h>
 #include <complex>
 
-
 namespace special_functions {
-    template<typename T, typename U>
-    fp_promote_t<T, U>
-    incomplete_elliptic_integral_f(T k, U p) {
-        using V = fp_promote_t<T, U>;
-
-        return detail::incomplete_elliptic_integral_f<V>(k, p);
+    template<typename T, typename U, typename V>
+    fp_promote_t<T, U, V>
+    incomplete_elliptic_integral_f(T x, U y, V z) {
+        using result_type = fp_promote_t<T, U, V>;
+        return detail::incomplete_elliptic_integral_f<result_type>(x, y, z);
     }
 }
 
