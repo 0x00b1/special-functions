@@ -37,7 +37,7 @@ accuracy contract validated against mpmath reference tables.
 
 | Decision | Choice |
 |---|---|
-| Scope | Gamma family seed set (12 public ops) |
+| Scope | Gamma family seed set (12 functions + 1 public gradient op) |
 | Backends | cuda, rocm, xpu, metal, cpu (all five from the start) |
 | Dtypes | float32, float64, float16, bfloat16 (halves computed internally in fp32; Metal has no fp64 — fp32 + halves only there) |
 | Architecture | Per-backend hand-written implementations (idiomatic per platform), with shared *generated* coefficient tables and a shared accuracy contract as the anti-drift mechanisms |
@@ -128,8 +128,9 @@ Conventions:
   - ψ-family: poles at non-positive integers (sign per function order).
   - P/Q domain: `a > 0`, `x ≥ 0`; outside → NaN. `P(a, 0) = 0`, `Q(a, 0) = 1`,
     `P(a, +inf) = 1`.
-  - Inverses: domain `p ∈ [0, 1]` (resp. `q`); endpoints map to 0 / +inf;
-    outside → NaN.
+  - Inverses: domain `p ∈ [0, 1]` (resp. `q`). `inverse_p(a, 0) = 0`,
+    `inverse_p(a, 1) = +inf`; `inverse_q(a, 1) = 0`, `inverse_q(a, 0) = +inf`;
+    outside [0, 1] → NaN.
   - NaN inputs propagate.
 
 ## Numerical algorithms
