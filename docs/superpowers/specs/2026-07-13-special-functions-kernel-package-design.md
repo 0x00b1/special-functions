@@ -14,7 +14,9 @@ CPU) with per-backend hand-written implementations, real **and complex**
 arguments, full autograd (double backward and beyond falls out automatically
 because the family is closed under differentiation), `torch.compile` support
 via fake ops, dual binding frameworks (`torch` and `tvm-ffi`), and a
-ULP-audited accuracy contract validated against mpmath reference tables.
+ULP-audited accuracy contract validated against mpmath reference tables. The
+torch bindings are built against the Torch stable ABI (`[torch.stable-abi]`)
+on every backend, collapsing the per-Torch-version build matrix.
 
 The incomplete gamma functions (P, Q, their inverses, and their a-derivatives)
 were dropped from v1 during spec review and are documented under Future work
@@ -35,6 +37,9 @@ decisions.
 - Framework reach: `[torch]` bindings for the PyTorch ecosystem and
   `[tvm-ffi]` bindings (DLPack, stable C ABI) for framework-neutral consumers
   such as JAX.
+- ABI stability: torch bindings written to the Torch stable ABI on all five
+  backends, so each backend ships one build that works on the pinned Torch
+  version and everything later, instead of one build per Torch release.
 
 ## Non-goals (v1)
 
@@ -42,7 +47,6 @@ decisions.
   entirely; see Future work.
 - Explicit CPU SIMD (compiler autovectorization only).
 - Function families beyond the Γ/ψ chain.
-- Torch stable-ABI build variants (`[torch.stable-abi]`).
 
 ## Decisions
 
@@ -53,6 +57,7 @@ decisions.
 | Dtypes | float32, float64, float16, bfloat16, complex64, complex128. Halves computed internally in fp32. Metal has no fp64: fp32, halves, and complex64 only there |
 | Architecture | Per-backend hand-written implementations (idiomatic per platform), with shared *generated* coefficient tables and a shared accuracy contract as the anti-drift mechanisms |
 | Binding frameworks | Both `[torch]` and `[tvm-ffi]` in v1. Autograd/compile are torch-side; tvm-ffi exposes forward functions via DLPack |
+| Torch ABI | `[torch.stable-abi]` on all five backends (demonstrated by the `relu-torch-stable-abi` reference example), pinned at Torch "2.11" — exact pin confirmed at implementation as the oldest release whose stable ABI covers the bindings' needs |
 | Autograd | backward + backward_backward (and higher orders); backwards composed from the package's own public ops; fake ops registered for `torch.compile`; complex gradients per PyTorch's Wirtinger/conjugate convention |
 | Naming | Kernel/module name `special_functions`; full descriptive snake_case public names |
 | Publishing | Develop and publish at `0x00b1/special-functions`; propose to `kernels-community` via PR to `huggingface/kernels-community` once mature |
@@ -92,6 +97,8 @@ special-functions/
   `backends = ["cuda", "rocm", "xpu", "metal", "cpu"]`.
 - `[general.hub]`: `repo-id = "0x00b1/special-functions"`.
 - `[torch]`: `torch-ext/torch_binding.cpp`, `torch-ext/torch_binding.h`.
+- `[torch.stable-abi]`: all five backends pinned to the same Torch version
+  (target `"2.11"`, per the `relu-torch-stable-abi` reference example).
 - `[tvm-ffi]`: `tvm-ffi-ext/tvm_ffi_binding.cpp`.
 - One `[kernel.special_functions_<backend>]` section per backend, each with
   `backend`, `depends`, and `src` pointing at its own directory. Kernel
@@ -212,10 +219,20 @@ kernel code is per-backend.
 Kernel entry points are framework-agnostic (device pointers, counts, stream
 handle), so both binding layers are thin:
 
-- **`[torch]`** (`torch-ext/`): `TORCH_LIBRARY` registration of functional op
-  schemas, per-device `ops.impl`, Python public API, autograd, fake ops.
-  This is the full-featured surface: autograd, double backward,
-  `torch.compile`.
+- **`[torch]`** (`torch-ext/`): op registration of functional schemas,
+  per-device `ops.impl`, Python public API, autograd, fake ops. This is the
+  full-featured surface: autograd, double backward, `torch.compile`.
+  **Written against the Torch stable ABI** on every backend: bindings
+  include `<torch/csrc/stable/library.h>` and register through
+  `STABLE_TORCH_LIBRARY_EXPAND` / `STABLE_TORCH_LIBRARY_IMPL_EXPAND` with
+  `TORCH_BOX()`-wrapped entry points, using only stable-ABI types
+  (`torch::stable::Tensor`). Consequences: one build per backend that runs
+  on the pinned Torch version and later (the per-Torch-version matrix
+  collapses), at the cost of not loading on older Torch releases. If output
+  allocation for functional schemas proves awkward in the stable subset, the
+  C++ ops become out-variant and the functional surface (with autograd and
+  fake ops) is registered at the Python custom-op layer instead — public API
+  unchanged.
 - **`[tvm-ffi]`** (`tvm-ffi-ext/`): DLPack-consuming exports of the eight
   forward functions with a stable C ABI and no libtorch dependency where the
   backend permits (per the `relu-tvm-ffi` reference example, cuda/cpu can be
@@ -338,7 +355,6 @@ Mechanics:
     direction pairs; non-differentiability cutoff at third order in a.
   - Complex-argument P/Q (analytic continuation) as a further step after the
     real implementation lands.
-- Torch stable-ABI variants to shrink the torch build matrix.
 - Explicit CPU SIMD.
 - Further families: Bessel, elliptic integrals, error-function family.
 
@@ -349,6 +365,14 @@ Mechanics:
   if unsupported: sibling repo `0x00b1/special-functions-tvm-ffi` reusing the
   same kernel sources via `[general].source`. To be verified in the first
   implementation milestone.
+- **Stable ABI is experimental** in kernel-builder, and its API surface is a
+  restricted subset of libtorch: risks are functional-schema output
+  allocation and stream/queue access per backend (MPS command queue, SYCL
+  queue) within the stable subset. The reference example proves all five
+  backends work for out-variant elementwise ops; the fallback (out-variant
+  C++ ops + Python-layer functional registration) is recorded in the
+  Bindings section. Pinning at "2.11" also sets the minimum supported Torch
+  version — acceptable, and revisited if users need older Torch.
 - **tvm-ffi backend coverage**: reference examples demonstrate cpu/cuda/xpu
   only; Metal and ROCm through tvm-ffi are unproven. Acceptable outcome:
   tvm-ffi bindings ship for the subset of backends where they work, torch
