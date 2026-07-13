@@ -1,13 +1,18 @@
 """Generate mpmath ground-truth tables for the accuracy contract.
 
 Truth is computed at 60 significant digits and correctly rounded to the
-target dtype by round-tripping through a 30-significant-digit decimal
-string (one rounding step, avoiding float64 double-rounding for float32
-targets). Tables are written to tests/references/<fn>_<dtype>.npz and
+target dtype by exact rational round-to-nearest-even: the mpf's
+sign/mantissa/exponent triple is converted to an exact `Fraction`, compared
+against the exact `Fraction` values of the target dtype's nearest
+candidates, and the true nearest (ties broken to even mantissa) is
+selected. This avoids the double-rounding error a decimal-string
+round-trip (str -> float64 -> float32) can introduce near float32 tie
+midpoints. Tables are written to tests/references/<fn>_<dtype>.npz and
 checked in. Poles and special values get closed-form expecteds per the
 spec's edge-behavior contract.
 """
 
+from fractions import Fraction
 from pathlib import Path
 
 import mpmath as mp
@@ -18,9 +23,72 @@ OUT_DIR = ROOT / "tests" / "references"
 SEED = 20260713
 DPS = 60
 
+# Round-to-nearest overflow threshold: max-representable-finite + half its ULP.
+# Exact values at or beyond this magnitude round to infinity.
+_OVERFLOW_THRESHOLD = {
+    np.dtype(np.float32): Fraction(2) ** 128 - Fraction(2) ** 103,
+    np.dtype(np.float64): Fraction(2) ** 1024 - Fraction(2) ** 970,
+}
+
+_UINT_VIEW = {
+    np.dtype(np.float32): np.uint32,
+    np.dtype(np.float64): np.uint64,
+}
+
 
 def _round_to(value: mp.mpf, dtype) -> float:
-    return dtype(mp.nstr(value, 30, strip_zeros=False))
+    """Round an mpmath value to `dtype` with exact round-to-nearest-even.
+
+    Builds the exact rational value of the mpf, compares it against the
+    exact rational values of the candidate float64/float32 result and its
+    two immediate neighbors, and returns whichever candidate is truly
+    closest -- breaking exact ties toward the candidate with an even
+    mantissa. This is immune to the double-rounding error that a
+    str -> float64 -> float32 conversion path can introduce.
+    """
+    np_dtype = np.dtype(dtype)
+    sign, man, exp, _ = mp.mpf(value)._mpf_
+    if man == 0:
+        return dtype(0.0)
+
+    exact = Fraction(man, 1) * Fraction(2) ** exp
+    if sign:
+        exact = -exact
+
+    overflow = _OVERFLOW_THRESHOLD[np_dtype]
+    if abs(exact) >= overflow:
+        return dtype(np.inf) if exact > 0 else dtype(-np.inf)
+
+    fi = np.finfo(np_dtype)
+    approx = float(value)
+    if not np.isfinite(approx):
+        cand = dtype(fi.max) if approx > 0 else dtype(-fi.max)
+    else:
+        cand = dtype(approx)
+        if not np.isfinite(cand):
+            cand = dtype(fi.max) if cand > 0 else dtype(-fi.max)
+
+    neighbors = [
+        cand,
+        np.nextafter(cand, dtype(np.inf), dtype=np_dtype),
+        np.nextafter(cand, dtype(-np.inf), dtype=np_dtype),
+    ]
+    candidates = [c for c in neighbors if np.isfinite(c)]
+
+    uint_dtype = _UINT_VIEW[np_dtype]
+
+    def is_even(c) -> bool:
+        return int(np.array(c, dtype=np_dtype).view(uint_dtype)) & 1 == 0
+
+    best = None
+    best_dist = None
+    for c in candidates:
+        dist = abs(exact - Fraction(float(c)))
+        if best_dist is None or dist < best_dist:
+            best, best_dist = c, dist
+        elif dist == best_dist and is_even(c) and not is_even(best):
+            best = c
+    return dtype(best)
 
 
 def _log_gamma_real(x: mp.mpf) -> mp.mpf:
