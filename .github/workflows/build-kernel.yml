@@ -1,0 +1,45 @@
+name: Build Kernel
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "special_functions_cuda/**"
+      - "special_functions_rocm/**"
+      - "special_functions_xpu/**"
+      - "special_functions_cpu/**"
+      - "torch-ext/**"
+      - "tvm-ffi-ext/**"
+      - build.toml
+      - flake.nix
+      - flake.lock
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build kernel via HF Jobs
+        uses: huggingface/kernel-builder-job@main
+        with:
+          token: ${{ secrets.HF_TOKEN }}
+          namespace: 0x00b1
+          flavor: cpu-xl
+          timeout: "21600"
+          script: |
+            # The container starts with `set -x`; disable tracing so the
+            # token below is not echoed into the streamed logs.
+            set +x
+            export HF_TOKEN="${{ secrets.HF_TOKEN }}"
+            # Rebuild artifacts, so skip pulling existing LFS blobs.
+            export GIT_LFS_SKIP_SMUDGE=1
+
+            git clone "${{ github.server_url }}/${{ github.repository }}" kernel
+            cd kernel
+            git checkout "${{ github.sha }}"
+
+            nix run github:huggingface/kernels#kernel-builder -- build-and-upload \
+              --max-jobs 4 \
+              --cores 8 \
+              --repo-id 0x00b1/special-functions

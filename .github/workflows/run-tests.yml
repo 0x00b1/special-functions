@@ -1,0 +1,27 @@
+name: Run tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/ci_test.py
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ci_test.py on an HF Jobs GPU
+        uses: huggingface/hf-jobs-action@main
+        with:
+          token: ${{ secrets.HF_TOKEN }}
+          namespace: 0x00b1
+          flavor: l4x1
+          image: ghcr.io/astral-sh/uv:python3.10-bookworm
+          timeout: "3600"
+          files: scripts/ci_test.py
+          script: |
+            set +x
+            export HF_TOKEN="${{ secrets.HF_TOKEN }}"
+            uv run /tmp/files/ci_test.py

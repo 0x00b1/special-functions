@@ -67,6 +67,9 @@ decisions.
 
 ```
 special-functions/
+├── .github/workflows/
+│   ├── build-kernel.yml            # HF Jobs build → build-and-upload to the Hub
+│   └── run-tests.yml               # HF Jobs GPU test of published Hub artifacts
 ├── build.toml                      # edition 5; backends: cuda, rocm, xpu, metal, cpu
 ├── flake.nix                       # kernel-builder Nix entry point
 ├── CARD.md                         # kernel card template → Hub README
@@ -87,6 +90,8 @@ special-functions/
 │   ├── coefficients/               # mpmath generators → per-backend coefficient headers
 │   └── references/                 # mpmath reference-table generator
 ├── tests/                          # ULP + property + gradient tests
+├── scripts/
+│   └── ci_test.py                  # uv inline-deps smoke test run on HF Jobs GPUs
 ├── benchmarks/
 └── docs/superpowers/specs/
 ```
@@ -326,12 +331,31 @@ Mechanics:
   Per-function docs cover domain (real and complex), branch-cut conventions,
   algorithm sketch, gradient support matrix, and a ULP budget table rendered
   from the accuracy manifest so docs cannot drift from the tested contract.
-- **Dev workflow**: local development on macOS builds and tests the Metal and
-  CPU variants via Nix. GitHub Actions (Nix + HF binary cache) builds all
-  five backends on every PR; tests run on CPU always and on GPU runners
-  where available. Full-matrix accuracy sign-off (CUDA/ROCm/XPU on real
-  hardware) is a manual pre-release step on a cloud builder
-  (kernel-builder's Terraform example covers CUDA).
+- **Dev workflow**: local development on macOS builds and tests the Metal
+  and CPU variants via Nix (`kernel-builder devshell`, `nix run .#ci-test`).
+  The kernel-builder agent skills (installed via
+  `kernel-builder skills add --claude`) support agent-driven kernel
+  authoring per the kernels agents guide.
+- **CI (GitHub Actions + HF Jobs)**: GitHub's runners neither build (CPU
+  cost) nor test (no accelerator) kernels well, so both steps offload to
+  Hugging Face Jobs per the kernel-builder GitHub Actions guide:
+  - `.github/workflows/build-kernel.yml` — on push to `main` touching
+    kernel sources, uses `huggingface/kernel-builder-job` to run the Nix
+    builder on an HF Jobs `cpu-xl` flavor and `build-and-upload` the
+    variants to `0x00b1/special-functions`. Requires an `HF_TOKEN`
+    repository secret with `job.write` permission (workflows `set +x`
+    before exporting it so it never hits streamed logs).
+  - `.github/workflows/run-tests.yml` — uses `huggingface/hf-jobs-action`
+    on a GPU flavor (`l4x1`) to run `scripts/ci_test.py` (a uv
+    inline-dependency script) that pulls the just-published kernel from the
+    Hub via `get_kernel` and exercises load, dispatch, sanity values, and
+    autograd — guarding the published artifacts end-to-end, complementing
+    the in-repo suite.
+  - **Coverage limits, recorded honestly**: HF Jobs is Linux-only, so Metal
+    variants are built and uploaded from local macOS; HF Jobs GPU flavors
+    are NVIDIA-only, so ROCm/XPU accuracy sign-off stays a manual
+    pre-release step on real hardware (kernel-builder's Terraform example
+    covers CUDA-class boxes).
 - **Publishing**: GitHub `0x00b1/special-functions`; Hub repo the same;
   releases via `kernel-builder build-and-upload` to the `v1` version branch.
   Once mature, propose the kernel to `kernels-community` via PR to
