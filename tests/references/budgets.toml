@@ -1,0 +1,48 @@
+# The accuracy contract. Default: <=4 ULP vs correctly-rounded mpmath truth.
+# Regions may override with a larger ULP budget or an absolute tolerance,
+# only where the spec allows (pole neighborhoods, psi zeros). Identical for
+# every backend.
+
+[log_gamma.float64]
+default = 4
+
+# Reflection + log|sin(pi x)| conditioning near negative poles.
+[[log_gamma.float64.regions]]
+lo = -30.0
+hi = -0.009
+ulp = 16
+
+[log_gamma.float32]
+default = 4
+
+[[log_gamma.float32.regions]]
+lo = -30.0
+hi = -0.009
+ulp = 16
+
+[digamma.float64]
+default = 4
+
+# Relative error is ill-conditioned at psi's positive zero (~1.46163).
+[[digamma.float64.regions]]
+lo = 1.35
+hi = 1.6
+atol = 1.0e-15
+
+[[digamma.float64.regions]]
+lo = -30.0
+hi = -0.009
+ulp = 16
+
+[digamma.float32]
+default = 4
+
+[[digamma.float32.regions]]
+lo = 1.35
+hi = 1.6
+atol = 6.0e-7
+
+[[digamma.float32.regions]]
+lo = -30.0
+hi = -0.009
+ulp = 16
