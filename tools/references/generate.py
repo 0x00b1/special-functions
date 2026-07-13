@@ -46,6 +46,8 @@ def _round_to(value: mp.mpf, dtype) -> float:
     mantissa. This is immune to the double-rounding error that a
     str -> float64 -> float32 conversion path can introduce.
     """
+    if not mp.isfinite(value):
+        raise ValueError(f"_round_to requires a finite value, got {value}")
     np_dtype = np.dtype(dtype)
     sign, man, exp, _ = mp.mpf(value)._mpf_
     if man == 0:

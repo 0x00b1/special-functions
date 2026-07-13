@@ -1,3 +1,5 @@
+import pytest
+
 import mpmath as mp
 import numpy as np
 
@@ -61,3 +63,9 @@ def test_round_to_float32_ties():
 
     # Overflow rule: beyond max-float32 + half a ULP rounds to infinity.
     assert _round_to(mp.mpf("1e60"), np.float32) == np.inf
+
+
+def test_round_to_rejects_non_finite():
+    for bad in (mp.inf, mp.ninf, mp.nan):
+        with pytest.raises(ValueError):
+            _round_to(bad, np.float32)
