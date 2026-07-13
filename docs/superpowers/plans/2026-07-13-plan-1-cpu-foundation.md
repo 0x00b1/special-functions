@@ -455,7 +455,7 @@ git commit -m "feat: mpmath reference tables and ULP budget manifest"
 
 **Interfaces:**
 - Produces C headers, each containing highest-degree-first arrays and an `_N` count macro:
-  - `SF_LOG_GAMMA_<DT>_INTERVAL[]` / `SF_LOG_GAMMA_<DT>_INTERVAL_N` — polynomial for `log_gamma(x) / ((x-1)(x-2))` on [1, 3].
+  - `SF_LOG_GAMMA_<DT>_INTERVAL[]` / `SF_LOG_GAMMA_<DT>_INTERVAL_N` — polynomial for `log_gamma(x) / ((x-1)(x-2))` on [1, 3], **in the centered variable t = x − 2, t ∈ [−1, 1]** (monomials in x are too ill-conditioned at this degree once cast to double; discovered during execution). C code evaluates `polevl(x - 2.0, ...)`. Validation is on the double-evaluated Horner result (≤4e-16 f64, ≤2.4e-7 f32), not the exact-arithmetic fit; the end-to-end ≤4 ULP contract remains the hard gate.
   - `SF_LOG_GAMMA_<DT>_STIRLING[]` / `_N` — coefficients `B_2n/(2n(2n-1))` (n=1..N, as poly in z=1/x²; value = polevl(z)/x), valid x ≥ threshold.
   - `SF_LOG_GAMMA_<DT>_STIRLING_THRESHOLD` — 13.0 (f64) / 8.0f (f32).
   - `SF_DIGAMMA_<DT>_TAIL[]` / `_N` — coefficients `B_2n/(2n)` (poly in z=1/x²; subtracted term = z·polevl(z)), valid x ≥ threshold.
@@ -905,8 +905,9 @@ namespace {
 // x in [1, 3]: log|Gamma| has zeros at exactly 1 and 2; the generated fit
 // approximates log_gamma(x) / ((x-1)(x-2)), so those zeros are exact.
 double interval_f64(double x) {
+    // Coefficients are a polynomial in t = x - 2 (centered basis; see Task 4).
     return (x - 1.0) * (x - 2.0)
-        * polevl(x, SF_LOG_GAMMA_FLOAT64_INTERVAL, SF_LOG_GAMMA_FLOAT64_INTERVAL_N);
+        * polevl(x - 2.0, SF_LOG_GAMMA_FLOAT64_INTERVAL, SF_LOG_GAMMA_FLOAT64_INTERVAL_N);
 }
 
 double positive_f64(double x) {
@@ -936,8 +937,9 @@ double log_gamma_scalar_f64(double x) {
 }
 
 float interval_f32(float x) {
+    // Coefficients are a polynomial in t = x - 2 (centered basis; see Task 4).
     return (x - 1.0f) * (x - 2.0f)
-        * polevlf(x, SF_LOG_GAMMA_FLOAT32_INTERVAL, SF_LOG_GAMMA_FLOAT32_INTERVAL_N);
+        * polevlf(x - 2.0f, SF_LOG_GAMMA_FLOAT32_INTERVAL, SF_LOG_GAMMA_FLOAT32_INTERVAL_N);
 }
 
 float positive_f32(float x) {
