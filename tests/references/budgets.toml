@@ -12,17 +12,43 @@ lo = -30.0
 hi = -0.009
 ulp = 16
 
-# log_gamma has interior zeros on the negative axis where |Gamma(x)| crosses
-# 1 (|Gamma(-2.5)| ~ 0.945, |Gamma(-3.5)| ~ 0.27; no crossings beyond ~-4.5).
+# log|Gamma| has interior zeros on the negative axis where |Gamma(x)|
+# crosses 1: x ~ -2.457025, -2.747683, -3.143581, -3.955294, -4.039.
 # The reflection formula subtracts O(1) terms down to a near-zero result
-# there, so ULP blows up even though absolute error stays ~1e-16 (ULP, not
-# atol: the region also contains ordinary large-magnitude near-pole points
-# at -3/-4 that are fine at ulp=16 but would fail a flat atol). Measured
-# worst: 599 ULP (2.6e-16 abs) at x=-2.7493163039227886.
+# there, so relative error is ill-conditioned in narrow windows around each
+# crossing while absolute error stays at rounding level. Windows are atol-
+# governed, ~+-0.05 wide; everything between them (including the pole
+# neighborhoods at -3/-4 and plain points like x=-3.5) stays under the
+# ulp=16 region above (measured max outside the windows: 13 ULP). The
+# -3.955294 crossing needs no window: measured max 4 ULP on its grid points.
+
+# Crossing at x ~ -4.039. Measured worst: 5.42e-16 abs (39 ULP) at
+# x=-4.0370141784820675.
 [[log_gamma.float64.regions]]
-lo = -4.1
-hi = -2.4
-ulp = 650
+lo = -4.09
+hi = -4.01
+atol = 6.0e-16
+
+# Crossing at x ~ -3.143581. Measured worst: 6.04e-16 abs (87 ULP) at
+# x=-3.150915419823541.
+[[log_gamma.float64.regions]]
+lo = -3.2
+hi = -3.09
+atol = 7.0e-16
+
+# Crossing at x ~ -2.747683. Measured worst: 2.60e-16 abs (599 ULP) at
+# x=-2.7493163039227886.
+[[log_gamma.float64.regions]]
+lo = -2.8
+hi = -2.7
+atol = 3.0e-16
+
+# Crossing at x ~ -2.457025. Measured worst: 1.94e-16 abs (263 ULP at
+# x=-2.454853574004301).
+[[log_gamma.float64.regions]]
+lo = -2.51
+hi = -2.41
+atol = 2.5e-16
 
 # Pole at x=-12 coincides with the Stirling/recurrence switch at 1-x=13
 # (SF_LOG_GAMMA_FLOAT64_STIRLING_THRESHOLD); reflection amplifies the
@@ -50,13 +76,36 @@ lo = -30.0
 hi = -0.009
 ulp = 16
 
-# Same interior-zero conditioning as float64 (see above); ULP-governed for
-# the same reason (large-magnitude near-pole points share this range).
-# Measured worst: 256 ULP (5.96e-8 abs) at x=-2.4548535.
+# Same per-crossing interior-zero windows as float64 (see above); measured
+# max outside the windows is 11 ULP, under the ulp=16 region. The -3.955294
+# crossing again needs no window (measured max 4 ULP).
+
+# Crossing at x ~ -4.039. Measured worst: 3.28e-7 abs at x=-4.0620265.
 [[log_gamma.float32.regions]]
-lo = -4.1
-hi = -2.4
-ulp = 300
+lo = -4.09
+hi = -4.01
+atol = 3.5e-7
+
+# Crossing at x ~ -3.143581. Measured worst: 2.39e-7 abs (64 ULP) at
+# x=-3.1509154.
+[[log_gamma.float32.regions]]
+lo = -3.2
+hi = -3.09
+atol = 2.5e-7
+
+# Crossing at x ~ -2.747683. Measured worst: 1.57e-7 abs at x=-2.7924314
+# (66 ULP at x=-2.7493162).
+[[log_gamma.float32.regions]]
+lo = -2.8
+hi = -2.7
+atol = 2.0e-7
+
+# Crossing at x ~ -2.457025. Measured worst: 1.51e-7 abs at x=-2.4429557
+# (256 ULP at x=-2.4548535).
+[[log_gamma.float32.regions]]
+lo = -2.51
+hi = -2.41
+atol = 2.0e-7
 
 # Same x=1 zero conditioning as float64. Measured worst: 2.61e-8 abs
 # at x=0.948921.
