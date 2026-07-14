@@ -994,6 +994,18 @@ git commit -m "feat: CPU log_gamma (float64/float32) within ULP contract"
 
 ### Task 7: Implement digamma (float64 and float32)
 
+> **Execution amendment (2026-07-14):** the all-upward-recurrence structure below
+> accumulates 1–30 ULP of cancellation noise on (0.5, 3) — measured during
+> execution — violating the ≤4 ULP default where users care most. As built,
+> the positive path instead uses the classical root-factored interval fit:
+> `SF_DIGAMMA_<DT>_INTERVAL` (fit of ψ(x)/(x−x0) on [1,2] in t = x − 1.5) with
+> the ψ zero x0 ≈ 1.4616321449683623 split into `ZERO_HI`/`ZERO_LO` for exact
+> root distance; 2 < x < threshold uses *downward* recurrence into [1,2]
+> (all-positive sums); the asymptotic tail and reflection are unchanged. The
+> digamma budget regions extend to lo = −10000 at 16 ULP (poles are
+> unit-spaced on the negative axis, so every point is within 0.5 of a pole),
+> with narrow measured atol windows only at genuine ψ zero crossings.
+
 **Files:**
 - Create: `special_functions_cpu/digamma.cpp`
 
