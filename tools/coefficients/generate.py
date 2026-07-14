@@ -90,7 +90,11 @@ def _emit(path: Path, macro_prefix: str, arrays: dict, scalars: dict, c_type: st
     for name, v in scalars.items():
         lines.append(f"#define {macro_prefix}_{name} {fmt % v}{suffix}")
     path.write_text("\n".join(lines) + "\n")
-    print(f"wrote {path.relative_to(ROOT)}")
+    try:
+        rel = path.relative_to(ROOT)
+    except ValueError:
+        rel = path
+    print(f"wrote {rel}")
 
 
 def _lg(x):
