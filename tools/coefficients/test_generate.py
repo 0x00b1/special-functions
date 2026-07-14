@@ -1,11 +1,17 @@
+import re
+from pathlib import Path
+
 import mpmath as mp
 import numpy as np
 
 from tools.coefficients.generate import (
+    _lg_centered,
     chebfit_auto,
     digamma_tail_coefficients,
     stirling_coefficients,
 )
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def _lg(x):
@@ -55,3 +61,67 @@ def test_digamma_tail_first_coefficient():
     coeffs = digamma_tail_coefficients(threshold=10.0, target_rel=2.0**-54)
     # B_2/2 = 1/12.
     assert abs(coeffs[-1] - 1.0 / 12.0) < 1e-16
+
+
+def test_chebfit_auto_float32_path():
+    """Test float32-specific INTERVAL fit as used in main() for log_gamma."""
+    coeffs = chebfit_auto(_lg_centered, -1.0, 1.0, target_rel=2.4e-7, dtype=np.float32)
+    assert coeffs is not None
+
+    # Coefficients must survive float32 round-trip and be finite
+    for c in coeffs:
+        c_f32 = np.float32(c)
+        assert np.isfinite(c_f32), f"coefficient {c} is not finite after float32 cast"
+        # Round-trip: cast to float32 and back should match the float32 value
+        c_roundtrip = np.float32(np.float64(c_f32))
+        assert c_f32 == c_roundtrip, f"coefficient {c} does not survive float32 round-trip"
+
+    # Evaluate with Horner in float32 against 60-dps truth
+    ts = np.linspace(-1.0, 1.0, 501)
+    worst = 0.0
+    with mp.workdps(60):
+        for t in ts:
+            tt = np.float32(t)
+            acc = np.float32(0.0)
+            for c in coeffs:
+                c_f32 = np.float32(c)
+                acc = acc * tt + c_f32
+            true = _lg_centered(mp.mpf(float(tt)))
+            rel_err = abs(float((mp.mpf(float(acc)) - true) / true))
+            worst = max(worst, rel_err)
+    assert worst <= 2.4e-7, f"worst relative error {worst} exceeds target 2.4e-7"
+
+
+def _parse_header_define(header_path: Path, define_name: str) -> int:
+    """Parse a #define N value from a generated header file."""
+    content = header_path.read_text()
+    pattern = rf"#define {re.escape(define_name)} (\d+)"
+    match = re.search(pattern, content)
+    if not match:
+        raise ValueError(f"Could not find {define_name} in {header_path}")
+    return int(match.group(1))
+
+
+def test_series_float32_thresholds():
+    """Test float32-specific series generators at thresholds used in main()."""
+    # Call the exact float32 configurations from main()
+    stirling_coeffs = stirling_coefficients(threshold=8.0, target_rel=2.0**-27)
+    digamma_coeffs = digamma_tail_coefficients(threshold=6.0, target_rel=2.0**-27)
+
+    # Both series must have their first coefficient (last in reversed list) as 1/12
+    assert abs(stirling_coeffs[-1] - 1.0 / 12.0) < 1e-16, \
+        f"stirling last coeff {stirling_coeffs[-1]} not close to 1/12"
+    assert abs(digamma_coeffs[-1] - 1.0 / 12.0) < 1e-16, \
+        f"digamma last coeff {digamma_coeffs[-1]} not close to 1/12"
+
+    # Parse expected lengths from the checked-in float32 headers
+    lg_header = ROOT / "special_functions_cpu" / "generated" / "log_gamma_float32.h"
+    dg_header = ROOT / "special_functions_cpu" / "generated" / "digamma_float32.h"
+
+    expected_stirling_n = _parse_header_define(lg_header, "SF_LOG_GAMMA_FLOAT32_STIRLING_N")
+    expected_digamma_n = _parse_header_define(dg_header, "SF_DIGAMMA_FLOAT32_TAIL_N")
+
+    assert len(stirling_coeffs) == expected_stirling_n, \
+        f"stirling coefficients length {len(stirling_coeffs)} != expected {expected_stirling_n}"
+    assert len(digamma_coeffs) == expected_digamma_n, \
+        f"digamma coefficients length {len(digamma_coeffs)} != expected {expected_digamma_n}"
