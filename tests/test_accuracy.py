@@ -45,16 +45,16 @@ def test_ulp_budget(sf_cpu, fn, dtype):
     x, expected = table["x"], table["expected"]
     got = sf_cpu.call(fn, dtype, x)
 
-    # Specials must match exactly: same NaN-ness, same infinities (with sign).
-    special = ~np.isfinite(expected)
-    assert np.array_equal(np.isnan(got[special]), np.isnan(expected[special]))
-    inf_mask = np.isinf(expected)
-    assert np.array_equal(got[inf_mask], expected[inf_mask])
     # Finite expecteds must produce finite results.
     finite = np.isfinite(expected)
     assert np.isfinite(got[finite]).all(), (
         f"non-finite outputs at x={x[finite][~np.isfinite(got[finite])][:10]}"
     )
+    # Specials must match exactly: same NaN-ness, same infinities (with sign).
+    special = ~np.isfinite(expected)
+    assert np.array_equal(np.isnan(got[special]), np.isnan(expected[special]))
+    inf_mask = np.isinf(expected)
+    assert np.array_equal(got[inf_mask], expected[inf_mask])
 
     budget, atol = _budget_masks(fn, dtype, x)
     fx, fexp, fgot = x[finite], expected[finite], got[finite]
