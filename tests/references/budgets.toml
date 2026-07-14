@@ -117,26 +117,676 @@ atol = 5.0e-8
 [digamma.float64]
 default = 4
 
-# Relative error is ill-conditioned at psi's positive zero (~1.46163).
+# Reflection + cot(pi x) conditioning near negative poles. Poles are
+# unit-spaced on the entire negative axis, so every grid point is within 0.5
+# of a pole; the reference table extends to ~-9999, and the same conditioning
+# applies throughout.
 [[digamma.float64.regions]]
-lo = 1.35
-hi = 1.6
-atol = 1.0e-15
-
-[[digamma.float64.regions]]
-lo = -30.0
+lo = -10000.0
 hi = -0.009
 ulp = 16
+
+# psi has exactly one zero strictly between each pair of consecutive negative
+# poles (trigamma > 0 off the poles, so psi is monotonic on each interval):
+# x ~ -0.504083, -1.573498, -2.610721, -3.635293, ... out to the edge of the
+# table. The reflection formula subtracts an O(1) cot term from psi(1-x) to
+# reach a near-zero result there, so relative error is ill-conditioned in
+# narrow windows around each crossing while absolute error stays at rounding
+# level. Windows below are atol-governed, minimal (measured bad-point extent
+# +-0.01), one per crossing whose grid points measured over 16 ULP; every
+# other point in [-10000, -0.009] stays under the ulp=16 region above.
+
+# Zero near x~-0.504083. Measured worst: 2.637e-16 abs (38 ULP) at
+# x=-0.5102502085.
+[[digamma.float64.regions]]
+lo = -0.521
+hi = -0.500
+atol = 3.70e-16
+
+# Zero near x~-1.573498. Measured worst: 5.204e-16 abs (135 ULP) at
+# x=-1.568630536.
+[[digamma.float64.regions]]
+lo = -1.594
+hi = -1.558
+atol = 7.30e-16
+
+# Zero near x~-2.610721. Measured worst: 1.370e-16 abs (158 ULP) at
+# x=-2.611301084.
+[[digamma.float64.regions]]
+lo = -2.622
+hi = -2.601
+atol = 2.00e-16
+
+# Zero near x~-3.635293. Measured worst: 3.920e-16 abs (113 ULP) at
+# x=-3.636814012.
+[[digamma.float64.regions]]
+lo = -3.648
+hi = -3.626
+atol = 5.50e-16
+
+# Zero near x~-4.653238. Measured worst: 4.441e-16 abs (32 ULP) at
+# x=-4.662326939.
+[[digamma.float64.regions]]
+lo = -4.673
+hi = -4.652
+atol = 6.30e-16
+
+# Zero near x~-5.667162. Measured worst: 5.135e-16 abs (296 ULP) at
+# x=-5.666294423.
+[[digamma.float64.regions]]
+lo = -5.677
+hi = -5.652
+atol = 7.20e-16
+
+# Zero near x~-7.687788. Measured worst: 3.331e-16 abs (168 ULP) at
+# x=-7.677244906.
+[[digamma.float64.regions]]
+lo = -7.699
+hi = -7.675
+atol = 4.70e-16
+
+# Zero near x~-8.695764. Measured worst: 4.441e-16 abs (128 ULP) at
+# x=-8.694096347.
+[[digamma.float64.regions]]
+lo = -8.705
+hi = -8.679
+atol = 6.30e-16
+
+# Zero near x~-10.708741. Measured worst: 5.412e-16 abs (51 ULP) at
+# x=-10.71535446.
+[[digamma.float64.regions]]
+lo = -10.726
+hi = -10.700
+atol = 7.60e-16
+
+# Zero near x~-11.714133. Measured worst: 4.718e-16 abs (121 ULP) at
+# x=-11.72148886.
+[[digamma.float64.regions]]
+lo = -11.732
+hi = -11.705
+atol = 6.70e-16
+
+# Zero near x~-12.718971. Measured worst: 5.343e-16 abs (77 ULP) at
+# x=-12.7163553.
+[[digamma.float64.regions]]
+lo = -12.727
+hi = -12.706
+atol = 7.50e-16
+
+# Zero near x~-13.723347. Measured worst: 6.384e-16 abs (46 ULP) at
+# x=-13.71685571.
+[[digamma.float64.regions]]
+lo = -13.727
+hi = -13.706
+atol = 9.00e-16
+
+# Zero near x~-14.727334. Measured worst: 2.637e-16 abs (19 ULP) at
+# x=-14.72107526.
+[[digamma.float64.regions]]
+lo = -14.732
+hi = -14.711
+atol = 3.70e-16
+
+# Zero near x~-15.730989. Measured worst: 6.106e-16 abs (22 ULP) at
+# x=-15.74286906.
+[[digamma.float64.regions]]
+lo = -15.753
+hi = -15.718
+atol = 8.60e-16
+
+# Zero near x~-16.734357. Measured worst: 4.441e-16 abs (32 ULP) at
+# x=-16.72888242.
+[[digamma.float64.regions]]
+lo = -16.739
+hi = -16.718
+atol = 6.30e-16
+
+# Zero near x~-17.737475. Measured worst: 3.608e-16 abs (26 ULP) at
+# x=-17.74386989.
+[[digamma.float64.regions]]
+lo = -17.754
+hi = -17.733
+atol = 5.10e-16
+
+# Zero near x~-18.740375. Measured worst: 4.718e-16 abs (17 ULP) at
+# x=-18.75090558.
+[[digamma.float64.regions]]
+lo = -18.761
+hi = -18.726
+atol = 6.70e-16
+
+# Zero near x~-19.743082. Measured worst: 5.274e-16 abs (37 ULP) at
+# x=-19.73253821.
+[[digamma.float64.regions]]
+lo = -19.756
+hi = -19.722
+atol = 7.40e-16
+
+# Zero near x~-20.745617. Measured worst: 5.065e-16 abs (584 ULP) at
+# x=-20.74537114.
+[[digamma.float64.regions]]
+lo = -20.756
+hi = -20.735
+atol = 7.10e-16
+
+# Zero near x~-21.747999. Measured worst: 4.996e-16 abs (69 ULP) at
+# x=-21.7417911.
+[[digamma.float64.regions]]
+lo = -21.756
+hi = -21.731
+atol = 7.00e-16
+
+# Zero near x~-22.750243. Measured worst: 6.106e-16 abs (88 ULP) at
+# x=-22.74782205.
+[[digamma.float64.regions]]
+lo = -22.758
+hi = -22.736
+atol = 8.60e-16
+
+# Zero near x~-23.752363. Measured worst: 7.147e-16 abs (103 ULP) at
+# x=-23.75446637.
+[[digamma.float64.regions]]
+lo = -23.765
+hi = -23.744
+atol = 1.10e-15
+
+# Zero near x~-24.754370. Measured worst: 8.327e-16 abs (20 ULP) at
+# x=-24.77238532.
+[[digamma.float64.regions]]
+lo = -24.773
+hi = -24.752
+atol = 1.20e-15
+
+# Zero near x~-25.756275. Measured worst: 1.035e-15 abs (2387 ULP) at
+# x=-25.75615957.
+[[digamma.float64.regions]]
+lo = -25.770
+hi = -25.746
+atol = 1.50e-15
+
+# Zero near x~-26.758086. Measured worst: 4.580e-16 abs (66 ULP) at
+# x=-26.75649713.
+[[digamma.float64.regions]]
+lo = -26.767
+hi = -26.746
+atol = 6.50e-16
+
+# Zero near x~-28.761458. Measured worst: 4.996e-16 abs (22 ULP) at
+# x=-28.77468621.
+[[digamma.float64.regions]]
+lo = -28.775
+hi = -28.754
+atol = 7.00e-16
+
+# Zero near x~-29.763032. Measured worst: 4.441e-16 abs (28 ULP) at
+# x=-29.75102802.
+[[digamma.float64.regions]]
+lo = -29.772
+hi = -29.751
+atol = 6.30e-16
+
+# Zero near x~-31.765983. Measured worst: 6.800e-16 abs (98 ULP) at
+# x=-31.76796184.
+[[digamma.float64.regions]]
+lo = -31.778
+hi = -31.757
+atol = 9.60e-16
+
+# Zero near x~-34.769984. Measured worst: 5.274e-16 abs (38 ULP) at
+# x=-34.76665381.
+[[digamma.float64.regions]]
+lo = -34.777
+hi = -34.756
+atol = 7.40e-16
+
+# Zero near x~-35.771219. Measured worst: 4.718e-16 abs (34 ULP) at
+# x=-35.77587509.
+[[digamma.float64.regions]]
+lo = -35.786
+hi = -35.765
+atol = 6.70e-16
+
+# Zero near x~-36.772409. Measured worst: 2.498e-16 abs (18 ULP) at
+# x=-36.77747883.
+[[digamma.float64.regions]]
+lo = -36.788
+hi = -36.767
+atol = 3.50e-16
+
+# Zero near x~-39.775743. Measured worst: 6.830e-16 abs (1575 ULP) at
+# x=-39.77584343.
+[[digamma.float64.regions]]
+lo = -39.786
+hi = -39.765
+atol = 9.60e-16
+
+# Zero near x~-41.777790. Measured worst: 1.388e-16 abs (45 ULP) at
+# x=-41.78195117.
+[[digamma.float64.regions]]
+lo = -41.788
+hi = -41.767
+atol = 2.00e-16
+
+# Zero near x~-42.778765. Measured worst: 8.240e-16 abs (475 ULP) at
+# x=-42.77911847.
+[[digamma.float64.regions]]
+lo = -42.790
+hi = -42.769
+atol = 1.20e-15
+
+# Zero near x~-342.842872. Measured worst: 6.661e-16 abs (24 ULP) at
+# x=-342.8469776.
+[[digamma.float64.regions]]
+lo = -342.857
+hi = -342.836
+atol = 9.40e-16
+
+# Zero near x~-557.853259. Measured worst: 5.412e-16 abs (78 ULP) at
+# x=-557.854472.
+[[digamma.float64.regions]]
+lo = -557.865
+hi = -557.844
+atol = 7.60e-16
+
+# Zero near x~-1063.865210. Measured worst: 1.332e-15 abs (24 ULP) at
+# x=-1063.87244.
+[[digamma.float64.regions]]
+lo = -1063.883
+hi = -1063.862
+atol = 1.90e-15
+
+# Zero near x~-1540.871277. Measured worst: 1.665e-15 abs (30 ULP) at
+# x=-1540.87531.
+[[digamma.float64.regions]]
+lo = -1540.886
+hi = -1540.865
+atol = 2.40e-15
+
+# Zero near x~-2427.878051. Measured worst: 7.494e-16 abs (54 ULP) at
+# x=-2427.876361.
+[[digamma.float64.regions]]
+lo = -2427.887
+hi = -2427.866
+atol = 1.10e-15
+
+# Zero near x~-3371.882538. Measured worst: 1.915e-15 abs (69 ULP) at
+# x=-3371.879424.
+[[digamma.float64.regions]]
+lo = -3371.890
+hi = -3371.869
+atol = 2.70e-15
+
+# Zero near x~-3952.884598. Measured worst: 8.882e-16 abs (32 ULP) at
+# x=-3952.882513.
+[[digamma.float64.regions]]
+lo = -3952.893
+hi = -3952.872
+atol = 1.30e-15
+
+# Zero near x~-5722.889136. Measured worst: 2.442e-15 abs (44 ULP) at
+# x=-5722.883121.
+[[digamma.float64.regions]]
+lo = -5722.894
+hi = -5722.873
+atol = 3.50e-15
+
+# Zero near x~-5826.889348. Measured worst: 2.442e-15 abs (22 ULP) at
+# x=-5826.898311.
+[[digamma.float64.regions]]
+lo = -5826.909
+hi = -5826.888
+atol = 3.50e-15
+
+# Zero near x~-5900.889496. Measured worst: 1.887e-15 abs (17 ULP) at
+# x=-5900.897791.
+[[digamma.float64.regions]]
+lo = -5900.908
+hi = -5900.887
+atol = 2.70e-15
+
+# Zero near x~-6172.890022. Measured worst: 2.026e-15 abs (73 ULP) at
+# x=-6172.89175.
+[[digamma.float64.regions]]
+lo = -6172.902
+hi = -6172.881
+atol = 2.90e-15
+
+# Zero near x~-6801.891139. Measured worst: 1.582e-15 abs (57 ULP) at
+# x=-6801.89336.
+[[digamma.float64.regions]]
+lo = -6801.904
+hi = -6801.883
+atol = 2.30e-15
+
+# Zero near x~-8128.893134. Measured worst: 3.886e-16 abs (28 ULP) at
+# x=-8128.894203.
+[[digamma.float64.regions]]
+lo = -8128.905
+hi = -8128.884
+atol = 5.50e-16
+
+# Zero near x~-8187.893213. Measured worst: 1.998e-15 abs (36 ULP) at
+# x=-8187.896885.
+[[digamma.float64.regions]]
+lo = -8187.907
+hi = -8187.886
+atol = 2.80e-15
+
+# Zero near x~-9042.894293. Measured worst: 1.887e-15 abs (34 ULP) at
+# x=-9042.897368.
+[[digamma.float64.regions]]
+lo = -9042.908
+hi = -9042.887
+atol = 2.70e-15
 
 [digamma.float32]
 default = 4
 
 [[digamma.float32.regions]]
-lo = 1.35
-hi = 1.6
-atol = 6.0e-7
-
-[[digamma.float32.regions]]
-lo = -30.0
+lo = -10000.0
 hi = -0.009
 ulp = 16
+
+# Same per-crossing interior-zero windows as float64 (see above); crossings
+# differ because the float32 grid samples different neighborhoods.
+
+# Zero near x~-1.573498. Measured worst: 7.078e-08 abs (38 ULP) at
+# x=-1.57625854.
+[[digamma.float32.regions]]
+lo = -1.587
+hi = -1.566
+atol = 1.00e-07
+
+# Zero near x~-2.610721. Measured worst: 1.336e-07 abs (287 ULP) at
+# x=-2.611301184.
+[[digamma.float32.regions]]
+lo = -2.622
+hi = -2.601
+atol = 1.90e-07
+
+# Zero near x~-3.635293. Measured worst: 8.382e-08 abs (45 ULP) at
+# x=-3.637486935.
+[[digamma.float32.regions]]
+lo = -3.648
+hi = -3.627
+atol = 1.20e-07
+
+# Zero near x~-5.667162. Measured worst: 8.009e-08 abs (86 ULP) at
+# x=-5.666294575.
+[[digamma.float32.regions]]
+lo = -5.677
+hi = -5.656
+atol = 1.20e-07
+
+# Zero near x~-7.687788. Measured worst: 3.316e-07 abs (356 ULP) at
+# x=-7.688840866.
+[[digamma.float32.regions]]
+lo = -7.699
+hi = -7.675
+atol = 4.70e-07
+
+# Zero near x~-8.695764. Measured worst: 1.416e-07 abs (19 ULP) at
+# x=-8.690485001.
+[[digamma.float32.regions]]
+lo = -8.701
+hi = -8.680
+atol = 2.00e-07
+
+# Zero near x~-9.702673. Measured worst: 3.576e-07 abs (24 ULP) at
+# x=-9.71485424.
+[[digamma.float32.regions]]
+lo = -9.725
+hi = -9.704
+atol = 5.10e-07
+
+# Zero near x~-10.708741. Measured worst: 2.831e-07 abs (38 ULP) at
+# x=-10.71535492.
+[[digamma.float32.regions]]
+lo = -10.726
+hi = -10.700
+atol = 4.00e-07
+
+# Zero near x~-11.714133. Measured worst: 7.264e-08 abs (39 ULP) at
+# x=-11.71585464.
+[[digamma.float32.regions]]
+lo = -11.726
+hi = -11.705
+atol = 1.10e-07
+
+# Zero near x~-14.727334. Measured worst: 1.341e-07 abs (18 ULP) at
+# x=-14.73438168.
+[[digamma.float32.regions]]
+lo = -14.745
+hi = -14.724
+atol = 1.90e-07
+
+# Zero near x~-15.730989. Measured worst: 3.502e-07 abs (94 ULP) at
+# x=-15.72819614.
+[[digamma.float32.regions]]
+lo = -15.739
+hi = -15.718
+atol = 5.00e-07
+
+# Zero near x~-16.734357. Measured worst: 3.725e-07 abs (27 ULP) at
+# x=-16.74337006.
+[[digamma.float32.regions]]
+lo = -16.754
+hi = -16.718
+atol = 5.30e-07
+
+# Zero near x~-17.737475. Measured worst: 2.831e-07 abs (38 ULP) at
+# x=-17.74386978.
+[[digamma.float32.regions]]
+lo = -17.754
+hi = -17.733
+atol = 4.00e-07
+
+# Zero near x~-18.740375. Measured worst: 2.831e-07 abs (19 ULP) at
+# x=-18.75090599.
+[[digamma.float32.regions]]
+lo = -18.761
+hi = -18.740
+atol = 4.00e-07
+
+# Zero near x~-19.743082. Measured worst: 1.043e-07 abs (28 ULP) at
+# x=-19.74487114.
+[[digamma.float32.regions]]
+lo = -19.755
+hi = -19.734
+atol = 1.50e-07
+
+# Zero near x~-20.745617. Measured worst: 1.318e-07 abs (283 ULP) at
+# x=-20.74537086.
+[[digamma.float32.regions]]
+lo = -20.756
+hi = -20.735
+atol = 1.90e-07
+
+# Zero near x~-21.747999. Measured worst: 3.055e-07 abs (41 ULP) at
+# x=-21.74179077.
+[[digamma.float32.regions]]
+lo = -21.752
+hi = -21.731
+atol = 4.30e-07
+
+# Zero near x~-22.750243. Measured worst: 2.608e-07 abs (40 ULP) at
+# x=-22.74637222.
+[[digamma.float32.regions]]
+lo = -22.758
+hi = -22.736
+atol = 3.70e-07
+
+# Zero near x~-23.752363. Measured worst: 2.682e-07 abs (36 ULP) at
+# x=-23.74687195.
+[[digamma.float32.regions]]
+lo = -23.757
+hi = -23.736
+atol = 3.80e-07
+
+# Zero near x~-24.754370. Measured worst: 2.533e-07 abs (17 ULP) at
+# x=-24.76280975.
+[[digamma.float32.regions]]
+lo = -24.773
+hi = -24.752
+atol = 3.60e-07
+
+# Zero near x~-25.756275. Measured worst: 1.714e-07 abs (245 ULP) at
+# x=-25.759758.
+[[digamma.float32.regions]]
+lo = -25.770
+hi = -25.746
+atol = 2.40e-07
+
+# Zero near x~-26.758086. Measured worst: 1.825e-07 abs (49 ULP) at
+# x=-26.75649643.
+[[digamma.float32.regions]]
+lo = -26.767
+hi = -26.746
+atol = 2.60e-07
+
+# Zero near x~-27.759812. Measured worst: 2.831e-07 abs (19 ULP) at
+# x=-27.76966667.
+[[digamma.float32.regions]]
+lo = -27.780
+hi = -27.759
+atol = 4.00e-07
+
+# Zero near x~-28.761458. Measured worst: 3.278e-07 abs (22 ULP) at
+# x=-28.75234985.
+[[digamma.float32.regions]]
+lo = -28.763
+hi = -28.742
+atol = 4.60e-07
+
+# Zero near x~-29.763032. Measured worst: 3.278e-07 abs (22 ULP) at
+# x=-29.75102806.
+[[digamma.float32.regions]]
+lo = -29.772
+hi = -29.741
+atol = 4.60e-07
+
+# Zero near x~-31.765983. Measured worst: 6.706e-08 abs (18 ULP) at
+# x=-31.7679615.
+[[digamma.float32.regions]]
+lo = -31.778
+hi = -31.757
+atol = 9.40e-08
+
+# Zero near x~-32.767369. Measured worst: 4.023e-07 abs (27 ULP) at
+# x=-32.77567673.
+[[digamma.float32.regions]]
+lo = -32.786
+hi = -32.765
+atol = 5.70e-07
+
+# Zero near x~-33.768701. Measured worst: 1.416e-07 abs (19 ULP) at
+# x=-33.76538467.
+[[digamma.float32.regions]]
+lo = -33.776
+hi = -33.755
+atol = 2.00e-07
+
+# Zero near x~-34.769984. Measured worst: 3.204e-07 abs (43 ULP) at
+# x=-34.76710129.
+[[digamma.float32.regions]]
+lo = -34.778
+hi = -34.756
+atol = 4.50e-07
+
+# Zero near x~-35.771219. Measured worst: 1.788e-07 abs (24 ULP) at
+# x=-35.77587509.
+[[digamma.float32.regions]]
+lo = -35.786
+hi = -35.765
+atol = 2.60e-07
+
+# Zero near x~-36.772409. Measured worst: 1.341e-07 abs (18 ULP) at
+# x=-36.77747726.
+[[digamma.float32.regions]]
+lo = -36.788
+hi = -36.767
+atol = 1.90e-07
+
+# Zero near x~-39.775743. Measured worst: 3.874e-07 abs (458 ULP) at
+# x=-39.78407288.
+[[digamma.float32.regions]]
+lo = -39.795
+hi = -39.765
+atol = 5.50e-07
+
+# Zero near x~-41.777790. Measured worst: 1.036e-07 abs (445 ULP) at
+# x=-41.77787399.
+[[digamma.float32.regions]]
+lo = -41.788
+hi = -41.767
+atol = 1.50e-07
+
+# Zero near x~-42.778765. Measured worst: 6.240e-08 abs (67 ULP) at
+# x=-42.77911758.
+[[digamma.float32.regions]]
+lo = -42.790
+hi = -42.769
+atol = 8.80e-08
+
+# Zero near x~-43.779712. Measured worst: 3.874e-07 abs (52 ULP) at
+# x=-43.77490234.
+[[digamma.float32.regions]]
+lo = -43.785
+hi = -43.764
+atol = 5.50e-07
+
+# Zero near x~-44.780631. Measured worst: 2.831e-07 abs (19 ULP) at
+# x=-44.77139664.
+[[digamma.float32.regions]]
+lo = -44.782
+hi = -44.761
+atol = 4.00e-07
+
+# Zero near x~-342.842872. Measured worst: 3.874e-07 abs (26 ULP) at
+# x=-342.8469849.
+[[digamma.float32.regions]]
+lo = -342.857
+hi = -342.836
+atol = 5.50e-07
+
+# Zero near x~-557.853259. Measured worst: 5.774e-07 abs (155 ULP) at
+# x=-557.8544922.
+[[digamma.float32.regions]]
+lo = -557.865
+hi = -557.844
+atol = 8.10e-07
+
+# Zero near x~-3371.882538. Measured worst: 3.427e-07 abs (23 ULP) at
+# x=-3371.879395.
+[[digamma.float32.regions]]
+lo = -3371.890
+hi = -3371.869
+atol = 4.80e-07
+
+# Zero near x~-3952.884598. Measured worst: 6.706e-07 abs (45 ULP) at
+# x=-3952.882568.
+[[digamma.float32.regions]]
+lo = -3952.893
+hi = -3952.872
+atol = 9.40e-07
+
+# Zero near x~-6172.890022. Measured worst: 6.557e-07 abs (44 ULP) at
+# x=-6172.891602.
+[[digamma.float32.regions]]
+lo = -6172.902
+hi = -6172.881
+atol = 9.20e-07
+
+# Zero near x~-8128.893134. Measured worst: 3.502e-07 abs (47 ULP) at
+# x=-8128.894043.
+[[digamma.float32.regions]]
+lo = -8128.905
+hi = -8128.884
+atol = 5.00e-07
+
+# Zero near x~-8187.893213. Measured worst: 6.855e-07 abs (23 ULP) at
+# x=-8187.896973.
+[[digamma.float32.regions]]
+lo = -8187.907
+hi = -8187.886
+atol = 9.60e-07

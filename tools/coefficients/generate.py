@@ -111,6 +111,44 @@ def _lg_centered(t):
     return _lg(t + 2)
 
 
+def digamma_zero():
+    """psi's positive zero x0 ~ 1.4616321449683623, computed at 60 dps."""
+    with mp.workdps(60):
+        return mp.findroot(mp.digamma, mp.mpf("1.4616"))
+
+
+_DIGAMMA_ZERO = digamma_zero()
+
+
+def digamma_zero_split(np_dtype):
+    """Split x0 into a representable hi and target-precision residual lo.
+
+    Downstream C code computes (x - hi) - lo for an accurate distance to the
+    zero even though x0 itself is not representable; |hi + lo - x0| is
+    bounded by the rounding of lo (~eps * |lo|).
+    """
+    with mp.workdps(60):
+        hi = np_dtype(float(_DIGAMMA_ZERO))
+        lo = np_dtype(float(_DIGAMMA_ZERO - mp.mpf(float(hi))))
+    return hi, lo
+
+
+def _dg(x):
+    # digamma(x) / (x - x0): removable 0/0 at psi's positive zero x0. No
+    # fit or validation point lands exactly on the 60-dps root, but guard
+    # the limit anyway (L'Hopital: trigamma at the zero). g has no zeros or
+    # poles on [1, 2] (g(1) ~ 1.2504, g(2) ~ 0.7853), so the relative-error
+    # validation in chebfit_auto is well-defined.
+    if x == _DIGAMMA_ZERO:
+        return mp.polygamma(1, x)
+    return mp.digamma(x) / (x - _DIGAMMA_ZERO)
+
+
+def _dg_centered(t):
+    # Centered interval function: t = x - 1.5, t in [-0.5, 0.5].
+    return _dg(t + mp.mpf("1.5"))
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for c_type, dt, np_dtype, series_target, interval_target, lg_thresh, dg_thresh in (
@@ -128,12 +166,25 @@ def main() -> None:
             c_type,
             comments={"INTERVAL": "polynomial in t = x - 2, t in [-1, 1]"},
         )
+        zero_hi, zero_lo = digamma_zero_split(np_dtype)
         _emit(
             OUT_DIR / f"digamma_{dt.lower()}.h",
             f"SF_DIGAMMA_{dt}",
-            {"TAIL": digamma_tail_coefficients(dg_thresh, series_target)},
-            {"TAIL_THRESHOLD": dg_thresh},
+            {
+                "INTERVAL": chebfit_auto(_dg_centered, -0.5, 0.5, interval_target, dtype=np_dtype),
+                "TAIL": digamma_tail_coefficients(dg_thresh, series_target),
+            },
+            {
+                "TAIL_THRESHOLD": dg_thresh,
+                "ZERO_HI": float(zero_hi),
+                "ZERO_LO": float(zero_lo),
+            },
             c_type,
+            comments={
+                "INTERVAL": "digamma(x)/(x - x0), x0 = psi's positive zero, as a "
+                "polynomial in t = x - 1.5, t in [-0.5, 0.5]; "
+                "psi(x) = ((x - ZERO_HI) - ZERO_LO) * P(t)"
+            },
         )
 
 
