@@ -12,6 +12,36 @@ lo = -30.0
 hi = -0.009
 ulp = 16
 
+# log_gamma has interior zeros on the negative axis where |Gamma(x)| crosses
+# 1 (|Gamma(-2.5)| ~ 0.945, |Gamma(-3.5)| ~ 0.27; no crossings beyond ~-4.5).
+# The reflection formula subtracts O(1) terms down to a near-zero result
+# there, so ULP blows up even though absolute error stays ~1e-16 (ULP, not
+# atol: the region also contains ordinary large-magnitude near-pole points
+# at -3/-4 that are fine at ulp=16 but would fail a flat atol). Measured
+# worst: 599 ULP (2.6e-16 abs) at x=-2.7493163039227886.
+[[log_gamma.float64.regions]]
+lo = -4.1
+hi = -2.4
+ulp = 650
+
+# Pole at x=-12 coincides with the Stirling/recurrence switch at 1-x=13
+# (SF_LOG_GAMMA_FLOAT64_STIRLING_THRESHOLD); reflection amplifies the
+# branch-boundary residual right at the pole. Measured worst: 38 ULP
+# (4.22e-15 abs) at x=-11.999999999.
+[[log_gamma.float64.regions]]
+lo = -12.001
+hi = -11.999
+ulp = 40
+
+# log_gamma's exact zero at x=1: the (x-1) factor drives the result to 0
+# while intermediate terms (interval fit, log(x) in the recurrence) stay
+# O(1), so fixed absolute rounding dominates near the zero. Measured worst:
+# 4.86e-17 abs at x=0.9440550688360451.
+[[log_gamma.float64.regions]]
+lo = 0.9
+hi = 1.0
+atol = 1.0e-16
+
 [log_gamma.float32]
 default = 4
 
@@ -19,6 +49,21 @@ default = 4
 lo = -30.0
 hi = -0.009
 ulp = 16
+
+# Same interior-zero conditioning as float64 (see above); ULP-governed for
+# the same reason (large-magnitude near-pole points share this range).
+# Measured worst: 256 ULP (5.96e-8 abs) at x=-2.4548535.
+[[log_gamma.float32.regions]]
+lo = -4.1
+hi = -2.4
+ulp = 300
+
+# Same x=1 zero conditioning as float64. Measured worst: 2.61e-8 abs
+# at x=0.948921.
+[[log_gamma.float32.regions]]
+lo = 0.9
+hi = 1.0
+atol = 5.0e-8
 
 [digamma.float64]
 default = 4
