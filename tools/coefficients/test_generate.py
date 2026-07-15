@@ -71,13 +71,17 @@ def test_chebfit_auto_float32_path():
     coeffs = chebfit_auto(_lg_centered, -1.0, 1.0, target_rel=2.4e-7, dtype=np.float32)
     assert coeffs is not None
 
-    # Coefficients must survive float32 round-trip and be finite
+    # Coefficients must be finite and exactly float32-representable
     for c in coeffs:
         c_f32 = np.float32(c)
         assert np.isfinite(c_f32), f"coefficient {c} is not finite after float32 cast"
-        # Round-trip: cast to float32 and back should match the float32 value
-        c_roundtrip = np.float32(np.float64(c_f32))
-        assert c_f32 == c_roundtrip, f"coefficient {c} does not survive float32 round-trip"
+        # Narrow-then-compare: c must equal its own float32 narrowing, i.e.
+        # the generator actually emitted a float32-representable value (no
+        # precision silently lost when the header stores it as a float
+        # literal). The previous widen-then-narrow round trip
+        # (np.float32(c) cast, then back up and down again) always holds
+        # regardless of c and tested nothing.
+        assert np.float32(c) == c, f"coefficient {c} is not exactly float32-representable"
 
     # Evaluate with Horner in float32 against 60-dps truth
     ts = np.linspace(-1.0, 1.0, 501)
@@ -145,12 +149,13 @@ def test_digamma_interval_float32_path():
     coeffs = chebfit_auto(_dg_centered, -0.5, 0.5, target_rel=2.4e-7, dtype=np.float32)
     assert coeffs is not None
 
-    # Coefficients must survive float32 round-trip and be finite
+    # Coefficients must be finite and exactly float32-representable
     for c in coeffs:
         c_f32 = np.float32(c)
         assert np.isfinite(c_f32), f"coefficient {c} is not finite after float32 cast"
-        c_roundtrip = np.float32(np.float64(c_f32))
-        assert c_f32 == c_roundtrip, f"coefficient {c} does not survive float32 round-trip"
+        # Narrow-then-compare: c must equal its own float32 narrowing (see
+        # test_chebfit_auto_float32_path for the full rationale).
+        assert np.float32(c) == c, f"coefficient {c} is not exactly float32-representable"
 
     # Evaluate with Horner in float32 against 60-dps truth
     ts = np.linspace(-0.5, 0.5, 501)
