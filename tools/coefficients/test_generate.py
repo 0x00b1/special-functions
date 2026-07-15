@@ -81,7 +81,7 @@ def test_chebfit_auto_float32_path():
         # literal). The previous widen-then-narrow round trip
         # (np.float32(c) cast, then back up and down again) always holds
         # regardless of c and tested nothing.
-        assert np.float32(c) == c, f"coefficient {c} is not exactly float32-representable"
+        assert float(np.float32(c)) == c, f"coefficient {c} is not exactly float32-representable"
 
     # Evaluate with Horner in float32 against 60-dps truth
     ts = np.linspace(-1.0, 1.0, 501)
@@ -155,7 +155,7 @@ def test_digamma_interval_float32_path():
         assert np.isfinite(c_f32), f"coefficient {c} is not finite after float32 cast"
         # Narrow-then-compare: c must equal its own float32 narrowing (see
         # test_chebfit_auto_float32_path for the full rationale).
-        assert np.float32(c) == c, f"coefficient {c} is not exactly float32-representable"
+        assert float(np.float32(c)) == c, f"coefficient {c} is not exactly float32-representable"
 
     # Evaluate with Horner in float32 against 60-dps truth
     ts = np.linspace(-0.5, 0.5, 501)
