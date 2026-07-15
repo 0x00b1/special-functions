@@ -166,7 +166,7 @@ def main() -> None:
                 "INTERVAL": chebfit_auto(_lg_centered, -1.0, 1.0, interval_target, dtype=np_dtype),
                 "STIRLING": stirling_coefficients(lg_thresh, series_target),
             },
-            {"STIRLING_THRESHOLD": lg_thresh},
+            {"INTERVAL_CENTER": 2.0, "STIRLING_THRESHOLD": lg_thresh},
             c_type,
             comments={"INTERVAL": "polynomial in t = x - 2, t in [-1, 1]"},
         )
@@ -179,6 +179,7 @@ def main() -> None:
                 "TAIL": digamma_tail_coefficients(dg_thresh, series_target),
             },
             {
+                "INTERVAL_CENTER": 1.5,
                 "TAIL_THRESHOLD": dg_thresh,
                 "ZERO_HI": float(zero_hi),
                 "ZERO_LO": float(zero_lo),

@@ -14,7 +14,7 @@ namespace {
 double interval_f64(double x) {
     // Coefficients are a polynomial in t = x - 1.5 (centered basis; Task 4).
     return ((x - SF_DIGAMMA_FLOAT64_ZERO_HI) - SF_DIGAMMA_FLOAT64_ZERO_LO)
-        * polevl(x - 1.5, SF_DIGAMMA_FLOAT64_INTERVAL, SF_DIGAMMA_FLOAT64_INTERVAL_N);
+        * polevl(x - SF_DIGAMMA_FLOAT64_INTERVAL_CENTER, SF_DIGAMMA_FLOAT64_INTERVAL, SF_DIGAMMA_FLOAT64_INTERVAL_N);
 }
 
 double positive_f64(double x) {
@@ -39,7 +39,7 @@ double digamma_scalar_f64(double x) {
     if (x < 0.0) {
         if (x == std::floor(x)) return NAN;                      // negative poles
         // DLMF 5.5.4: psi(1-x) = psi(x) + pi*cot(pi*x)
-        return positive_f64(1.0 - x) - 3.14159265358979323846 * sf_cot_pi(x);
+        return positive_f64(1.0 - x) - SF_PI * sf_cot_pi(x);
     }
     return positive_f64(x);
 }
@@ -47,7 +47,7 @@ double digamma_scalar_f64(double x) {
 float interval_f32(float x) {
     // Coefficients are a polynomial in t = x - 1.5 (centered basis; Task 4).
     return ((x - SF_DIGAMMA_FLOAT32_ZERO_HI) - SF_DIGAMMA_FLOAT32_ZERO_LO)
-        * polevlf(x - 1.5f, SF_DIGAMMA_FLOAT32_INTERVAL, SF_DIGAMMA_FLOAT32_INTERVAL_N);
+        * polevlf(x - SF_DIGAMMA_FLOAT32_INTERVAL_CENTER, SF_DIGAMMA_FLOAT32_INTERVAL, SF_DIGAMMA_FLOAT32_INTERVAL_N);
 }
 
 float positive_f32(float x) {
@@ -70,7 +70,7 @@ float digamma_scalar_f32(float x) {
     if (x == 0.0f) return std::signbit(x) ? INFINITY : -INFINITY;
     if (x < 0.0f) {
         if (x == std::floor(x)) return NAN;
-        return positive_f32(1.0f - x) - 3.14159265358979323846f * sf_cot_pi_f(x);
+        return positive_f32(1.0f - x) - (float)SF_PI * sf_cot_pi_f(x);
     }
     return positive_f32(x);
 }

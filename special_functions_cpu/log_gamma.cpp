@@ -12,7 +12,7 @@ namespace {
 double interval_f64(double x) {
     // Coefficients are a polynomial in t = x - 2 (centered basis; see Task 4).
     return (x - 1.0) * (x - 2.0)
-        * polevl(x - 2.0, SF_LOG_GAMMA_FLOAT64_INTERVAL, SF_LOG_GAMMA_FLOAT64_INTERVAL_N);
+        * polevl(x - SF_LOG_GAMMA_FLOAT64_INTERVAL_CENTER, SF_LOG_GAMMA_FLOAT64_INTERVAL, SF_LOG_GAMMA_FLOAT64_INTERVAL_N);
 }
 
 double positive_f64(double x) {
@@ -44,7 +44,7 @@ double log_gamma_scalar_f64(double x) {
 float interval_f32(float x) {
     // Coefficients are a polynomial in t = x - 2 (centered basis; see Task 4).
     return (x - 1.0f) * (x - 2.0f)
-        * polevlf(x - 2.0f, SF_LOG_GAMMA_FLOAT32_INTERVAL, SF_LOG_GAMMA_FLOAT32_INTERVAL_N);
+        * polevlf(x - SF_LOG_GAMMA_FLOAT32_INTERVAL_CENTER, SF_LOG_GAMMA_FLOAT32_INTERVAL, SF_LOG_GAMMA_FLOAT32_INTERVAL_N);
 }
 
 float positive_f32(float x) {
