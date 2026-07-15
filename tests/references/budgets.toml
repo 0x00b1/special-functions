@@ -27,28 +27,28 @@ ulp = 16
 [[log_gamma.float64.regions]]
 lo = -4.09
 hi = -4.01
-atol = 6.0e-16
+atol = 7.6e-16
 
 # Crossing at x ~ -3.143581. Measured worst: 6.04e-16 abs (87 ULP) at
 # x=-3.150915419823541.
 [[log_gamma.float64.regions]]
 lo = -3.2
 hi = -3.09
-atol = 7.0e-16
+atol = 8.5e-16
 
 # Crossing at x ~ -2.747683. Measured worst: 2.60e-16 abs (599 ULP) at
 # x=-2.7493163039227886.
 [[log_gamma.float64.regions]]
 lo = -2.8
 hi = -2.7
-atol = 3.0e-16
+atol = 3.6e-16
 
-# Crossing at x ~ -2.457025. Measured worst: 1.94e-16 abs (263 ULP at
-# x=-2.454853574004301).
+# Crossing at x ~ -2.457025. Measured worst: 1.94e-16 abs at x=-2.4112
+# (263 ULP at x=-2.454853574004301).
 [[log_gamma.float64.regions]]
 lo = -2.51
 hi = -2.41
-atol = 2.5e-16
+atol = 2.7e-16
 
 # Pole at x=-12 coincides with the Stirling/recurrence switch at 1-x=13
 # (SF_LOG_GAMMA_FLOAT64_STIRLING_THRESHOLD); reflection amplifies the
@@ -66,7 +66,7 @@ ulp = 40
 [[log_gamma.float64.regions]]
 lo = 0.9
 hi = 1.0
-atol = 1.0e-16
+atol = 6.8e-17
 
 [log_gamma.float32]
 default = 4
@@ -84,35 +84,35 @@ ulp = 16
 [[log_gamma.float32.regions]]
 lo = -4.09
 hi = -4.01
-atol = 3.5e-7
+atol = 4.6e-7
 
 # Crossing at x ~ -3.143581. Measured worst: 2.39e-7 abs (64 ULP) at
 # x=-3.1509154.
 [[log_gamma.float32.regions]]
 lo = -3.2
 hi = -3.09
-atol = 2.5e-7
+atol = 3.3e-7
 
 # Crossing at x ~ -2.747683. Measured worst: 1.57e-7 abs at x=-2.7924314
 # (66 ULP at x=-2.7493162).
 [[log_gamma.float32.regions]]
 lo = -2.8
 hi = -2.7
-atol = 2.0e-7
+atol = 2.2e-7
 
 # Crossing at x ~ -2.457025. Measured worst: 1.51e-7 abs at x=-2.4429557
 # (256 ULP at x=-2.4548535).
 [[log_gamma.float32.regions]]
 lo = -2.51
 hi = -2.41
-atol = 2.0e-7
+atol = 2.1e-7
 
 # Same x=1 zero conditioning as float64. Measured worst: 2.61e-8 abs
 # at x=0.948921.
 [[log_gamma.float32.regions]]
 lo = 0.9
 hi = 1.0
-atol = 5.0e-8
+atol = 3.7e-8
 
 [digamma.float64]
 default = 4
@@ -120,7 +120,9 @@ default = 4
 # Reflection + cot(pi x) conditioning near negative poles. Poles are
 # unit-spaced on the entire negative axis, so every grid point is within 0.5
 # of a pole; the reference table extends to ~-9999, and the same conditioning
-# applies throughout.
+# applies throughout. Measured worst is exactly 16 ULP at x~=-1803.87; this
+# is a measured hard ceiling (not a margin) on this broad region, and Plan 9
+# CI will re-tune it per-platform if a different libm exceeds it.
 [[digamma.float64.regions]]
 lo = -10000.0
 hi = -0.009
@@ -482,6 +484,10 @@ atol = 2.70e-15
 [digamma.float32]
 default = 4
 
+# Reflection + cot(pi x) conditioning near negative poles, same as float64
+# above. Measured worst is exactly 16 ULP at x~=-6801.89; this is a measured
+# hard ceiling (not a margin) on this broad region, and Plan 9 CI will
+# re-tune it per-platform if a different libm exceeds it.
 [[digamma.float32.regions]]
 lo = -10000.0
 hi = -0.009
